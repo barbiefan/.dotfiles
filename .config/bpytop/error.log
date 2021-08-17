@@ -1,0 +1,58 @@
+12/06/21 (01:33:17) | INFO: Loglevel set to INFO
+12/06/21 (01:33:18) | INFO: Loglevel set to DEBUG
+12/06/21 (01:33:19) | INFO: Loglevel set to INFO
+14/06/21 (22:29:40) | ERROR: Data collection thread failed with exception: Precision not allowed in integer format specifier
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 2937, in _runner
+    if not cls.only_draw:
+  File "/usr/bin/bpytop", line 3969, in _draw
+    @classmethod
+  File "/usr/bin/bpytop", line 2749, in _draw_fg
+    f'{Mv.to(dy+1, dx+1)}{Fx.ub}{THEME.main_fg}{stat_color}{proc.details["status"]:^{iw}.{iw2}}{Fx.ub}{THEME.main_fg}{proc.details["uptime"]:^{iw}.{iw2}} ' +
+ValueError: Precision not allowed in integer format specifier
+14/06/21 (22:29:41) | WARNING: Exiting with errorcode (1). Runtime 1:30:56 
+
+15/06/21 (00:48:46) | ERROR: Data collection thread failed with exception: Sign not allowed in string format specifier
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 2939, in _runner
+    collector._draw()
+  File "/usr/bin/bpytop", line 3971, in _draw
+    ProcBox._draw_fg()
+  File "/usr/bin/bpytop", line 2719, in _draw_fg
+    label = (f'{THEME.title}{Fx.b}{Mv.to(y, x)}{"Pid:":>7} {"Program:" if prog_len > 8 else "Prg:":<{prog_len}}' + (f'{"Arguments:":<{arg_len-4}}' if arg_len else "") +
+ValueError: Sign not allowed in string format specifier
+15/06/21 (00:48:46) | WARNING: Exiting with errorcode (1). Runtime 0:00:00 
+
+15/06/21 (00:48:49) | ERROR: Data collection thread failed with exception: Sign not allowed in string format specifier
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 2939, in _runner
+    collector._draw()
+  File "/usr/bin/bpytop", line 3971, in _draw
+    ProcBox._draw_fg()
+  File "/usr/bin/bpytop", line 2719, in _draw_fg
+    label = (f'{THEME.title}{Fx.b}{Mv.to(y, x)}{"Pid:":>7} {"Program:" if prog_len > 8 else "Prg:":<{prog_len}}' + (f'{"Arguments:":<{arg_len-4}}' if arg_len else "") +
+ValueError: Sign not allowed in string format specifier
+15/06/21 (00:48:49) | WARNING: Exiting with errorcode (1). Runtime 0:00:00 
+
+17/06/21 (01:20:56) | ERROR: Input thread failed with exception: [Errno 5] Input/output error
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 937, in _get_key
+    input_key += sys.stdin.read(1)						#* Read 1 key safely with blocking on
+OSError: [Errno 5] Input/output error
+17/07/21 (16:53:26) | ERROR: Data collection thread failed with exception: Precision not allowed in integer format specifier
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 2939, in _runner
+    collector._draw()
+  File "/usr/bin/bpytop", line 3971, in _draw
+    ProcBox._draw_fg()
+  File "/usr/bin/bpytop", line 2751, in _draw_fg
+    (f'{proc.details["threads"]:^{iw}.{iw2}}' if expand > 0 else "") + (f'{proc.details["nice"]:^{iw}.{iw2}}' if expand > 1 else "") +
+ValueError: Precision not allowed in integer format specifier
+17/07/21 (16:53:27) | WARNING: Exiting with errorcode (1). Runtime 0:00:59 
+
+17/08/21 (19:51:34) | ERROR: Exception when sending signal 9 to pid 238
+17/08/21 (19:51:34) | ERROR: [Errno 1] Operation not permitted
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 5459, in process_keys
+    os.kill(pid, sig)
+PermissionError: [Errno 1] Operation not permitted
