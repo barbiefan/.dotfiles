@@ -46,7 +46,6 @@ alias search="doas fzf -e"
 alias repo="cd ~/Documents/git/"
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias du="doas dust -r"
-alias colorpicker="gpick -so"
 #alias calc="liri-calculator"
 
 alias zshrc="$EDITOR ~/.zshrc"
