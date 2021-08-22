@@ -46,6 +46,7 @@ alias search="doas fzf -e"
 alias repo="cd ~/Documents/git/"
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias du="doas dust -r"
+alias uname="uname -snrmo"
 #alias calc="liri-calculator"
 
 alias zshrc="$EDITOR ~/.zshrc"
@@ -55,7 +56,7 @@ alias prompt="doas chmod 777 /usr/share/zsh; p10k configure; doas chmod 755 /usr
 alias i3config="vim ~/.i3/config"
 
 alias mallenom="~/.mallenom/vpn.sh"
-alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
+#alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ntop="doas tcptrack -i wlo2"
 alias nscan="doas nmap -A"
 

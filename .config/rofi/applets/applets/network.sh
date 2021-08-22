@@ -56,13 +56,13 @@ case $chosen in
 		fi 
         ;;
     $bmon)
-        sudo penvpn --config YOUR_SELECTED_CONNETION_TYPE.ovpn
+        networkmanager-dmenu
         ;;
     $launch_cli)
-        termite -e nmtui
+        networkmanager-dmenu
         ;;
     $launch)
-        nm-connection-editor
+        networkmanager-dmenu
         ;;
 esac
 

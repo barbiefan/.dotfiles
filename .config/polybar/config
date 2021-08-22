@@ -28,7 +28,7 @@ secondary = #7DC1CF
 alert = #E84F4F
 
 [bar/example]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = eDP1
 width = 100%
 height = 25
 ;offset-x = 1%
@@ -109,30 +109,42 @@ index-sort = true
 wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+pin-workspaces = true
 
+ws-icon-0 = term;
+ws-icon-1 = qute;
+ws-icon-2 = edit;
+ws-icon-3 = social;
+ws-icon-4 = game;
+ws-icon-5 = gimp;
+ws-icon-6 = media;
+ws-icon-7 = misc;
+fuzzy-match = true
+strip-wsnumbers = true
+
+label-mode = %mode%
 label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+label-focused = %icon% %name%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused = %icon% %name%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %%icon% %name%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = %icon% %name%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -143,6 +155,7 @@ label-urgent-padding = 2
 type = internal/xbacklight
 
 format = <label>
+format-font = $(font2)
 format-padding = 1
 format-background = ${colors.background-alt}
 label = %{A1:/home/obey/.config/rofi/applets/applets/backlight.sh:}%percentage%%%{A}
@@ -156,18 +169,7 @@ interval = 2
 format-prefix = ""
 format-prefix-foreground = ${colors.secondary}
 format-underline = ${colors.secondary}
-label = %{A1:alacritty --title "bpytop float" -e bpytop -b "cpu proc":}CPU: %percentage:2%%%{A}
-format-padding = 1
-format-background = ${colors.background-alt}
-
-[module/memory]
-type = internal/memory
-
-interval = 2
-format-prefix = ""
-format-prefix-foreground = ${colors.secondary}
-format-underline = ${colors.secondary}
-label = %{A1:alacritty --title "bpytop float" -e bpytop -b "mem proc":}RAM: %mb_used% %percentage_used%%%{A}
+label = %{A1:alacritty --title "bpytop float widget mini" -e bpytop -b "cpu":}CPU: %percentage%%%{A}
 format-padding = 1
 format-background = ${colors.background-alt}
 
@@ -182,7 +184,7 @@ exec = free -m | awk '$1 == "Mem:" {printf "%s\n", $3}'
 label = RAM: %output% MB used
 format-padding = 1
 format-background = ${colors.background-alt}
-click-left = alacritty --title "bpytop float" -e bpytop -b "mem proc"
+click-left = alacritty --title "bpytop float widget" -e bpytop -b "mem proc"
 
 [module/wlan]
 type = internal/network
@@ -221,7 +223,7 @@ type = internal/pulseaudio
 
 format-volume = <label-volume>
 label-volume = "%percentage%%"
-format-volume-font = font2
+format-volume-font = $(font2)
 format-volume-foreground = ${colors.primary}
 format-volume-underline = ${colors.primary}
 
@@ -278,7 +280,7 @@ type = custom/script
 exec = "checkupdates | wc -l"
 interval = 60
 format = <label>
-label = %{A1:alacritty --title 'checkupdates float' -e zsh -is eval 'yay -Suy && sleep 3 && exit':}UPD: %output%%{A}
+label = %{A1:alacritty --title 'checkupdates mini widget' -e zsh -is eval 'yay -Suy && sleep 3 && exit':}UPD: %output%%{A}
 format-padding = 1
 format-background = ${colors.background-alt}
 

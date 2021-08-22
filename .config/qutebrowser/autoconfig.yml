@@ -51,6 +51,8 @@ settings:
     - https://easylist.to/easylist/fanboy-social.txt
     - https://secure.fanboy.co.nz/fanboy-annoyance.txt
     - https://raw.githubusercontent.com/anudeepND/youtubeadsblacklist/master/domainlist.txt
+  content.blocking.enabled:
+    global: true
   content.blocking.hosts.lists:
     global:
     - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts

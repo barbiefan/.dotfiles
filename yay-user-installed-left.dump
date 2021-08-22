@@ -7,6 +7,7 @@ alacritty
 alsa-tray
 alsavolume
 anydesk
+awesome-terminal-fonts
 betterlockscreen
 bitwarden
 bluez
@@ -82,6 +83,7 @@ neofetch
 neovim
 network-manager-applet
 network-manager-l2tp
+networkmanager-dmenu
 networkmanager-l2tp
 nm-applet
 nmap
@@ -116,6 +118,8 @@ sar
 sct
 steam
 strongswan
+sublime-text
+sublime-text-4
 sysstat
 tcptrack
 teamviewr
@@ -130,6 +134,8 @@ tightvnc
 tightvncserver
 tk
 tmux
+ttf-font-awesome
+ttf-typicons
 ttf-ubuntu-font-family
 tty-clock
 ttyper
@@ -142,6 +148,7 @@ vnc
 vnc-player
 vscode
 wifi-menu
+wine-valve
 xbindkeys
 xcursor-breeze
 xf86-video-intel

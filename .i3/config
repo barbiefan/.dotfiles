@@ -4,7 +4,7 @@
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 exec --no-startup-id xmodmap -e "keycode 135 = Super_L"
 set $mod Mod4
-
+set $Mon eDP1
 # set keyboard layouts and set alt+shift to be layout toggle
 exec --no-startup-id "setxkbmap -layout us,ru"
 exec --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
@@ -32,15 +32,14 @@ bindsym $mod+c kill
 
 # start program launcher
 bindsym $mod+Escape exec rofi -lines 12 -padding 18 -width 120 -location 0 -show drun -sidebar-mode -columns 2 -font 'Comfortaa 12'
-bindsym $mod+d exec rofi -show combi -theme ./.local/share/rofi/themes/run.rasi
-
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme ./.local/share/rofi/themes/run.rasi -run-shell-command 'alacritty --title "alacritty mini widget" -e zsh -ic "echo {cmd} && {cmd} && read"'
 # Screen @brightness controls
 bindsym XF86MonBrightnessUp     exec xbacklight -inc 10 
 bindsym XF86MonBrightnessDown   exec xbacklight -dec 10 
 bindsym XF86_AudioLowerVolume exec "pulseaudio-ctl down"
 bindsym XF86_AudioMute        exec "pulseaudio-ctl mute; pulseaudio-ctl mute-input"
 bindsym XF86_AudioRaiseVolume exec "pulseaudio-ctl up"
-bindsym $mod+F7               exec "alacritty --title 'pamix' -e 'pamix'"
+bindsym $mod+F7               exec "alacritty --title 'pamix mini widget' -e 'pamix'"
 bindsym XF86_AudioPlay        exec "playerctl play-pause"
 bindsym XF86_AudioPrev        exec "playerctl prev"
 bindsym XF86_AudioNext        exec "playerctl next"
@@ -71,23 +70,11 @@ bindsym $mod+S --release exec --no-startup-id xclip -selection clipboard -t imag
 
 focus_follows_mouse yes
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
-
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
-# move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -133,21 +120,32 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # navigate workspaces next / previous
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace prev
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 1
-set $ws2 2
-set $ws3 3
-set $ws4 4
-set $ws5 5
-set $ws6 6
-set $ws7 7
-set $ws8 8
+set $ws1 1:term
+set $ws2 "2:qute"
+set $ws3 "3:edit"
+set $ws4 4:social
+set $ws5 "5:game"
+set $ws6 "6:gimp"
+set $ws7 "7:media"
+set $ws8 "8:misc"
+
+workspace $ws1 output eDP1
+workspace $ws2 output eDP1
+workspace $ws3 output eDP1
+workspace $ws4 output eDP1
+workspace $ws5 output eDP1
+workspace $ws6 output eDP1
+workspace $ws7 output eDP1
+workspace $ws8 output eDP1
+workspace $ws9 output eDP1
+
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -180,33 +178,38 @@ bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open applications on specific workspaces
-# assign [class="Thunderbird"] $ws1
-# assign [class="Pale moon"] $ws2
-# assign [class="Pcmanfm"] $ws3
-# assign [class="Skype"] $ws5
-# assign [class="*brave*"] $ws3
-# assign [class="*code*"] $ws2
-# for_window [class="Brave-browser"] move container to workspace $ws2
+assign [title="(?i)qutebrowser(?i)"] $ws2
+assign [title="(?i)Code - OSS(?i)"] $ws3
+assign [title="(?i)Sublime(?i)"] $ws3
+assign [title="(?i)Discord(?i)"] $ws4
+assign [title="(?i)Steam(?i)"] $ws5
+assign [title="(?i)PlayOnLinux(?i)"] $ws5
+assign [title="(?i)image manipulation(?i)"] $ws6
+assign [title="(?i)vlc(?i)"] $ws7
 # for_window [class="code"] move container to workspace $ws3
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border normal
-for_window [title="(?i)pamix(?i)"] floating enable border pixel 2 resize set 0 300
-for_window [title="(?i)float(?i)"] floating enable border pixel 2
-for_window [title="(?i)alacritty float(?i)"] floating enable border pixel 2 resize set 712 435
-for_window [title="(?i)checkupdates float(?i)"] floating enable border pixel 2 resize set 0 200
+for_window [title="(?i)float(?i)"] floating enable, border pixel 2
+for_window [title="(?i)widget(?i)"] floating enable, border pixel 2, move position 1110 35
+for_window [title="(?i)mini(?i)"] floating enable, border pixel 2, resize set 0 200
+for_window [title="(?i)alacritty float(?i)"] floating enable, border pixel 2, resize set 580 400, move position center
+for_window [title="(?i)alacritty mini widget(?i)"] floating enable, border pixel 1, resize set 840 150, move position 540 25
+for_window [title="(?i)Telegram(?i)"] floating enable, sticky enable, border pixel 2, resize set 475 600, move position 10 36
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="(?i)clipit(?i)"] floating enable border pixel 2
 for_window [class="(?i)calculator(?i)"] floating enable border pixel 2
-for_window [class="(?i)vlc(?i)"] floating enable border pixel 0
+#for_window [class="(?i)vlc(?i)"] floating enable border pixel 0
 for_window [title="(?i)qute_edit(?i)"] floating enable border normal
 for_window [title="(?i)qute_ranger(?i)"] floating enable border normal
 for_window [title="(?i)Network Connections(?i)"] floating enable border pixel 2
 for_window [title="(?i)New pallete - Gpick(?i)"] floating enable border pixel 2
+for_window [title="(?i)Sublime Text(?i)"] fullscreen enable
+
 # switch to workspace with urgent window automatically
-# for_window [urgent=latest] focus
+for_window [urgent=latest] focus
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -257,7 +260,7 @@ mode "resize" {
 }
 
 # @Lock screen
-bindsym $mod+9 exec --no-startup-id blurlock
+bindsym $mod+l exec --no-startup-id betterlockscreen -l
 
 # @Autostart applications
 exec --no-startup-id nitrogen --restore
