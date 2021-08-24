@@ -133,7 +133,7 @@
 			{
 				"height": 40.0
 			},
-			"menu_visible": true,
+			"menu_visible": false,
 			"output.find_results":
 			{
 				"height": 0.0
@@ -194,6 +194,156 @@
 			},
 			"buffers":
 			[
+				{
+					"contents": "import re\n\nwith open(\"yay-installed-history.dump\", \"r\") as file:\n    installed = file.read().split('\\n')\n\nwith open(\"yay-uninstalled-history.dump\", \"r\") as file:\n    uninstalled = file.read().split('\\n')\n\n\ninstalled_parsed = []\nfor i, entry in enumerate(installed):\n    packages = entry[entry.find('-S ')+3:].split(' ')\n    for i in range(len(packages)):\n        packages[i] = re.sub('[^0-9a-zA-z -]', '', packages[i])\n    installed_parsed += packages\n\nuninstalled_parsed = []\nfor i, entry in enumerate(uninstalled):\n    packages = entry[entry.find('-R ')+3:].split(' ')\n    for i in range(len(packages)):\n        packages[i] = re.sub('[^0-9a-zA-z -]', '', packages[i])\n    uninstalled_parsed += packages\n\npackages_left = list(set(installed_parsed)-set(uninstalled_parsed))\npackages_left = '\\n'.join(sorted(packages_left))\n\nwith open(\"yay-user-installed-left.dump\", \"w\") as file:\n    file.write(packages_left)\n",
+					"file": "/home/obey/yay-history-final-list.py",
+					"file_size": 910,
+					"file_write_time": 132737449502467496,
+					"settings":
+					{
+						"buffer_size": 910,
+						"line_ending": "Unix"
+					},
+					"undo_stack":
+					[
+						[
+							10,
+							1,
+							"insert",
+							{
+								"characters": "\no"
+							},
+							"AwAAAGgAAAAAAAAAaQAAAAAAAAAAAAAAaQAAAAAAAABtAAAAAAAAAAAAAABtAAAAAAAAAG4AAAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAaAAAAAAAAABoAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							11,
+							1,
+							"insert",
+							{
+								"characters": "pen"
+							},
+							"AwAAAG4AAAAAAAAAbwAAAAAAAAAAAAAAbwAAAAAAAABwAAAAAAAAAAAAAABwAAAAAAAAAHEAAAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAbgAAAAAAAABuAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							12,
+							1,
+							"insert_snippet",
+							{
+								"contents": "($0)"
+							},
+							"AQAAAHEAAAAAAAAAcwAAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAcQAAAAAAAABxAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							13,
+							1,
+							"run_macro_file",
+							{
+								"file": "res://Packages/Default/Delete Left Right.sublime-macro"
+							},
+							"AgAAAHEAAAAAAAAAcQAAAAAAAAABAAAAKHEAAAAAAAAAcQAAAAAAAAABAAAAKQ",
+							"AQAAAAAAAAABAAAAcgAAAAAAAAByAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							14,
+							4,
+							"left_delete",
+							null,
+							"BAAAAHAAAAAAAAAAcAAAAAAAAAABAAAAbm8AAAAAAAAAbwAAAAAAAAABAAAAZW4AAAAAAAAAbgAAAAAAAAABAAAAcG0AAAAAAAAAbQAAAAAAAAABAAAAbw",
+							"AQAAAAAAAAABAAAAcQAAAAAAAABxAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							15,
+							1,
+							"insert",
+							{
+								"characters": "ope"
+							},
+							"AwAAAG0AAAAAAAAAbgAAAAAAAAAAAAAAbgAAAAAAAABvAAAAAAAAAAAAAABvAAAAAAAAAHAAAAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAbQAAAAAAAABtAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							16,
+							3,
+							"left_delete",
+							null,
+							"AwAAAG8AAAAAAAAAbwAAAAAAAAABAAAAZW4AAAAAAAAAbgAAAAAAAAABAAAAcG0AAAAAAAAAbQAAAAAAAAABAAAAbw",
+							"AQAAAAAAAAABAAAAcAAAAAAAAABwAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							17,
+							3,
+							"left_delete",
+							null,
+							"AwAAAGkAAAAAAAAAaQAAAAAAAAAEAAAAICAgIGgAAAAAAAAAaAAAAAAAAAABAAAACmcAAAAAAAAAZwAAAAAAAAABAAAAKQ",
+							"AQAAAAAAAAABAAAAbQAAAAAAAABtAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							18,
+							11,
+							"left_delete",
+							null,
+							"CwAAAGYAAAAAAAAAZgAAAAAAAAABAAAAJ2UAAAAAAAAAZQAAAAAAAAABAAAAbmQAAAAAAAAAZAAAAAAAAAABAAAAXGMAAAAAAAAAYwAAAAAAAAABAAAAJ2IAAAAAAAAAYgAAAAAAAAABAAAAKGEAAAAAAAAAYQAAAAAAAAABAAAAdGAAAAAAAAAAYAAAAAAAAAABAAAAaV8AAAAAAAAAXwAAAAAAAAABAAAAbF4AAAAAAAAAXgAAAAAAAAABAAAAcF0AAAAAAAAAXQAAAAAAAAABAAAAc1wAAAAAAAAAXAAAAAAAAAABAAAALg",
+							"AQAAAAAAAAABAAAAZwAAAAAAAABnAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							19,
+							1,
+							"insert",
+							{
+								"characters": "."
+							},
+							"AQAAAFwAAAAAAAAAXQAAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAXAAAAAAAAABcAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							20,
+							1,
+							"insert_completion",
+							{
+								"completion": "split",
+								"format": "text",
+								"keep_prefix": false,
+								"must_insert": true,
+								"trigger": "split"
+							},
+							"AQAAAF0AAAAAAAAAYgAAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAXQAAAAAAAABdAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							21,
+							1,
+							"insert_snippet",
+							{
+								"contents": "($0)"
+							},
+							"AQAAAGIAAAAAAAAAZAAAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAYgAAAAAAAABiAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							22,
+							1,
+							"insert_snippet",
+							{
+								"contents": "'$0'"
+							},
+							"AQAAAGMAAAAAAAAAZQAAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAYwAAAAAAAABjAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							23,
+							1,
+							"insert",
+							{
+								"characters": "\\n"
+							},
+							"AgAAAGQAAAAAAAAAZQAAAAAAAAAAAAAAZQAAAAAAAABmAAAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAZAAAAAAAAABkAAAAAAAAAAAAAAAAAPC/"
+						]
+					]
+				}
 			],
 			"build_system": "",
 			"build_system_choices":
@@ -317,6 +467,38 @@
 				{
 					"sheets":
 					[
+						{
+							"buffer": 0,
+							"file": "/home/obey/yay-history-final-list.py",
+							"selected": true,
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 910,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										102,
+										102
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax",
+									"tab_size": 4,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": -27.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 0,
+							"stack_multiselect": false,
+							"type": "text"
+						}
 					]
 				}
 			],
@@ -350,13 +532,13 @@
 					1.0
 				]
 			},
-			"menu_visible": true,
+			"menu_visible": false,
 			"output.find_results":
 			{
 				"height": 0.0
 			},
 			"pinned_build_system": "",
-			"position": "0,0,0,0,0,50,75,1870,1030,1920,1080,1",
+			"position": "1,0,0,0,0,0,0,1820,955,1920,1080,0",
 			"project": "",
 			"replace":
 			{
