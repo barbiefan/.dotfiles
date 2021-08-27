@@ -32,7 +32,7 @@ bindsym $mod+c kill
 
 # start program launcher
 bindsym $mod+Escape exec rofi -lines 12 -padding 18 -width 120 -location 0 -show drun -sidebar-mode -columns 2 -font 'Comfortaa 12'
-bindsym $mod+d exec --no-startup-id rofi -show drun -theme ./.local/share/rofi/themes/run.rasi -run-shell-command 'alacritty --title "alacritty mini widget" -e zsh -ic "echo {cmd} && {cmd} && read"'
+bindsym $mod+d exec --no-startup-id rofi -modi "combi#file-browser" -show combi -combi-modi "drun#run#window#ssh" -theme ./.local/share/rofi/themes/run.rasi -run-shell-command 'alacritty --title "alacritty mini widget" -e zsh -ic "echo {cmd} && {cmd} && read"'
 # Screen @brightness controls
 bindsym XF86MonBrightnessUp     exec xbacklight -inc 10 
 bindsym XF86MonBrightnessDown   exec xbacklight -dec 10 
@@ -56,12 +56,12 @@ bindsym $mod+F3 exec sct 4600
 # bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 # bindsym $mod+t exec --no-startup-id pkill picom
 # bindsym $mod+Ctrl+t exec --no-startup-id picom -b
-bindsym $mod+F1 exec liri-calculator
+bindsym $mod+F1 exec qalculate-gtk
 bindsym $mod+F2 exec $BROWSER
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 bindsym $mod+e exec alacritty -e ranger
 bindsym $mod+t exec alacritty --title "alacritty float" -e zsh -is eval colorful
-bindsym $mod+Shift+e exec polo
+bindsym $mod+Shift+e exec pcmanfm
 
 bindsym Print exec --no-startup-id "i3-scrot -dc"
 bindsym $mod+Print --release exec --no-startup-id "i3-scrot -wc"
@@ -184,6 +184,7 @@ assign [title="(?i)Sublime(?i)"] $ws3
 assign [title="(?i)Discord(?i)"] $ws4
 assign [title="(?i)Steam(?i)"] $ws5
 assign [title="(?i)PlayOnLinux(?i)"] $ws5
+assign [title="(?i)Lutris(?i)"] $ws5
 assign [title="(?i)image manipulation(?i)"] $ws6
 assign [title="(?i)vlc(?i)"] $ws7
 # for_window [class="code"] move container to workspace $ws3
@@ -200,7 +201,7 @@ for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="(?i)clipit(?i)"] floating enable border pixel 2
-for_window [class="(?i)calculator(?i)"] floating enable border pixel 2
+for_window [class="(?i)Qalcula(?i)"] floating enable border pixel 2
 #for_window [class="(?i)vlc(?i)"] floating enable border pixel 0
 for_window [title="(?i)qute_edit(?i)"] floating enable border normal
 for_window [title="(?i)qute_ranger(?i)"] floating enable border normal

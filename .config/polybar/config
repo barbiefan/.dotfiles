@@ -27,6 +27,9 @@ primary = #E1AA5D
 secondary = #7DC1CF
 alert = #E84F4F
 
+[padding]
+inside-widget-padding = 1
+
 [bar/example]
 monitor = eDP1
 width = 100%
@@ -34,7 +37,7 @@ height = 25
 ;offset-x = 1%
 ;offset-y = 1%
 ;radius = 6.0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -55,10 +58,10 @@ font-1 = Comfortaa:pixelsize=13:bold;3
 font-2 = feather:pixelsize=12;1
 
 modules-left = i3 xwindow
-modules-center = 
-modules-right = updates ram cpu wlan pulseaudio xbacklight battery xkeyboard time
+modules-center = time
+modules-right = updates ram cpu wlan pulseaudio xbacklight battery xkeyboard
 tray-position = right
-tray-padding = 1
+tray-padding = ${padding.inside-widget-padding}
 tray-background = ${colors.background-alt}
 ;tray-background = #0063ff
 
@@ -78,7 +81,7 @@ cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
-label = " %title:0:80:...%"
+label = " %title:0:30:...%"
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -99,7 +102,7 @@ label-indicator-padding = 2
 label-indicator-margin = 0
 label-indicator-background = ${colors.secondary}
 format-indicator-underline = 
-format-padding = 1
+format-padding = ${padding.inside-widget-padding}
 format-background = ${colors.background-alt}
 
 [module/i3]
@@ -156,9 +159,9 @@ type = internal/xbacklight
 
 format = <label>
 format-font = $(font2)
-format-padding = 1
+format-padding = ${padding.inside-widget-padding}
 format-background = ${colors.background-alt}
-label = %{A1:/home/obey/.config/rofi/applets/applets/backlight.sh:}%percentage%%%{A}
+label = %{A1:/home/obey/.config/rofi/applets/applets/backlight.sh:} %percentage%%%{A}
 format-foreground = ${colors.primary}
 format-underline = ${colors.primary}
 
@@ -170,7 +173,7 @@ format-prefix = ""
 format-prefix-foreground = ${colors.secondary}
 format-underline = ${colors.secondary}
 label = %{A1:alacritty --title "bpytop float widget mini" -e bpytop -b "cpu":}CPU: %percentage%%%{A}
-format-padding = 1
+format-padding = ${padding.inside-widget-padding}
 format-background = ${colors.background-alt}
 
 [module/ram]
@@ -182,7 +185,7 @@ format-underline = ${colors.secondary}
 
 exec = free -m | awk '$1 == "Mem:" {printf "%s\n", $3}'
 label = RAM: %output% MB used
-format-padding = 1
+format-padding = ${padding.inside-widget-padding}
 format-background = ${colors.background-alt}
 click-left = alacritty --title "bpytop float widget" -e bpytop -b "mem proc"
 
@@ -201,7 +204,7 @@ format-disconnected = ""
 ;label-disconnected-foreground = ${colors.foreground-alt}
 unknown-as-up = true
 ramp-signal-foreground = ${colors.foreground-alt}
-format-connected-padding = 1
+format-connected-padding = ${padding.inside-widget-padding}
 format-connected-background = ${colors.background-alt}
 
 [module/time]
@@ -211,17 +214,18 @@ interval = 1
 format = <label>
 format-underline = ${colors.primary}
 
-exec= date "+%H:%M"
+exec= date "+%H:%M %d.%m.%y"
 label = %output%
 label-font = 2
-format-padding = 1
+format-padding = 3
+;${padding.inside-widget-padding}
 format-background = ${colors.background-alt}
 click-left = /home/obey/.config/rofi/applets/applets/time.sh
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume>
+format-volume =  <label-volume>
 label-volume = "%percentage%%"
 format-volume-font = $(font2)
 format-volume-foreground = ${colors.primary}
@@ -230,9 +234,9 @@ format-volume-underline = ${colors.primary}
 label-muted = muted
 label-muted-foreground = ${colors.alert}
 format-muted-underline = ${colors.primary}
-format-muted-padding = 1
+format-muted-padding = ${padding.inside-widget-padding}
 
-format-volume-padding = 1
+format-volume-padding = ${padding.inside-widget-padding}
 format-volume-background = ${colors.background-alt}
 
 [module/battery]
@@ -241,28 +245,28 @@ battery = BAT0
 adapter = ADP1
 full-at = 98
 
-format-charging = %{A1:A1:/home/obey/.config/rofi/applets/applets/powermenu.sh:}<label-charging>%{A}
+format-charging = %{A1:/home/obey/.config/rofi/applets/applets/powermenu.sh:} <label-charging>%{A}
 format-charging-underline = ${colors.primary}
 format-charging-prefix-foreground = ${colors.primary}
 format-charging-prefix-font  = $(font2)
 format-charging-foreground = ${colors.primary}
-format-charging-padding = 1
+format-charging-padding = ${padding.inside-widget-padding}
 format-charging-background = ${colors.background-alt}
 
-format-discharging = %{A1:/home/obey/.config/rofi/applets/applets/powermenu.sh:}<label-discharging>%{A}
+format-discharging = %{A1:/home/obey/.config/rofi/applets/applets/powermenu.sh:} <label-discharging>%{A}
 format-discharging-underline = ${self.format-charging-underline}
 format-discharging-prefix-foreground = ${colors.primary}
 format-discharging-prefix-font  = $(font2)
 format-discharging-foreground = ${colors.primary}
-format-discharging-padding = 1
+format-discharging-padding = ${padding.inside-widget-padding}
 format-discharging-background = ${colors.background-alt}
 
-format-full-prefix = %{A1:/home/obey/.config/rofi/applets/applets/powermenu.sh:}%{A}
+format-full-prefix = %{A1:/home/obey/.config/rofi/applets/applets/powermenu.sh:} %{A}
 format-full-prefix-foreground = ${colors.primary}
 format-full-foreground = ${colors.primary}
 format-full-prefix-font  = $(font2)
 format-full-underline = ${self.format-charging-underline}
-format-full-padding = 1
+format-full-padding = ${padding.inside-widget-padding}
 format-full-background = ${colors.background-alt}
 
 click-left = A1:/home/obey/.config/rofi/applets/applets/powermenu.sh
@@ -281,7 +285,7 @@ exec = "checkupdates | wc -l"
 interval = 60
 format = <label>
 label = %{A1:alacritty --title 'checkupdates mini widget' -e zsh -is eval 'yay -Suy && sleep 3 && exit':}UPD: %output%%{A}
-format-padding = 1
+format-padding = ${padding.inside-widget-padding}
 format-background = ${colors.background-alt}
 
 ; vim:ft=dosini
