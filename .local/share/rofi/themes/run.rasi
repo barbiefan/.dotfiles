@@ -10,7 +10,7 @@ configuration {
 }
 
 * {
-        background-color:           #262626;
+        background-color:           #202020;
         text-color:                 #ffffff;
 
         accent-color:               #E1AA5D;
@@ -38,23 +38,23 @@ configuration {
 #window {
         anchor:   north;
         location: north;
-        width:    420px;
-        height:   250px;
-        padding: 8px;
+        width:    30%;
+        height:   20%;
+        padding: 0px;
         children: [ horibox ];
-        y-offset: +25px;
+        y-offset: 0px;
 }
 
 
 
 #horibox {
      orientation: vertical;
-     children:   [ entry, listview];
+     children:   [ entry, listview, mode-switcher];
 }
 
 #listview {
     layout: vertical;
-    spacing: 5px;
+    spacing: 0px;
 }
 
 entry {
@@ -65,7 +65,7 @@ entry {
 }
 
 element {
-        padding: 2px;
+        padding: 4.5px;
 }
 
 element normal.normal {
@@ -116,7 +116,7 @@ element alternate.active {
 }
 
 button {
-        padding: 8px;
+        padding: 10px;
 }
 
 button selected {

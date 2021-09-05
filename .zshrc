@@ -38,7 +38,7 @@ export TERMINAL=alacritty
 alias journalclear="doas journalctl --vacuum-size=100M"
 alias sysupgrade="yay -Syyuu"
 
-alias c="clear; neofetch"
+alias c="clear; neofetch; colorful"
 alias la="exa -alh --icons --group-directories-first --git"
 alias ls="exa -lh --icons --group-directories-first --git"
 alias tree="exa -alhT --group-directories-first --git"

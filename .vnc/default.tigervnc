@@ -1,6 +1,6 @@
 TigerVNC Configuration file Version 1.0
 
-ServerName=1
+ServerName=192.168.0.102:1
 X509CA=
 X509CRL=
 SecurityTypes=X509Plain,TLSPlain,X509Vnc,TLSVnc,X509None,TLSNone,VncAuth,None

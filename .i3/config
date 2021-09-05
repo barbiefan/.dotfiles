@@ -4,13 +4,12 @@
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 exec --no-startup-id xmodmap -e "keycode 135 = Super_L"
 set $mod Mod4
-set $Mon eDP1
 # set keyboard layouts and set alt+shift to be layout toggle
 exec --no-startup-id "setxkbmap -layout us,ru"
 exec --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
 
 # set keyboard repeat delay and repeat interval
-exec --no-startup-id "xset r rate 200 40" 
+exec --no-startup-id "xset r rate 200 40"
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
@@ -31,11 +30,11 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+c kill
 
 # start program launcher
-bindsym $mod+Escape exec rofi -lines 12 -padding 18 -width 120 -location 0 -show drun -sidebar-mode -columns 2 -font 'Comfortaa 12'
-bindsym $mod+d exec --no-startup-id rofi -modi "combi#file-browser" -show combi -combi-modi "drun#run#window#ssh" -theme ./.local/share/rofi/themes/run.rasi -run-shell-command 'alacritty --title "alacritty mini widget" -e zsh -ic "echo {cmd} && {cmd} && read"'
+bindsym $mod+Escape exec rofi -lines 8 -padding 18 -location 0 -show drun -sidebar-mode -columns 6 -font 'Comfortaa 12' -theme ./.local/share/rofi/themes/sidetab-adapta.rasi
+bindsym $mod+d exec --no-startup-id rofi -modi "combi#drun#run#window#ssh#file-browser" -show combi -combi-modi "drun#run#window#ssh" -theme ./.local/share/rofi/themes/run.rasi -run-shell-command 'alacritty --title "alacritty mini widget" -e zsh -ic "echo {cmd} && {cmd} && read"'
 # Screen @brightness controls
-bindsym XF86MonBrightnessUp     exec xbacklight -inc 10 
-bindsym XF86MonBrightnessDown   exec xbacklight -dec 10 
+bindsym XF86MonBrightnessUp     exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown   exec xbacklight -dec 10
 bindsym XF86_AudioLowerVolume exec "pulseaudio-ctl down"
 bindsym XF86_AudioMute        exec "pulseaudio-ctl mute; pulseaudio-ctl mute-input"
 bindsym XF86_AudioRaiseVolume exec "pulseaudio-ctl up"
@@ -47,8 +46,8 @@ bindsym $mod+F11              exec alacritty -e 'mocp'
 
 # @TEMPERATURE
 # Screen color temperature control
-bindsym $mod+F4 exec sct 6600 
-bindsym $mod+F3 exec sct 4600 
+bindsym $mod+F4 exec sct 6600
+bindsym $mod+F3 exec sct 4600
 
 # @SHORTCUTS APPS
 # Start Applications
@@ -57,7 +56,8 @@ bindsym $mod+F3 exec sct 4600
 # bindsym $mod+t exec --no-startup-id pkill picom
 # bindsym $mod+Ctrl+t exec --no-startup-id picom -b
 bindsym $mod+F1 exec qalculate-gtk
-bindsym $mod+F2 exec $BROWSER
+bindsym $mod+F2 exec networkmanager-dmenu
+bindsym $mod+w exec $BROWSER
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 bindsym $mod+e exec alacritty -e ranger
 bindsym $mod+t exec alacritty --title "alacritty float" -e zsh -is eval colorful
@@ -136,15 +136,15 @@ set $ws6 "6:gimp"
 set $ws7 "7:media"
 set $ws8 "8:misc"
 
-workspace $ws1 output eDP1
-workspace $ws2 output eDP1
-workspace $ws3 output eDP1
-workspace $ws4 output eDP1
-workspace $ws5 output eDP1
-workspace $ws6 output eDP1
-workspace $ws7 output eDP1
-workspace $ws8 output eDP1
-workspace $ws9 output eDP1
+workspace $ws1 output eDP-1
+workspace $ws2 output eDP-1
+workspace $ws3 output eDP-1
+workspace $ws4 output eDP-1
+workspace $ws5 output eDP-1
+workspace $ws6 output eDP-1
+workspace $ws7 output eDP-1
+workspace $ws8 output eDP-1
+workspace $ws9 output eDP-1
 
 
 # switch to workspace
@@ -265,7 +265,7 @@ bindsym $mod+l exec --no-startup-id betterlockscreen -l
 
 # @Autostart applications
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id xfce4-power-manager
 exec --no-startup-id clipit
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
@@ -345,7 +345,7 @@ exec_always --no-startup-id /home/obey/.config/polybar/launch.sh &
 #}
 
 # hide/unhide i3status bar
-#bindsym $mod+m bar mode toggle
+# bindsym $mod+m bar mode toggle
 
 # @THEME COLORS
 # class                   border  backgr. text    indic.   child_border
@@ -363,7 +363,7 @@ client.background       #ffffff
 #############################
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border pixel 1
+default_border pixel 2
 default_floating_border normal
 
 # Hide borders
@@ -422,7 +422,7 @@ bindsym $mod+Shift+g mode "$mode_gaps"
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
         bindsym i      mode "$mode_gaps_inner"
-        bindsym e      gaps inner all set 10; gaps outer all set 20
+        bindsym e      gaps inner all set 50; gaps outer all set 0
         bindsym f      gaps inner all set 0;  gaps outer all set 0
         bindsym Return mode "default"
         bindsym Escape mode "default"

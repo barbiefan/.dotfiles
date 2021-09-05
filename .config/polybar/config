@@ -31,7 +31,6 @@ alert = #E84F4F
 inside-widget-padding = 1
 
 [bar/example]
-monitor = eDP1
 width = 100%
 height = 25
 ;offset-x = 1%
@@ -161,7 +160,7 @@ format = <label>
 format-font = $(font2)
 format-padding = ${padding.inside-widget-padding}
 format-background = ${colors.background-alt}
-label = %{A1:/home/obey/.config/rofi/applets/applets/backlight.sh:} %percentage%%%{A}
+label =  %percentage%%
 format-foreground = ${colors.primary}
 format-underline = ${colors.primary}
 
@@ -196,7 +195,7 @@ interval = 3.0
 
 format-connected = <label-connected>
 format-connected-underline = #9B64FB
-label-connected = %{A1:/home/obey/.config/rofi/applets/applets/network.sh:}%essid%%{A}
+label-connected = %{A1:networkmanager-dmenu:}%essid%%{A}
 format-disconnected = ""
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
@@ -235,6 +234,8 @@ label-muted = muted
 label-muted-foreground = ${colors.alert}
 format-muted-underline = ${colors.primary}
 format-muted-padding = ${padding.inside-widget-padding}
+
+click-right = alacritty --title 'pulsemixer mini widget' -e 'pulsemixer'
 
 format-volume-padding = ${padding.inside-widget-padding}
 format-volume-background = ${colors.background-alt}
@@ -284,7 +285,7 @@ type = custom/script
 exec = "checkupdates | wc -l"
 interval = 60
 format = <label>
-label = %{A1:alacritty --title 'checkupdates mini widget' -e zsh -is eval 'yay -Suy && sleep 3 && exit':}UPD: %output%%{A}
+label = %{A1:alacritty --title 'checkupdates mini widget' -e zsh -is eval 'yay -Suy && sleep 3 && exit':}UPD: %output:0:10:...%%{A}
 format-padding = ${padding.inside-widget-padding}
 format-background = ${colors.background-alt}
 
