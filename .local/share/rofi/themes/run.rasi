@@ -57,6 +57,11 @@ configuration {
     spacing: 0px;
 }
 
+element-text, element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
 entry {
         expand: false;
         padding: 5px;
@@ -123,5 +128,7 @@ button selected {
         background-color: @active-background;
         text-color:       @background-color;
 }
+
+
 
 /* vim: ft=css

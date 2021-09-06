@@ -53,6 +53,10 @@ configuration {
         
 }
 
+element-text, element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+}
 
 entry {
         expand: false;

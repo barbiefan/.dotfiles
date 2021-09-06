@@ -31,7 +31,7 @@ bindsym $mod+c kill
 
 # start program launcher
 bindsym $mod+Escape exec rofi -lines 8 -padding 18 -location 0 -show drun -sidebar-mode -columns 6 -font 'Comfortaa 12' -theme ./.local/share/rofi/themes/sidetab-adapta.rasi
-bindsym $mod+d exec --no-startup-id rofi -modi "combi#drun#run#window#ssh#file-browser" -show combi -combi-modi "drun#run#window#ssh" -theme ./.local/share/rofi/themes/run.rasi -run-shell-command 'alacritty --title "alacritty mini widget" -e zsh -ic "echo {cmd} && {cmd} && read"'
+bindsym $mod+d exec --no-startup-id rofi -modi "combi#drun#run#window#ssh#filebrowser" -show combi -combi-modi "drun#run#window#ssh" -theme ./.local/share/rofi/themes/run.rasi -run-shell-command 'alacritty --title "alacritty mini widget" -e zsh -ic "echo {cmd} && {cmd} && read"'
 # Screen @brightness controls
 bindsym XF86MonBrightnessUp     exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown   exec xbacklight -dec 10
