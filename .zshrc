@@ -38,18 +38,19 @@ export TERMINAL=alacritty
 alias journalclear="doas journalctl --vacuum-size=100M"
 alias sysupgrade="yay -Syyuu"
 alias packages="pacman -Qei | awk '/^Name/ { name=\$3 } /^Groups/ { if ( \$3 != \"base\" && \$3 != \"base-devel\" ) { print name } }'"
-
 alias c="clear; neofetch; colorful"
 alias la="exa -alh --icons --group-directories-first --git"
 alias ls="exa -lh --icons --group-directories-first --git"
 alias tree="exa -alhT --group-directories-first --git"
 alias search="doas fzf -e"
-alias ysi="yay -S \$(echo \$(yay -Pc | awk '{print \$1}' | fzf -m --reverse))"
+alias ysi="yay -S \$(yay -Pc | awk '{print \$1}' | fzf -m --reverse)"
+alias ysr="yay -Rc \$(yay -Q | awk '{print \$1}' | fzf -m --reverse)"
 alias repo="cd ~/Documents/git/"
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias du="doas dust -r"
 alias uname="uname -snrmo"
-#alias calc="liri-calculator"
+alias dmount="doas mount \$(doas fdisk -l | grep -oE '/dev/[a-zA-Z]+[0-9]+' | dmenu) \$(bash -c 'ls -a' | dmenu)"
+alias dumount="doas umount \$(doas mount | grep -oE '/dev/[a-zA-Z]+[0-9]+' | dmenu)"
 
 alias zshrc="$EDITOR ~/.zshrc"
 alias vim="nvim"
