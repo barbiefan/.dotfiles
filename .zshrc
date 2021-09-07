@@ -44,6 +44,7 @@ alias la="exa -alh --icons --group-directories-first --git"
 alias ls="exa -lh --icons --group-directories-first --git"
 alias tree="exa -alhT --group-directories-first --git"
 alias search="doas fzf -e"
+alias ysi="yay -S \$(echo \$(yay -Pc | awk '{print \$1}' | fzf -m --reverse))"
 alias repo="cd ~/Documents/git/"
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias du="doas dust -r"
