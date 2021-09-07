@@ -190,7 +190,7 @@ click-left = alacritty --title "bpytop float widget" -e bpytop -b "mem proc"
 
 [module/wlan]
 type = internal/network
-interface = wlo2
+interface = wlan0
 interval = 3.0
 
 format-connected = <label-connected>

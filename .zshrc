@@ -37,6 +37,7 @@ export TERMINAL=alacritty
 
 alias journalclear="doas journalctl --vacuum-size=100M"
 alias sysupgrade="yay -Syyuu"
+alias packages="pacman -Qei | awk '/^Name/ { name=\$3 } /^Groups/ { if ( \$3 != \"base\" && \$3 != \"base-devel\" ) { print name } }'"
 
 alias c="clear; neofetch; colorful"
 alias la="exa -alh --icons --group-directories-first --git"
@@ -79,8 +80,5 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-# To customize prompt, run `p10k configure` or edit /usr/share/zsh/p10k.zsh.
-[[ ! -f /usr/share/zsh/p10k.zsh ]] || source /usr/share/zsh/p10k.zsh
 
 

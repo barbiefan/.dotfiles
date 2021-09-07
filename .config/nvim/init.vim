@@ -18,7 +18,7 @@ colorscheme default
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'davidhalter/jedi-vim'
+"Plug 'davidhalter/jedi-vim'"
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
