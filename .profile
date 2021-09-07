@@ -8,6 +8,3 @@ export NO_AT_BRIDGE=1
 setxkbmap -layout us,ru
 setxkbmap -option 'grp:alt_shift_toggle'
 
-git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME fetch
-git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME pull
-alacritty --title "alacritty widget" -e zsh -ic "{git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME status} && read"
