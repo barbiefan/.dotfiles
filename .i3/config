@@ -58,10 +58,11 @@ bindsym $mod+F3 exec sct 4600
 bindsym $mod+F1 exec qalculate-gtk
 bindsym $mod+F2 exec networkmanager-dmenu
 bindsym $mod+w exec $BROWSER
-bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 bindsym $mod+e exec alacritty -e ranger
-bindsym $mod+t exec alacritty --title "alacritty float" -e zsh -is eval colorful
+bindsym $mod+m exec "alacritty -e neomutt"
 bindsym $mod+Shift+e exec pcmanfm
+bindsym $mod+t exec alacritty --title "alacritty float" -e zsh -is eval colorful
+bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 bindsym Print exec --no-startup-id "i3-scrot -dc"
 bindsym $mod+Print --release exec --no-startup-id "i3-scrot -wc"
