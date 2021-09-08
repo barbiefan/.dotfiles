@@ -6,6 +6,8 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export BROWSER=/usr/bin/qutebrowser
 export NO_AT_BRIDGE=1
 
+export PATH="$PATH:$HOME/.bins"
+
 export ETH=$(ip -o link show | awk -F': ' '{print $2}' | grep wl)
 
 setxkbmap -layout us,ru

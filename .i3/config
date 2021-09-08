@@ -192,9 +192,9 @@ assign [title="(?i)vlc(?i)"] $ws7
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border normal
-for_window [title="(?i)float(?i)"] floating enable, border pixel 2
-for_window [title="(?i)widget(?i)"] floating enable, border pixel 2, move position 1110 35
-for_window [title="(?i)mini(?i)"] floating enable, border pixel 2, resize set 0 200
+for_window [title="(?i) float(?i)"] floating enable, border pixel 2
+for_window [title="(?i) widget(?i)"] floating enable, border pixel 2, move position 1110 35
+for_window [title="(?i) mini(?i)"] floating enable, border pixel 2, resize set 0 200
 for_window [title="(?i)alacritty float(?i)"] floating enable, border pixel 2, resize set 580 400, move position center
 for_window [title="(?i)alacritty mini widget(?i)"] floating enable, border pixel 1, resize set 840 150, move position 540 25
 for_window [title="(?i)Telegram(?i)"] floating enable, sticky enable, border pixel 2, resize set 475 600, move position 10 36

@@ -13,6 +13,8 @@ export XDG_CONFIG_HOME="$HOME/.config/"
 export TERMINAL=alacritty
 export NO_AT_BRIDGE=1
 
+export PATH="$PATH:$HOME/.bins"
+
 export ETH=$(ip -o link show | awk -F': ' '{print $2}' | grep wl)
 
 setxkbmap -layout us,ru
