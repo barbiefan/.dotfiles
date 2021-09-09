@@ -641,7 +641,7 @@
 	// remember_full_screen will allow Sublime Text to start in full screen
 	// mode if it was exited in full screen mode. When set to false, Sublime
 	// Text will never start in full screen mode.
-	"remember_full_screen": true,
+	"remember_full_screen": false,
 
 	// remember_workspace makes Sublime Text remember what workspace each window
 	// was in last. When set to false the OS left to determine which workspace

@@ -48,13 +48,13 @@ alias repo="cd ~/Documents/git/"
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias du="doas dust -r"
 alias uname="uname -snrmo"
-alias dmount="doas mount \$(doas fdisk -l | grep -oE '/dev/[a-zA-Z]+[0-9]+' | dmenu) \$(bash -c 'ls -a' | dmenu)"
-alias dumount="doas umount \$(doas mount | grep -oE '/dev/[a-zA-Z]+[0-9]+' | dmenu)"
+alias dmount="dmenumount"
+alias dumount="dmenuumount"
+
 
 alias zshrc="$EDITOR ~/.zshrc"
 alias vim="nvim"
 alias alaconfig="$EDITOR ~/.config/alacritty/alacritty.yml"
-alias prompt="doas chmod 777 /usr/share/zsh; p10k configure; doas chmod 755 /usr/share/zsh"
 alias i3config="vim ~/.i3/config"
 
 alias mallenom="~/.mallenom/vpn.sh"

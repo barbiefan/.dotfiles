@@ -49,8 +49,20 @@ configuration {
 
 #horibox {
      orientation: vertical;
-     children:   [ entry, listview, mode-switcher];
+     children:   [ inputbar, listview, mode-switcher];
 }
+
+
+#inputbar {
+    children:   [ prompt,entry];
+}
+
+#prompt {
+    padding:    5px;
+    spacing:    0;
+    text-color: @normal-foreground;
+}
+
 
 #listview {
     layout: vertical;

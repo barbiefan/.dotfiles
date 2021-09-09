@@ -31,14 +31,14 @@ bindsym $mod+c kill
 
 # start program launcher
 bindsym $mod+Escape exec rofi -lines 8 -padding 18 -location 0 -show drun -sidebar-mode -columns 6 -font 'Comfortaa 12' -theme ./.local/share/rofi/themes/sidetab-adapta.rasi
-bindsym $mod+d exec --no-startup-id rofi -modi "combi#drun#run#window#ssh#filebrowser" -show combi -combi-modi "drun#run#window#ssh" -theme ./.local/share/rofi/themes/run.rasi -run-shell-command 'alacritty --title "alacritty mini widget" -e zsh -ic "echo {cmd} && {cmd} && read"'
+bindsym $mod+d exec --no-startup-id rofi -modi "combi#drun#run#window#ssh#filebrowser" -show combi -combi-modi "drun#run#window#ssh" -theme ./.local/share/rofi/themes/run.rasi -run-shell-command 'alacritty --title "alacritty #mini #widget" -e zsh -ic "echo {cmd} && {cmd} && read"'
 # Screen @brightness controls
 bindsym XF86MonBrightnessUp     exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown   exec xbacklight -dec 10
 bindsym XF86_AudioLowerVolume exec "pulseaudio-ctl down"
 bindsym XF86_AudioMute        exec "pulseaudio-ctl mute; pulseaudio-ctl mute-input"
 bindsym XF86_AudioRaiseVolume exec "pulseaudio-ctl up"
-bindsym $mod+F7               exec "alacritty --title 'pulsemixer mini widget' -e 'pulsemixer'"
+bindsym $mod+F7               exec "alacritty --title 'pulsemixer #mini #widget' -e 'pulsemixer'"
 bindsym XF86_AudioPlay        exec "playerctl play-pause"
 bindsym XF86_AudioPrev        exec "playerctl prev"
 bindsym XF86_AudioNext        exec "playerctl next"
@@ -59,9 +59,11 @@ bindsym $mod+F1 exec qalculate-gtk
 bindsym $mod+F2 exec networkmanager-dmenu
 bindsym $mod+w exec $BROWSER
 bindsym $mod+e exec alacritty -e ranger
-bindsym $mod+m exec "alacritty -e neomutt"
 bindsym $mod+Shift+e exec pcmanfm
-bindsym $mod+t exec alacritty --title "alacritty float" -e zsh -is eval colorful
+bindsym $mod+m exec "alacritty -e neomutt"
+bindsym $mod+o exec dmenuhandler
+bindsym $mod+Menu exec dmenuunicode
+bindsym $mod+t exec alacritty --title "alacritty #float" -e zsh -is eval colorful
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 bindsym Print exec --no-startup-id "i3-scrot -dc"
@@ -192,11 +194,12 @@ assign [title="(?i)vlc(?i)"] $ws7
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border normal
-for_window [title="(?i) float(?i)"] floating enable, border pixel 2
-for_window [title="(?i) widget(?i)"] floating enable, border pixel 2, move position 1110 35
-for_window [title="(?i) mini(?i)"] floating enable, border pixel 2, resize set 0 200
-for_window [title="(?i)alacritty float(?i)"] floating enable, border pixel 2, resize set 580 400, move position center
-for_window [title="(?i)alacritty mini widget(?i)"] floating enable, border pixel 1, resize set 840 150, move position 540 25
+for_window [title="(?i)#float(?i)"] floating enable, border pixel 2
+for_window [title="(?i)#widget(?i)"] floating enable, border pixel 2, move position 1110 35
+for_window [title="(?i)#mini(?i)"] floating enable, border pixel 2, resize set 0 200
+for_window [title="(?i)alacritty #float(?i)"] floating enable, border pixel 2, resize set 580 400, move position center
+for_window [title="(?i)alacritty #mini #widget(?i)"] floating enable, border pixel 1, resize set 840 150, move position 540 25
+for_window [title="(?i)alacritty #widget date(?i)"] floating enable, border pixel 1, resize set 680 667, move position 622 35
 for_window [title="(?i)Telegram(?i)"] floating enable, sticky enable, border pixel 2, resize set 475 600, move position 10 36
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pamac-manager"] floating enable
@@ -208,7 +211,6 @@ for_window [title="(?i)qute_edit(?i)"] floating enable border normal
 for_window [title="(?i)qute_ranger(?i)"] floating enable border normal
 for_window [title="(?i)Network Connections(?i)"] floating enable border pixel 2
 for_window [title="(?i)New pallete - Gpick(?i)"] floating enable border pixel 2
-for_window [title="(?i)Sublime Text(?i)"] fullscreen enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -410,6 +412,7 @@ gaps outer 0
 
 # Smart gaps (gaps used if only more than one container on the workspace)
 smart_gaps inverse_outer
+smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)

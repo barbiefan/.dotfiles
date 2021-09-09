@@ -23,7 +23,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
 "Plug 'tmhedberg/SimpylFold'
-Plug 'preservim/tagbar'
+Plug 'preservim/tagba'
 Plug 'artanikin/vim-synthwave84'
 Plug 'joshdick/onedark.vim'
 "Plug 'gmarik/Vundle.vim'
@@ -35,4 +35,6 @@ nmap <F12> :TagbarToggle<CR>
 nmap <TAB> :NERDTreeToggle<CR>
 nmap <A-Up> :m -2<CR>
 nmap <A-Down> :m +1<CR>
+vnoremap <A-c> "*y :let @+=@*<CR>
+nmap <A-v> "*P<CR>
 colorscheme onedark
