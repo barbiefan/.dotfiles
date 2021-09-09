@@ -8,10 +8,10 @@
 getmount() { \
 	[ -z "$chosen" ] && exit 1
         # shellcheck disable=SC2086
-	mp="$(find $1 2>/dev/null | rofi -dmenu -i -theme $HOME/.local/share/rofi/themes/run.rasi -p "Type in mount point.")" || exit 1
+        mp="$( (echo "$HOME/mnt/$chosenfull"; find $1 2>/dev/null) | rofi -dmenu -i -theme $HOME/.local/share/rofi/themes/run.rasi -p "Type in mount point.")" || exit 1
 	test -z "$mp" && exit 1
 	if [ ! -d "$mp" ]; then
-		mkdiryn=$(printf "No\\nYes" | dmenu -i -theme $HOME/.local/share/rofi/themes/run.rasi -p "$mp does not exist. Create it?") || exit 1
+		mkdiryn=$(printf "No\\nYes" | rofi -dmenu -i -theme $HOME/.local/share/rofi/themes/run.rasi -p "$mp does not exist. Create it?") || exit 1
 		[ "$mkdiryn" = "Yes" ] && (mkdir -p "$mp" || doas mkdir -p "$mp")
 	fi
 	}
@@ -19,7 +19,7 @@ getmount() { \
 mountusb() { \
 	chosen="$(echo "$usbdrives" | rofi -dmenu -i -theme $HOME/.local/share/rofi/themes/run.rasi -p "Mount which drive?")" || exit 1
 	chosen="$(echo "$chosen" | awk '{print $1}')"
-	doas mount "$chosen" 2>/dev/null && notify-send "💻 USB mounting" "$chosen mounted." && exit 0
+    chosenfull="$(echo "$chosen" | sed 's/\/dev\///g')"
 	alreadymounted=$(lsblk -nrpo "name,type,mountpoint" | awk '$3!~/\/boot|\/home$|SWAP/&&length($3)>1{printf "-not ( -path *%s -prune ) ",$3}')
 	getmount "/mnt /media /mount /home -maxdepth 5 -type d $alreadymounted"
 	partitiontype="$(lsblk -no "fstype" "$chosen")"
@@ -32,8 +32,9 @@ mountusb() { \
 	}
 
 mountandroid() { \
-	chosen="$(echo "$anddrives" | rofi -dmenu -i -theme $HOME/.local/share/rofi/themes/run.rasi -p "Which Android device?")" || exit 1
-	chosen="$(echo "$chosen" | cut -d : -f 1)"
+	chosenfull="$(echo "$anddrives" | rofi -dmenu -i -theme $HOME/.local/share/rofi/themes/run.rasi -p "Which Android device?")" || exit 1
+	chosen="$(echo "$chosenfull" | cut -d : -f 1)"
+    chosenfull="$(echo $chosenfull | sed 's/\ //g')"
 	getmount "$HOME -maxdepth 3 -type d"
         simple-mtpfs --device "$chosen" "$mp"
 	echo "OK" | rofi -dmenu -i -theme $HOME/.local/share/rofi/themes/run.rasi -p "Tap Allow on your phone if it asks for permission and then press enter" || exit 1
@@ -42,7 +43,7 @@ mountandroid() { \
 	}
 
 asktype() { \
-	choice="$(printf "USB\\nAndroid" | dmenu -i -theme $HOME/.local/share/rofi/themes/run.rasi -p "Mount a USB drive or Android device?")" || exit 1
+	choice="$(printf "USB\\nAndroid" | rofi -dmenu -i -theme $HOME/.local/share/rofi/themes/run.rasi -p "Mount a USB drive or Android device?")" || exit 1
 	case $choice in
 		USB) mountusb ;;
 		Android) mountandroid ;;
@@ -50,7 +51,7 @@ asktype() { \
 	}
 
 anddrives=$(simple-mtpfs -l 2>/dev/null)
-usbdrives="$(lsblk -rpo "name,type,size,mountpoint" | grep 'part\|rom' | awk '$4==""{printf "%s (%s)\n",$1,$3}')"
+usbdrives="$(lsblk -rpo "name,type,size,mountpoint" | awk '$4==""{printf "%s (%s)\n",$1,$3}')"
 
 if [ -z "$usbdrives" ]; then
 	[ -z "$anddrives" ] && echo "No USB drive or Android device detected" && exit

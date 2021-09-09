@@ -54,13 +54,15 @@ configuration {
 
 
 #inputbar {
+    orientation: horizontal;
     children:   [ prompt,entry];
 }
 
 #prompt {
-    padding:    5px;
-    spacing:    0;
-    text-color: @normal-foreground;
+        expand: false;
+        padding:    5px;
+        text-color: @normal-foreground;
+        font: "Comfortaa 15";
 }
 
 
@@ -75,7 +77,7 @@ element-text, element-icon {
 }
 
 entry {
-        expand: false;
+        expand: true;
         padding: 5px;
         text-color: @accent-color;
         font: "Comfortaa 15";
