@@ -27,7 +27,7 @@ USE_POWERLINE="true"
 if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
   source /usr/share/zsh/manjaro-zsh-config
 fi
-# Use manjaro zsh prompt
+#Use manjaro zsh prompt
 if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
   source /usr/share/zsh/manjaro-zsh-prompt
 fi
@@ -35,6 +35,7 @@ fi
 export BROWSER=/usr/bin/qutebrowser
 export TERMINAL=alacritty
 
+alias vim="nvim"
 alias journalclear="doas journalctl --vacuum-size=100M"
 alias sysupgrade="yay -Syyuu"
 alias packages="pacman -Qei | awk '/^Name/ { name=\$3 } /^Groups/ { if ( \$3 != \"base\" && \$3 != \"base-devel\" ) { print name } }'"
@@ -42,8 +43,6 @@ alias c="clear; neofetch; colorful"
 alias la="exa -alh --icons --group-directories-first --git"
 alias tree="exa -alhT --group-directories-first --git"
 alias search="doas fzf -e"
-alias ysi="yay -S \$(yay -Pc | awk '{print \$1}' | fzf -m --reverse)"
-alias ysr="yay -Rc \$(yay -Q | awk '{print \$1}' | fzf -m --reverse)"
 alias repo="cd ~/Documents/git/"
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias du="doas dust -r"
@@ -52,10 +51,6 @@ alias dmount="dmenumount"
 alias dumount="dmenuumount"
 
 
-alias zshrc="$EDITOR ~/.zshrc"
-alias vim="nvim"
-alias alaconfig="$EDITOR ~/.config/alacritty/alacritty.yml"
-alias i3config="vim ~/.i3/config"
 
 alias mallenom="~/.mallenom/vpn.sh"
 #alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -81,5 +76,4 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
 
