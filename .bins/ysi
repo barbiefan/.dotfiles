@@ -2,4 +2,4 @@
 
 #gives a fzf list of all installable packages from yay, then installs the selected ones
 
-yay -S $(yay -Pc | awk '{print \$1}' | fzf -m --reverse --prompt 'package(es) to install: ')
+yay -S $(yay -Pc | awk '{print $1}' | fzf -m --reverse --prompt 'package(es) to install: ')
