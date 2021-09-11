@@ -51,10 +51,6 @@ bindsym $mod+F3 exec sct 4600
 
 # @SHORTCUTS APPS
 # Start Applications
-# bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-# bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
-# bindsym $mod+t exec --no-startup-id pkill picom
-# bindsym $mod+Ctrl+t exec --no-startup-id picom -b
 bindsym $mod+F1 exec qalculate-gtk
 bindsym $mod+F2 exec networkmanager-dmenu
 bindsym $mod+w exec $BROWSER
@@ -62,10 +58,10 @@ bindsym $mod+e exec alacritty -e ranger
 bindsym $mod+Shift+e exec pcmanfm
 bindsym $mod+m exec "alacritty -e neomutt"
 bindsym $mod+o exec dmenuhandler
-bindsym $mod+Menu exec dmenuunicode
+bindsym $mod+grave exec dmenuunicode
 bindsym $mod+t exec alacritty --title "alacritty #minifloat" -e zsh -is eval colorful
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
-bindsym $mod+Home exec "alacritty --title 'alacritty #float config' -e $EDITOR $(git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME ls-files $HOME | rofi -dmenu -theme /home/obey/.local/share/rofi/themes/run.rasi -p 'config file: ')"
+bindsym $mod+Home exec "alacritty --title 'alacritty config' -e config"
 
 bindsym Print exec --no-startup-id "i3-scrot -dc"
 bindsym $mod+Print --release exec --no-startup-id "i3-scrot -wc"
@@ -139,17 +135,7 @@ set $ws5 "5:game"
 set $ws6 "6:gimp"
 set $ws7 "7:media"
 set $ws8 "8:misc"
-
-workspace $ws1 output eDP-1
-workspace $ws2 output eDP-1
-workspace $ws3 output eDP-1
-workspace $ws4 output eDP-1
-workspace $ws5 output eDP-1
-workspace $ws6 output eDP-1
-workspace $ws7 output eDP-1
-workspace $ws8 output eDP-1
-workspace $ws9 output eDP-1
-
+set $ws9 "9:opt"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -160,6 +146,7 @@ bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
@@ -170,6 +157,7 @@ bindsym $mod+Ctrl+5 move container to workspace $ws5
 bindsym $mod+Ctrl+6 move container to workspace $ws6
 bindsym $mod+Ctrl+7 move container to workspace $ws7
 bindsym $mod+Ctrl+8 move container to workspace $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws9
 
 # Move to workspace with focused container
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
@@ -180,6 +168,7 @@ bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 
 # Open applications on specific workspaces
 assign [title="(?i)qutebrowser(?i)"] $ws2

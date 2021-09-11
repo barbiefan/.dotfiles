@@ -20,6 +20,7 @@ settings:
   bindings.commands:
     global:
       normal:
+        C: hint all yank
         Y: hint links spawn vlc --play-and-exit {hint-url}
   colors.tabs.bar.bg:
     global: '#555555'
