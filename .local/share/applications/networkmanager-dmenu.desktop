@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Settings;Network;
+Name=NetMenu
+GenericName=Networkmanager Settings
+Exec=networkmanager-dmenu
+Type=Application
+
+

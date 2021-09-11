@@ -61,7 +61,7 @@ bindsym $mod+o exec dmenuhandler
 bindsym $mod+grave exec dmenuunicode
 bindsym $mod+t exec alacritty --title "alacritty #minifloat" -e zsh -is eval colorful
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
-bindsym $mod+Home exec "alacritty --title 'alacritty config' -e config"
+bindsym $mod+Home exec "alacritty --title 'alacritty config' -e zsh -c 'dotfiles -c edit'"
 
 bindsym Print exec --no-startup-id "i3-scrot -dc"
 bindsym $mod+Print --release exec --no-startup-id "i3-scrot -wc"
@@ -70,17 +70,17 @@ bindsym $mod+S --release exec --no-startup-id xclip -selection clipboard -t imag
 
 focus_follows_mouse yes
 
-# alternatively, you can use the cursor keys:
+# switch alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# move alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left 60px
+bindsym $mod+Shift+Down move down 60px
+bindsym $mod+Shift+Up move up 60px
+bindsym $mod+Shift+Right move right 60px
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
@@ -98,7 +98,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking
 # bindsym $mod+w layout tabbed
-bindsym $mod+q layout toggle split
+bindsym $mod+q layout toggle
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -190,7 +190,7 @@ for_window [title="(?i)#mini(?i)"] floating enable, border pixel 2, resize set 0
 for_window [title="(?i)#minifloat(?i)"] floating enable, border pixel 2, resize set 580 400, move position center
 for_window [title="(?i)alacritty #mini #widget(?i)"] floating enable, border pixel 1, resize set 840 150, move position 540 25
 for_window [title="(?i)alacritty #widget date(?i)"] floating enable, border pixel 1, resize set 680 667, move position 622 35
-for_window [title="(?i)Telegram(?i)"] floating enable, sticky enable, border pixel 2, resize set 475 600, move position 10 36
+for_window [title="(?i)Telegram(?i)"] floating enable, sticky enable, border pixel 1, resize set 475 600, move position 10 36
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
