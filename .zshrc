@@ -44,12 +44,13 @@ alias la="exa -alh --icons --group-directories-first --git"
 alias tree="exa -alhT --group-directories-first --git"
 alias search="doas fzf -e"
 alias repo="cd ~/Documents/git/"
-alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias du="doas dust -r"
 alias uname="uname -snrmo"
 alias dmount="dmenumount"
 alias dumount="dmenuumount"
 
+alias config="dotfiles -c edit"
+alias dotfiles"dotfiles -i"
 
 
 alias mallenom="~/.mallenom/vpn.sh"
