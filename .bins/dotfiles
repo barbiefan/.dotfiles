@@ -1,0 +1,140 @@
+#!/bin/bash
+
+GIT="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+cd $HOME
+
+print_help() {
+    echo "DOTFILES MANAGEMENT: interactive mode"
+    echo "    h/help       - print this message"
+    echo "    q/quit/exit  - quit script"
+    echo "    a/add        - add    files from .dotfiles bare repo with fzf"
+    echo "    r/rm/remove  - remove files from .dotfiles bare repo with fzf"
+    echo "    e/v/edit/vim - edit   files from .dotfiles bare repo with vim"
+    echo "    pull         - pull   files from .dotfiles bare repo"
+    echo "    pullf        - pull   files from .dotfiles bare repo (force, overwrites your modifications)"
+    echo "    push         - push   files to   .dotfiles bare repo"
+    echo "    s/status     - status of         .dotfiles bare repo"
+    echo ""
+    echo "    remove       - runs git update-index --force-remove on a file"
+    echo "    add          - runs git add on a file"
+    echo "    edit         - runs \$EDITOR on a file"
+    echo "    pull         - runs git fetch; git pull"
+    echo "    push         - runs PULL then git add -u; git commit -m 'will be prompted'; git push"
+    echo "    status       - runs git status"
+}
+
+interact() { \
+    print_help
+    echo "DOTFILES >>>"
+    read input
+    act
+}
+
+quit() { \
+    exit 0
+}
+
+add() { \
+    file="$(find | fzf -e -i -m --reverse --prompt 'add to repo (Tab to select multiple): ')"
+    if [ "$file" != "" ]; then
+        $GIT add $file
+    fi
+}
+
+remove() { \
+
+    file="$($GIT ls-files | fzf -e -i -m --reverse --prompt 'remove from repo (Tab to select multiple): ')"
+    if [ "$file" != "" ]; then
+        $GIT update-index --assume-unchanged $file
+    fi
+}
+
+edit() { \
+
+    file="$($GIT ls-files | fzf +m -e -i --reverse --prompt 'config file: ')"
+    if [ "$file" != "" ]; then
+        $EDITOR $file
+    fi
+
+}
+
+pull() { \
+    $GIT fetch
+    err=$($GIT pull 2>&1)
+    if [ "$err" != "" ]; then
+        echo ""
+        echo "    @DOTFILES: You have uncommitted changes, stashing..."
+        echo ""
+        $GIT stash
+        $GIT pull
+        $GIT stash pop 1>/dev/null
+        echo ""
+        echo "    @DOTFILES: Pulled latest commit and applied your changes to it. See status"
+        echo ""
+    else
+        echo ""
+        echo "    @DOTFILES: Pulled latest commit"
+        echo ""
+    fi
+}
+
+push() { \
+    pull
+    $GIT add -u
+    if [ -n "$($GIT status | grep 'to be committed')" ]; then
+        echo "if"
+        echo "    @DOTFILES: enter commit message:"
+        read message
+        $GIT commit -m "$message"
+    fi
+    $GIT push
+    echo ""
+    echo "    @DOTFILES: Pushed to remote."
+    echo ""
+}
+
+status() { \
+    $GIT fetch
+    $GIT status
+}
+
+act() { \
+    case "$input" in
+        "q") quit;;
+        "quit") quit;;
+        "exit") quit;;
+    
+        "a") add;;
+        "add") add;;
+    
+        "r") remove;;
+        "rm") remove;;
+        "remove") remove;;
+    
+        "e") edit;;
+        "v") edit;;
+        "edit") edit;;
+        "vim") edit;;
+    
+        "pull") pull;;
+    
+        "push") push;;
+    
+        "s") status;;
+        "status") status;;
+    esac
+    if [[ $inter = 1 ]]; then 
+        interact 
+    fi
+}
+
+if [[ $# = 0 ]]; then
+    print_help
+else
+    while getopts ":ic:" arg; do
+        case $arg in
+            i) inter=1 && interact;;
+            c) input=$2 && act;;
+        esac
+    done
+fi
