@@ -171,7 +171,7 @@ interval = 2
 format-prefix = ""
 format-prefix-foreground = ${colors.secondary}
 format-underline = ${colors.secondary}
-label = %{A1:alacritty --title "bpytop #widget" -e bpytop -b "cpu proc":}CPU: %percentage%%%{A}
+label = %{A1:terminal -t "bpytop #widget" -e bpytop -b "cpu proc":}CPU: %percentage%%%{A}
 format-padding = ${padding.inside-widget-padding}
 format-background = ${colors.background-alt}
 
@@ -186,7 +186,7 @@ exec = free -m | awk '$1 == "Mem:" {printf "%s\n", $3}'
 label = RAM: %output% MB used
 format-padding = ${padding.inside-widget-padding}
 format-background = ${colors.background-alt}
-click-left = alacritty --title "bpytop #widget" -e bpytop -b "mem proc"
+click-left = terminal -t "bpytop #widget" -e bpytop -b "mem proc"
 
 [module/wlan]
 type = internal/network
@@ -219,7 +219,7 @@ label-font = 2
 format-padding = 3
 ;${padding.inside-widget-padding}
 format-background = ${colors.background-alt}
-click-left = alacritty --title "alacritty #widget date" -e zsh -c "cal -ywm --color; read"
+click-left = terminal -t "terminal #widget date" -e zsh -c "cal -ywm --color; read"
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -235,7 +235,7 @@ label-muted-foreground = ${colors.alert}
 format-muted-underline = ${colors.primary}
 format-muted-padding = ${padding.inside-widget-padding}
 
-click-right = alacritty --title 'pulsemixer #mini #widget' -e 'pulsemixer'
+click-right = terminal -t 'pulsemixer #mini #widget' -e 'pulsemixer'
 
 format-volume-padding = ${padding.inside-widget-padding}
 format-volume-background = ${colors.background-alt}
@@ -285,7 +285,7 @@ type = custom/script
 exec = "checkupdates | wc -l"
 interval = 60
 format = <label>
-label = %{A1:alacritty --title 'checkupdates #mini #widget' -e zsh -is eval 'yay -Suy && sleep 3 && exit':}UPD: %output:0:10:...%%{A}
+label = %{A1:terminal -t 'checkupdates #mini #widget' -e zsh -is eval 'yay -Suy && sleep 3 && exit':}UPD: %output:0:10:...%%{A}
 format-padding = ${padding.inside-widget-padding}
 format-background = ${colors.background-alt}
 

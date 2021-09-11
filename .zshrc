@@ -78,3 +78,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+bindkey -v
+source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
