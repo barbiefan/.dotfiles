@@ -1,8 +1,0 @@
-#!/bin/bash
-
-#gives a fzf search to select files from local repo (dotfiles) and opens a selection in editor
-cd $HOME
-file="$(git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME ls-files | fzf +m -e --reverse --prompt 'config file: ')"
-if [ "$file" != "" ]; then
-    $EDITOR $file
-fi
