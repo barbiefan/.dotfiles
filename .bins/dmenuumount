@@ -3,7 +3,7 @@
 # A dmenu prompt to unmount drives.
 # Provides you with mounted partitions, select one to unmount.
 # Drives mounted at /, /boot and /home will not be options to unmount.
-
+ 
 unmountusb() {
 	[ -z "$drives" ] && exit
 	chosen="$(echo "$drives" | rofi -dmenu -i -theme $HOME/.local/share/rofi/themes/run.rasi  -p "Unmount which drive?")" || exit 1
