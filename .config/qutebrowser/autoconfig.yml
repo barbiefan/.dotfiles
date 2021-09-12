@@ -21,7 +21,9 @@ settings:
     global:
       normal:
         C: hint all yank
-        Y: hint links spawn vlc --play-and-exit {hint-url}
+        Y: hint links spawn vlc -I "dummy" --video-title "cvlc youtube" {hint-url}
+  colors.completion.category.fg:
+    global: white
   colors.tabs.bar.bg:
     global: '#555555'
   colors.tabs.even.bg:
@@ -89,7 +91,7 @@ settings:
     global: -1
   editor.command:
     global:
-    - alacritty
+    - terminal
     - --title
     - qute_edit
     - -e
@@ -98,7 +100,7 @@ settings:
     - '{file}'
   fileselect.folder.command:
     global:
-    - alacritty
+    - terminal
     - --title
     - qute_ranger
     - -e
@@ -108,7 +110,7 @@ settings:
     global: external
   fileselect.multiple_files.command:
     global:
-    - alacritty
+    - terminal
     - --title
     - qute_ranger
     - -e
@@ -116,7 +118,7 @@ settings:
     - --choosefiles={}
   fileselect.single_file.command:
     global:
-    - alacritty
+    - terminal
     - --title
     - qute_ranger
     - -e

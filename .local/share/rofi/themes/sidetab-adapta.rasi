@@ -50,7 +50,7 @@ configuration {
 }
 
 #listview {
-        
+        columns: 4;       
 }
 
 element-text, element-icon {

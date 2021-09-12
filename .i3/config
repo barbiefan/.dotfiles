@@ -35,14 +35,14 @@ bindsym $mod+d exec --no-startup-id rofi -modi "combi#drun#run#window#ssh#filebr
 # Screen @brightness controls
 bindsym XF86MonBrightnessUp     exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown   exec xbacklight -dec 10
-bindsym XF86_AudioLowerVolume exec "pulseaudio-ctl down"
-bindsym XF86_AudioMute        exec "pulseaudio-ctl mute; pulseaudio-ctl mute-input"
-bindsym XF86_AudioRaiseVolume exec "pulseaudio-ctl up"
-bindsym $mod+F7               exec "terminal -t 'pulsemixer #mini #widget' -e 'pulsemixer'"
-bindsym XF86_AudioPlay        exec "playerctl play-pause"
-bindsym XF86_AudioPrev        exec "playerctl prev"
-bindsym XF86_AudioNext        exec "playerctl next"
-bindsym $mod+F11              exec terminal -e 'mocp'
+bindsym XF86_AudioLowerVolume   exec "pulseaudio-ctl down"
+bindsym XF86_AudioMute          exec "pulseaudio-ctl mute; pulseaudio-ctl mute-input"
+bindsym XF86_AudioRaiseVolume   exec "pulseaudio-ctl up"
+bindsym $mod+F7                 exec "terminal -t 'pulsemixer #mini #widget' -e 'pulsemixer'"
+bindsym XF86_AudioPlay          exec "playerctl play-pause"
+bindsym XF86_AudioPrev          exec "playerctl prev"
+bindsym XF86_AudioNext          exec "playerctl next"
+bindsym $mod+F11                exec terminal -e 'mocp'
 
 # @TEMPERATURE
 # Screen color temperature control
@@ -62,25 +62,33 @@ bindsym $mod+grave exec dmenuunicode
 bindsym $mod+t exec terminal -t "terminal #minifloat" -e zsh -is eval colorful
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 bindsym $mod+Home exec "terminal -t 'terminal config' -e zsh -c 'dotfiles -c edit'"
+bindsym Ctrl+Escape exec terminal -t 'terminal top #widget' -e bpytop -b "cpu proc"
+# make window float, small, put it into upper-right corner, remove border, and make it stay on every workspace
+bindsym $mod+Delete floating enable, sticky enable, border pixel 0, move position 1398 35, resize set 512 288
 
 bindsym Print exec --no-startup-id "i3-scrot -dc"
 bindsym $mod+Print --release exec --no-startup-id "i3-scrot -wc"
 bindsym $mod+Shift+Print --release exec --no-startup-id "i3-scrot -sc"
-bindsym $mod+S --release exec --no-startup-id xclip -selection clipboard -t image/png -o >> "$(date +'/home/obey/Pictures/%Y-%m-%d-%I_%M_%S_%p').png" & notify-send "screenshot saved"
+bindsym $mod+Ctrl+Print --release exec --no-startup-id xclip -selection clipboard -t image/png -o >> "$(date +'/home/obey/Pictures/%Y-%m-%d-%I_%M_%S_%p').png" & notify-send "screenshot saved"
 
 focus_follows_mouse yes
 
 # switch alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+h focus left
+bindsym $mod+k focus down
+bindsym $mod+j focus up
+bindsym $mod+l focus right
 
 # move alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left 60px
-bindsym $mod+Shift+Down move down 60px
-bindsym $mod+Shift+Up move up 60px
-bindsym $mod+Shift+Right move right 60px
+bindsym $mod+Shift+h  move left  60px
+bindsym $mod+Shift+k  move down  60px
+bindsym $mod+Shift+j    move up    60px
+bindsym $mod+Shift+l move right 60px
+
+bindsym $mod+Shift+a move left  20px
+bindsym $mod+Shift+s move down  20px
+bindsym $mod+Shift+w move up    20px
+bindsym $mod+Shift+d move right 20px
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
@@ -88,8 +96,8 @@ bindsym $mod+b workspace back_and_forth
 #bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
-bindsym $mod+h split h;exec notify-send 'tile horizontally'
-bindsym $mod+v split v;exec notify-send 'tile vertically'
+bindsym $mod+Ctrl+h split h;exec notify-send 'tile horizontally'
+bindsym $mod+Ctrl+v split v;exec notify-send 'tile vertically'
 bindsym $mod+Tab split toggle
 
 # toggle fullscreen mode for the focused container
@@ -107,7 +115,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # toggle sticky
-bindsym $mod+Shift+s sticky toggle
+bindsym $mod+s sticky toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -196,7 +204,7 @@ for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="(?i)clipit(?i)"] floating enable border pixel 2
 for_window [class="(?i)Qalcula(?i)"] floating enable border pixel 2
-#for_window [class="(?i)vlc(?i)"] floating enable border pixel 0
+for_window [title="cvlc(?i)"] floating enable, sticky enable
 for_window [title="(?i)qute_edit(?i)"] floating enable border normal
 for_window [title="(?i)qute_ranger(?i)"] floating enable border normal
 for_window [title="(?i)Network Connections(?i)"] floating enable border pixel 2
@@ -243,10 +251,10 @@ mode "resize" {
         bindsym d resize grow width 1 px or 1 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # exit resize mode: Enter or Escape
         bindsym Return mode "default"
@@ -254,19 +262,19 @@ mode "resize" {
 }
 
 # @Lock screen
-bindsym $mod+l exec --no-startup-id betterlockscreen -l
+bindsym $mod+Ctrl+l exec --no-startup-id betterlockscreen -l
 
 # @Autostart applications
 # exec --no-startup-id nitrogen --restore
-exec --no-startup-id xsetroot -solid "#101010"
+# exec --no-startup-id xsetroot -solid "#101010"
 # exec --no-startup-id xfce4-power-manager
 exec --no-startup-id clipit
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+exec_always --no-startup-id nitrogen --restore; sleep 1; picom -b
 # exec --no-startup-id terminal -e zsh
 # exec --no-startup-id terminal -e bpytop
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-# exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 # exec --no-startup-id manjaro-hello
 # exec --no-startup-id nm-applet
 # exec --no-startup-id pamac-tray
