@@ -33,7 +33,10 @@ fi
 #fi
 
 export BROWSER=/usr/bin/qutebrowser
-export TERMINAL=st
+export TERMINAL=alacritty
+
+export YTFZF_THUMB_DISP_METHOD="chafa"
+alias yt="ytfzf -t --preview-side=right --detach"
 
 alias vim="nvim"
 alias journalclear="doas journalctl --vacuum-size=100M"
@@ -59,9 +62,6 @@ alias ntop="doas tcptrack -i wlo2"
 alias nscan="doas nmap -A"
 
 alias windows="export DISPLAY=:0.0; wmctrl -l"
-
-alias cact="conda activate ./"
-alias cdeact="conda deactivate"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

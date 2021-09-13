@@ -21,7 +21,7 @@ settings:
     global:
       normal:
         C: hint all yank
-        Y: hint links spawn vlc -I "dummy" --video-title "cvlc youtube" {hint-url}
+        Y: hint links spawn mpv --title="mpv youtube" {hint-url}
   colors.completion.category.fg:
     global: white
   colors.tabs.bar.bg:
