@@ -76,3 +76,4 @@ Traceback (most recent call last):
   File "/usr/bin/bpytop", line 937, in _get_key
     input_key += sys.stdin.read(1)						#* Read 1 key safely with blocking on
 OSError: [Errno 5] Input/output error
+13/09/21 (12:52:04) | WARNING: The menu system only works on a terminal size of 80x24 or above!

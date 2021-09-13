@@ -1,0 +1,3 @@
+#!/bin/bash
+export YTFZF_THUMB_DISP_METHOD="chafa"
+ytfzf -t -f --preview-side=right --detach

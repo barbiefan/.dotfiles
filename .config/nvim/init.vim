@@ -33,8 +33,8 @@ call plug#end()
 
 nmap <F12> :TagbarToggle<CR>
 nmap <TAB> :NERDTreeToggle<CR>
-nmap <C-Up> :m -2<CR>
-nmap <C-Down> :m +1<CR>
+nmap <A-Up> :m -2<CR>
+nmap <A-Down> :m +1<CR>
 vnoremap <A-c> "*y :let @+=@*<CR>
 nmap <A-v> "*P<CR>
 colorscheme onedark

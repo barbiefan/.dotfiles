@@ -61,10 +61,11 @@ bindsym $mod+o exec dmenuhandler
 bindsym $mod+grave exec dmenuunicode
 bindsym $mod+t exec terminal -t "terminal #minifloat" -e zsh -is eval colorful
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
-bindsym $mod+Home exec "terminal -t 'terminal config' -e zsh -c 'dotfiles -c edit'"
+bindsym $mod+Prior exec "terminal -t 'terminal config' -e zsh -c 'dotfiles -c edit'"
 bindsym Ctrl+Escape exec terminal -t 'terminal top #widget' -e bpytop -b "cpu proc"
 # make window float, small, put it into upper-right corner, remove border, and make it stay on every workspace
-bindsym $mod+Delete floating enable, sticky enable, border pixel 0, move position 1398 35, resize set 512 288
+bindsym $mod+Home floating enable, sticky enable, border pixel 0, move position 1398 35, resize set 512 288
+bindsym $mod+End floating enable, sticky enable, border pixel 0, move position 1398 782, resize set 512 288
 
 bindsym Print exec --no-startup-id "i3-scrot -dc"
 bindsym $mod+Print --release exec --no-startup-id "i3-scrot -wc"
@@ -198,7 +199,7 @@ assign [title="(?i)vlc(?i)"] $ws7
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border normal
 for_window [title="(?i)#float(?i)"] floating enable, border pixel 2
-for_window [title="(?i)#widget(?i)"] floating enable, border pixel 2, move position 1110 35
+for_window [title="(?i)#widget(?i)"] floating enable, border pixel 2, resize set 700 0, move position 1210 35
 for_window [title="(?i)#mini(?i)"] floating enable, border pixel 2, resize set 0 200
 for_window [title="(?i)#minifloat(?i)"] floating enable, border pixel 2, resize set 580 400, move position center
 for_window [title="(?i)terminal #mini #widget(?i)"] floating enable, border pixel 1, resize set 840 150, move position 540 25
@@ -211,6 +212,7 @@ for_window [class="(?i)clipit(?i)"] floating enable border pixel 2
 for_window [class="(?i)Qalcula(?i)"] floating enable border pixel 2
 for_window [title="cvlc(?i)"] floating enable, sticky enable
 for_window [title="mpv(?i)"] floating enable, sticky enable
+for_window [title="mpv youtube(?i)"] floating enable, sticky enable, border pixel 0, move position 1398 35, resize set 512 288
 for_window [title="(?i)qute_edit(?i)"] floating enable border normal
 for_window [title="(?i)qute_ranger(?i)"] floating enable border normal
 for_window [title="(?i)Network Connections(?i)"] floating enable border pixel 2
