@@ -77,3 +77,10 @@ Traceback (most recent call last):
     input_key += sys.stdin.read(1)						#* Read 1 key safely with blocking on
 OSError: [Errno 5] Input/output error
 13/09/21 (12:52:04) | WARNING: The menu system only works on a terminal size of 80x24 or above!
+14/09/21 (15:50:49) | ERROR: Input thread failed with exception: (5, 'Input/output error')
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 985, in _get_key
+    input_key = ""
+  File "/usr/bin/bpytop", line 778, in __exit__
+    termios.tcsetattr(self.stream, termios.TCSANOW, self.original_stty)
+termios.error: (5, 'Input/output error')

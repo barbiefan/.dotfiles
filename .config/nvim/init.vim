@@ -25,7 +25,7 @@ Plug 'terryma/vim-multiple-cursors'
 "Plug 'tmhedberg/SimpylFold'
 Plug 'preservim/tagbar'
 Plug 'artanikin/vim-synthwave84'
-Plug 'joshdick/onedark.vim'
+"Plug 'joshdick/onedark.vim'
 "Plug 'gmarik/Vundle.vim'
 "Plug 'Valloric/YouCompleteMe'
 

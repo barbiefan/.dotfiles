@@ -21,7 +21,7 @@ settings:
     global:
       normal:
         C: hint all yank
-        Y: hint links spawn mpv --title="mpv youtube" {hint-url}
+        Y: hint links spawn mpv {hint-url}
   colors.completion.category.fg:
     global: white
   colors.tabs.bar.bg:
@@ -77,6 +77,8 @@ settings:
     global: auto
   content.blocking.whitelist:
     global: null
+  content.javascript.enabled:
+    global: true
   content.notifications.enabled:
     https://www.reddit.com: false
   content.pdfjs:
