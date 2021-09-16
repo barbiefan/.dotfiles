@@ -132,7 +132,7 @@ label-mode-background = ${colors.primary}
 ; focused = Active workspace on focused monitor
 label-focused = %icon% %name%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+; label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
@@ -211,14 +211,14 @@ type = custom/script
 interval = 1
 
 format = <label>
-format-underline = ${colors.primary}
+;format-underline = ${colors.primary}
 
 exec= date "+%H:%M %d.%m.%y"
 label = %output%
 label-font = 2
 format-padding = 3
 ;${padding.inside-widget-padding}
-format-background = ${colors.background-alt}
+;format-background = ${colors.background-alt}
 click-left = terminal -t "terminal #widget date" -e zsh -c "cal -ywm --color; read"
 
 [module/pulseaudio]
@@ -288,5 +288,6 @@ format = <label>
 label = %{A1:terminal -t 'checkupdates #mini #widget' -e zsh -is eval 'yay -Suy && sleep 3 && exit':}UPD: %output:0:10:...%%{A}
 format-padding = ${padding.inside-widget-padding}
 format-background = ${colors.background-alt}
+format-underline = ${colors.secondary}
 
 ; vim:ft=dosini

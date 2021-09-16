@@ -123,6 +123,12 @@ settings:
     - qute_lf
     - -e
     - lf
+  fonts.completion.category:
+    global: bold default_size default_family
+  fonts.completion.entry:
+    global: default_size default_family
+  fonts.contextmenu:
+    global: null
   fonts.default_size:
     global: 10pt
   hints.dictionary:

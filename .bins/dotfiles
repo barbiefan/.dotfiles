@@ -69,7 +69,6 @@ push() { \
     pull
     $GIT add -u
     if [ -n "$($GIT status | grep 'to be committed')" ]; then
-        echo "if"
         echo "    @DOTFILES: enter commit message:"
         read message
         $GIT commit -m "$message"

@@ -59,10 +59,10 @@ bindsym $mod+Shift+e exec pcmanfm
 bindsym $mod+m exec "terminal -e neomutt"
 bindsym $mod+o exec dmenuhandler
 bindsym $mod+grave exec dmenuunicode
-bindsym $mod+t exec terminal -t "terminal #minifloat" -e zsh -is eval colorful
+bindsym $mod+t exec "terminal -t 'terminal #minifloat' -e zsh -is eval colorful"
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 bindsym $mod+Prior exec "terminal -t 'terminal config' -e zsh -c 'dotfiles -c edit'"
-bindsym Ctrl+Escape exec terminal -t 'terminal top #widget' -e bpytop -b "cpu proc"
+bindsym Ctrl+Escape exec "terminal -t 'terminal top #widget' -e bpytop -b 'cpu proc'"
 # make window float, small, put it into upper-right corner, remove border, and make it stay on every workspace
 bindsym $mod+Home floating enable, sticky enable, border pixel 0, move position 1398 35, resize set 512 288
 bindsym $mod+End floating enable, sticky enable, border pixel 0, move position 1398 782, resize set 512 288
