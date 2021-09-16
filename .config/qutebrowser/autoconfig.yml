@@ -104,28 +104,25 @@ settings:
     global:
     - terminal
     - --title
-    - qute_ranger
+    - qute_lf
     - -e
-    - ranger
-    - --choosedir={}
+    - lf
   fileselect.handler:
     global: external
   fileselect.multiple_files.command:
     global:
     - terminal
     - --title
-    - qute_ranger
+    - qute_lf
     - -e
-    - ranger
-    - --choosefiles={}
+    - lf
   fileselect.single_file.command:
     global:
     - terminal
     - --title
-    - qute_ranger
+    - qute_lf
     - -e
-    - ranger
-    - --choosefile={}
+    - lf
   fonts.default_size:
     global: 10pt
   hints.dictionary:

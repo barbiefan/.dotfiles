@@ -60,22 +60,9 @@ edit() { \
 
 pull() { \
     $GIT fetch
-    err=$($GIT pull 2>&1)
-    if [ "$err" != "" ]; then
-        echo ""
-        echo "    @DOTFILES: You have uncommitted changes, stashing..."
-        echo ""
-        $GIT stash
-        $GIT pull
-        $GIT stash pop 1>/dev/null
-        echo ""
-        echo "    @DOTFILES: Pulled latest commit and applied your changes to it. See status"
-        echo ""
-    else
-        echo ""
-        echo "    @DOTFILES: Pulled latest commit"
-        echo ""
-    fi
+    $GIT stash
+    $GIT pull
+    $GIT stash pop 1>/dev/null
 }
 
 push() { \

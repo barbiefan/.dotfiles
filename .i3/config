@@ -54,7 +54,7 @@ bindsym $mod+F3 exec sct 4600
 bindsym $mod+F1 exec qalculate-gtk
 bindsym $mod+F2 exec networkmanager-dmenu
 bindsym $mod+w exec $BROWSER
-bindsym $mod+e exec terminal -e ranger
+bindsym $mod+e exec terminal -e lf
 bindsym $mod+Shift+e exec pcmanfm
 bindsym $mod+m exec "terminal -e neomutt"
 bindsym $mod+o exec dmenuhandler
@@ -213,7 +213,7 @@ for_window [class="(?i)Qalcula(?i)"] floating enable border pixel 2
 for_window [title="cvlc(?i)"] floating enable, sticky enable
 for_window [title="mpv(?i)"] floating enable, sticky enable, border pixel 0, move position 320 180, resize set 1280 720
 for_window [title="(?i)qute_edit(?i)"] floating enable border normal
-for_window [title="(?i)qute_ranger(?i)"] floating enable border normal
+for_window [title="(?i)qute_lf(?i)"] floating enable border normal
 for_window [title="(?i)Network Connections(?i)"] floating enable border pixel 2
 for_window [title="(?i)New pallete - Gpick(?i)"] floating enable border pixel 2
 
