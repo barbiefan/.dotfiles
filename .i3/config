@@ -258,10 +258,10 @@ mode "resize" {
         bindsym d resize grow width 1 px or 1 ppt
 
         # same bindings, but for the arrow keys
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym j resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
 
         # exit resize mode: Enter or Escape
         bindsym Return mode "default"
@@ -380,24 +380,23 @@ default_floating_border normal
 hide_edge_borders none
 
 # change borders
-bindsym $mod+u border none
-bindsym $mod+y border pixel 4
-bindsym $mod+n border normal
 
-set $mode_borders (Borders) numbers 0-9: set border width to 0-18 (number*2) pixels
+set $mode_borders (Borders) numbers 0-9: set border width to n*2 pixels, (N)ormal, (n)one 
 bindsym $mod+Shift+b mode "$mode_borders"
 
 mode "$mode_borders" {
-        bindsym 0      border none
-        bindsym 1      border pixel 2
-        bindsym 2      border pixel 4
-        bindsym 3      border pixel 6
-        bindsym 4      border pixel 8
-        bindsym 5      border pixel 10
-        bindsym 6      border pixel 12
-        bindsym 7      border pixel 14
-        bindsym 8      border pixel 16
-        bindsym 9      border pixel 18
+        bindsym 0        border none
+        bindsym 1        border pixel 2
+        bindsym 2        border pixel 4
+        bindsym 3        border pixel 6
+        bindsym 4        border pixel 8
+        bindsym 5        border pixel 10
+        bindsym 6        border pixel 12
+        bindsym 7        border pixel 14
+        bindsym 8        border pixel 16
+        bindsym 9        border pixel 18
+        bindsym n        border none
+        bindsym Shift+n        border normal
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
