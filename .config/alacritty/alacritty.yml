@@ -216,10 +216,30 @@ draw_bold_text_with_bright_colors: true
 
 # Colors (Tomorrow Night Bright)
 colors:
-  # Default colors
+  bright:
+    black: '#404040'
+    blue: '#4E9FB1'
+    cyan: '#42717B'
+    green: '#A0CF5D'
+    magenta: '#8542FF'
+    red: '#D23D3D'
+    white: '#f8f8f8'
+    yellow: '#F39D21'
+  normal:
+    black: '#101010'
+    blue: '#7DC1CF'
+    cyan: '#6D878D'
+    green: '#B8D68C'
+    magenta: '#9B64FB'
+    red: '#E84F4F'
+    white: '#DDDDDD'
+    yellow: '#E1AA5D'
   primary:
-    background: '0x262626'
-    foreground: '0xd8d8d8'
+    background: '#262626'
+    foreground: '#F8F8F8'
+  primary:
+    background: '#262626'
+    foreground: '#F8F8F8'
 
     # Bright and dim foreground colors
     #

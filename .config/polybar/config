@@ -18,14 +18,14 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #262626
-background-alt = #404040
+background = ${xrdb:background}
+background-alt = ${xrdb:background-alt}
 ;foreground = ${xrdb:color7:#222}
-foreground = #F8F8F8
-foreground-alt = #262626
-primary = #E1AA5D
-secondary = #7DC1CF
-alert = #E84F4F
+foreground = ${xrdb:foreground}
+foreground-alt = ${xrdb:foreground}
+primary = ${xrdb:color3}
+secondary = ${xrdb:color4}
+alert = ${xrdb:color1}
 
 [padding]
 inside-widget-padding = 1
