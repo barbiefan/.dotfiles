@@ -16,6 +16,7 @@ export NO_AT_BRIDGE=1
 export PATH="$PATH:$HOME/.bins"
 
 export ETH=$(ip -o link show | awk -F': ' '{print $2}' | grep wl)
+#mount NAS drive if is there
 
 setxkbmap -layout us,ru
 setxkbmap -option 'grp:alt_shift_toggle'

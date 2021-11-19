@@ -1,0 +1,3 @@
+#!/bin/bash
+
+find /home/obey/ -maxdepth 3 -not -path "*/.*" > /home/obey/.bins/file.DB

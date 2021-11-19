@@ -31,7 +31,7 @@ bindsym $mod+c kill
 
 # start program launcher
 bindsym $mod+Escape exec rofi -lines 8 -padding 18 -location 0 -show drun -sidebar-mode -columns 6 -font 'Comfortaa 12' -theme ./.local/share/rofi/themes/sidetab-adapta.rasi
-bindsym $mod+d exec --no-startup-id rofi -modi "combi#drun#run#window#ssh#filebrowser" -show combi -combi-modi "drun#run#window#ssh" -theme ./.local/share/rofi/themes/run.rasi -run-shell-command 'terminal -t "terminal #mini #widget" -e zsh -ic "echo {cmd} && {cmd} && read"'
+bindsym $mod+d exec --no-startup-id rofi -modi "combi#files:/home/obey/.bins/dmenufiles#drun#run#window#ssh" -show combi -combi-modi "drun#run#window#ssh" -theme ./.local/share/rofi/themes/run.rasi -run-shell-command 'terminal -t "terminal #mini #widget" -e zsh -ic "echo {cmd} && {cmd} && read"' 
 # Screen @brightness controls
 bindsym XF86MonBrightnessUp     exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown   exec xbacklight -dec 10
@@ -407,7 +407,7 @@ mode "$mode_borders" {
 
 # Set inner/outer gaps
 # @GAPS
-gaps inner 50
+gaps inner 0
 gaps outer 0
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
