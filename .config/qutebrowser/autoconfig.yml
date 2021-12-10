@@ -39,7 +39,7 @@ settings:
   colors.tabs.selected.odd.bg:
     global: '#E1AA5D'
   colors.webpage.darkmode.enabled:
-    global: true
+    global: false
   colors.webpage.darkmode.threshold.background:
     global: 205
   colors.webpage.darkmode.threshold.text:
@@ -55,7 +55,7 @@ settings:
     - https://secure.fanboy.co.nz/fanboy-annoyance.txt
     - https://raw.githubusercontent.com/anudeepND/youtubeadsblacklist/master/domainlist.txt
   content.blocking.enabled:
-    global: true
+    global: false
   content.blocking.hosts.lists:
     global:
     - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts

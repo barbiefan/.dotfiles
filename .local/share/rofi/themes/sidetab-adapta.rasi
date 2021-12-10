@@ -12,14 +12,14 @@ configuration {
 }
 
 * {
-        background-color:           #202020;
+        background-color:           #1E1E28;
         text-color:                 #ffffff;
 
-        accent-color:               #E1AA5D;
-        accent2-color:              #7dc1cf;
-        hover-color:                #39454b;
-        urgent-color:               #ff5252;
-        window-color:               #ffffff;
+        accent-color:               #EADDA0;
+        accent2-color:              #A4B9EF;
+        hover-color:                #A5BAF0;
+        urgent-color:               #E29CBC;
+        window-color:               #D9DBE1;
 
         selected-normal-foreground: @window-color;
         normal-foreground:          @text-color;

@@ -130,23 +130,23 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %icon% %name%
+label-focused = %icon%
 label-focused-background = ${colors.background-alt}
 ; label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %icon% %name%
+label-unfocused = %icon%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %%icon% %name%
+label-visible = %%icon%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %icon% %name%
+label-urgent = %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -246,7 +246,7 @@ battery = BAT0
 adapter = ADP1
 full-at = 98
 
-format-charging = %{A1:/home/obey/.config/rofi/applets/applets/powermenu.sh:} <label-charging>%{A}
+format-charging = %{A1:$HOME/.bins/powerdmenu:} <label-charging>%{A}
 format-charging-underline = ${colors.primary}
 format-charging-prefix-foreground = ${colors.primary}
 format-charging-prefix-font  = $(font2)
@@ -254,7 +254,7 @@ format-charging-foreground = ${colors.primary}
 format-charging-padding = ${padding.inside-widget-padding}
 format-charging-background = ${colors.background-alt}
 
-format-discharging = %{A1:/home/obey/.config/rofi/applets/applets/powermenu.sh:} <label-discharging>%{A}
+format-discharging = %{A1:$HOME/.bins/powerdmenu:} <label-discharging>%{A}
 format-discharging-underline = ${self.format-charging-underline}
 format-discharging-prefix-foreground = ${colors.primary}
 format-discharging-prefix-font  = $(font2)
@@ -262,7 +262,7 @@ format-discharging-foreground = ${colors.primary}
 format-discharging-padding = ${padding.inside-widget-padding}
 format-discharging-background = ${colors.background-alt}
 
-format-full-prefix = %{A1:/home/obey/.config/rofi/applets/applets/powermenu.sh:} %{A}
+format-full-prefix = %{A1:$HOME/.bins/powerdmenu:} %{A}
 format-full-prefix-foreground = ${colors.primary}
 format-full-foreground = ${colors.primary}
 format-full-prefix-font  = $(font2)
@@ -270,7 +270,7 @@ format-full-underline = ${self.format-charging-underline}
 format-full-padding = ${padding.inside-widget-padding}
 format-full-background = ${colors.background-alt}
 
-click-left = A1:/home/obey/.config/rofi/applets/applets/powermenu.sh
+click-left = A1:$HOME/.bins/powerdmenu
 
 [global/wm]
 margin-top = 0

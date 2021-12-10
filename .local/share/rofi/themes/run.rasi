@@ -8,16 +8,15 @@
 configuration {
         font: "Comfortaa 12";
 }
-
 * {
-        background-color:           #202020;
-        text-color:                 #ffffff;
+        background-color:           #21212B;
+        text-color:                 #D7DAE0;
 
-        accent-color:               #E1AA5D;
-        accent2-color:              #F39D21;
-        hover-color:                #916E3C;
-        urgent-color:               #ff5252;
-        window-color:               #ffffff;
+        accent-color:               #EADDA0;
+        accent2-color:              #A4B9EF;
+        hover-color:                #303040;
+        urgent-color:               #E29CBC;
+        window-color:               #D9DBE1;
 
         selected-normal-foreground: @window-color;
         normal-foreground:          @text-color;
@@ -30,27 +29,27 @@ configuration {
         urgent-background:          @background-color;
 
         selected-active-foreground: @window-color;
-        active-foreground:          @text-color;
+        active-foreground:          @background-color;
         selected-active-background: @hover-color;
         active-background:          @accent-color;
 }
 
 #window {
-        anchor:   north;
-        location: north;
+        anchor:   center;
+        location: center;
         width:    30%;
-        height:   20%;
-        padding: 0px;
+        height:   30%;
+        padding: 30px;
         children: [ horibox ];
-        y-offset: 0px;
 }
 
 
 
 #horibox {
-     orientation: vertical;
-     children:   [ inputbar, listview, mode-switcher];
-}
+    orientation: vertical;
+    children:   [ inputbar, listview, mode-switcher];
+    padding: 0px;
+ }
 
 
 #inputbar {

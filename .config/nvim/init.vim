@@ -25,6 +25,7 @@ Plug 'terryma/vim-multiple-cursors'
 "Plug 'tmhedberg/SimpylFold'
 Plug 'preservim/tagbar'
 Plug 'artanikin/vim-synthwave84'
+Plug 'catppuccin/nvim'
 "Plug 'joshdick/onedark.vim'
 "Plug 'gmarik/Vundle.vim'
 "Plug 'Valloric/YouCompleteMe'
@@ -37,4 +38,4 @@ nmap <A-Up> :m -2<CR>
 nmap <A-Down> :m +1<CR>
 vnoremap <A-c> "*y :let @+=@*<CR>
 nmap <A-v> "*P<CR>
-colorscheme onedark
+colorscheme catppuccin

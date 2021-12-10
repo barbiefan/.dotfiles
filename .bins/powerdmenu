@@ -1,0 +1,61 @@
+#!/bin/bash
+
+theme=$HOME/.local/share/rofi/themes/run.rasi
+ans=$(echo -e "shutdown\nreboot\nlock\nsuspend\nlogout" | rofi -dmenu -theme $HOME/.local/share/rofi/themes/run.rasi -p "PWR: ")
+
+confirm_exit() {
+    echo -e "no\nyes" | rofi -dmenu -theme $theme -p "Are you sure? " 
+}
+
+msg() {
+    rofi -theme $theme -e "available options - yes/no/YES/NO/y/N"
+}
+case $ans in
+    "shutdown")
+		confirm=$(confirm_exit &)
+		if [[ $confirm == "yes" || $confirm == "YES" || $confirm == "y" || $confirm == "Y" ]]; then
+			shutdown now
+		elif [[ $confirm == "no" || $confirm == "NO" || $confirm == "n" || $confirm == "N" ]]; then
+			exit 0
+        else
+			msg
+        fi
+        ;;
+    "reboot")
+		confirm=$(confirm_exit &)
+		if [[ $confirm == "yes" || $confirm == "YES" || $confirm == "y" || $confirm == "Y" ]]; then
+			shutdown -r now
+		elif [[ $confirm == "no" || $confirm == "NO" || $confirm == "n" || $confirm == "N" ]]; then
+			exit 0
+        else
+			msg
+        fi
+        ;;
+    "lock")
+		betterlockscreen -l blur
+        ;;
+    "suspend")
+		confirm=$(confirm_exit &)
+		if [[ $confirm == "yes" || $confirm == "YES" || $confirm == "y" || $confirm == "Y" ]]; then
+			mpc -q pause
+			amixer set Master mute
+            betterlockscreen -l blur &
+			systemctl suspend -i
+		elif [[ $confirm == "no" || $confirm == "NO" || $confirm == "n" || $confirm == "N" ]]; then
+			exit 0
+        else
+			msg
+        fi
+        ;;
+    "logout")
+		confirm=$(confirm_exit &)
+		if [[ $confirm == "yes" || $confirm == "YES" || $confirm == "y" || $confirm == "Y" ]]; then
+			killall Xorg
+		elif [[ $confirm == "no" || $confirm == "NO" || $confirm == "n" || $confirm == "N" ]]; then
+			exit 0
+        else
+			msg
+        fi
+        ;;
+esac
+

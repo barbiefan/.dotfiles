@@ -136,3 +136,4 @@ image/x-portable-pixmap=sxiv.desktop
 image/x-portable-anymap=sxiv.desktop
 image/jpeg=sxiv.desktop
 image/gif=sxiv.desktop
+x-scheme-handler/mailspring=Mailspring.desktop
