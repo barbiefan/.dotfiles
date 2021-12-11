@@ -30,7 +30,7 @@ bindsym $mod+Ctrl+l exec --no-startup-id betterlockscreen -l blur
 
 bindsym $mod+Escape exec rofi -lines 8 -padding 18 -location 0 -show drun -sidebar-mode -columns 6 -font 'Comfortaa 12' -theme ./.local/share/rofi/themes/sidetab-adapta.rasi
 # rofi fullscreen app launcher
-bindsym $mod+d exec --no-startup-id rofi -modi "combi#files:/home/obey/.bins/dmenufiles#drun#run#window#ssh" -show combi -combi-modi "drun#run#window#ssh" -theme ./.local/share/rofi/themes/run.rasi -run-shell-command 'terminal -t "terminal #mini #widget" -e zsh -ic "echo {cmd} && {cmd} && read"'
+bindsym $mod+d exec --no-startup-id rofi -modi "combi#files:/home/obey/.bins/dmenufiles#drun#run#window#ssh" -show combi -combi-modi "drun#run#window#ssh" -theme ./.local/share/rofi/themes/run.rasi -run-shell-command 'terminal -t "terminal #widget" -e zsh -ic "echo {cmd} && {cmd} && read"'
 # rofi center app launcher
 # Screen @brightness controls
 bindsym XF86MonBrightnessUp     exec xbacklight -inc 10
@@ -83,6 +83,8 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 # select and kill
 bindsym $mod+Prior exec "terminal -t 'terminal config' -e zsh -c 'dotfiles -c edit'"
 # open config
+bindsym $mod+Next exec "doas terminal -t 'bmenu #widget' -e bmenu"
+# launch ToolBox
 bindsym Ctrl+Escape exec "terminal -t 'terminal top #widget' -e bpytop -b 'cpu proc'"
 # open system monitor
 bindsym $mod+Home floating enable, sticky enable, border pixel 0, move position 1398 35, resize set 512 288
@@ -281,7 +283,7 @@ for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="(?i)clipit(?i)"] floating enable border pixel 2
-for_window [class="(?i)Qalcula(?i)"] floating enable border pixel 2
+for_window [class="(?i)Qalcula(?i)"] floating enable, border pixel 0, resize set 780 260, move position 1130 35
 for_window [title="cvlc(?i)"] floating enable, sticky enable
 for_window [title="mpv(?i)"] floating enable, sticky enable, border pixel 0, move position 320 180, resize set 1280 720
 for_window [title="(?i)qute_edit(?i)"] floating enable border normal

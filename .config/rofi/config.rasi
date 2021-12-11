@@ -1,5 +1,6 @@
 configuration {
 	show-icons: true;
 	sidebar-mode: true;
-	theme: "/home/obey/.local/share/rofi/themes/sidetab-adapta.rasi";
 }
+
+@theme "/home/obey/.local/share/rofi/themes/sidetab-adapta.rasi"

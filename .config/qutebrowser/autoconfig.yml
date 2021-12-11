@@ -50,6 +50,8 @@ settings:
     global: 205
   colors.webpage.darkmode.threshold.text:
     global: 150
+  completion.scrollbar.width:
+    global: 12
   content.autoplay:
     global: false
   content.blocking.adblock.lists:
@@ -135,12 +137,16 @@ settings:
     global: default_size default_family
   fonts.contextmenu:
     global: null
+  fonts.default_family:
+    global: Hack
   fonts.default_size:
     global: 10pt
   hints.dictionary:
     global: /usr/share/dict/words
   hints.uppercase:
     global: true
+  keyhint.radius:
+    global: 6
   tabs.favicons.scale:
     global: 1.0
   tabs.last_close:
