@@ -24,7 +24,6 @@ print_help() {
 }
 
 interact() { \
-    print_help
     echo "DOTFILES >>>"
     read input
     act
@@ -118,8 +117,8 @@ if [[ $# = 0 ]]; then
     print_help
 else
     while getopts ":ic:" arg; do
-        case $arg in
-            i) inter=1 && interact;;
+        case $arg in  
+            i) inter=1 && print_help && interact;;
             c) input=$2 && act;;
         esac
     done

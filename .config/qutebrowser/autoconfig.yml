@@ -25,19 +25,25 @@ settings:
   colors.completion.category.fg:
     global: white
   colors.tabs.bar.bg:
-    global: '#555555'
+    global: '#303040'
   colors.tabs.even.bg:
-    global: darkgrey
+    global: '#706E7E'
   colors.tabs.indicator.start:
     global: '#0000aa'
   colors.tabs.odd.bg:
-    global: grey
+    global: '#706E7E'
+  colors.tabs.odd.fg:
+    global: white
+  colors.tabs.pinned.even.bg:
+    global: darkseagreen
   colors.tabs.selected.even.bg:
-    global: '#E1AA5D'
+    global: '#A4B9EF'
   colors.tabs.selected.even.fg:
     global: white
   colors.tabs.selected.odd.bg:
-    global: '#E1AA5D'
+    global: '#A4B9EF'
+  colors.tabs.selected.odd.fg:
+    global: white
   colors.webpage.darkmode.enabled:
     global: false
   colors.webpage.darkmode.threshold.background:

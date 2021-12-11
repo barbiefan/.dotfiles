@@ -1,8 +1,8 @@
 [global]
     frame_width = 0
-    frame_color = "#788388"
+    frame_color = "#A4B9EF"
     
-    font = Noto Sans 10
+    font = Cartograph CF 10
     
     # Allow a small subset of html markup:
     #   <b>bold</b>
@@ -40,13 +40,13 @@
     # window allows bounces back and forth.
     # This option conflicts with "word_wrap".
     # Set to 0 to disable.
-    bounce_freq = 5
+    bounce_freq = 0
 
     
     # Show age of message if message is older than show_age_threshold
     # seconds.
     # Set to -1 to disable.
-    show_age_threshold = 60
+    show_age_threshold = 5
     
     # Split notifications into multiple lines if they don't fit into
     # geometry.
@@ -68,8 +68,14 @@
     # the top and down respectevly.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "200x4-10+35"
+    geometry = "1000x4+10+100"
     
+    width = 400
+    heigth = 50
+    notification_limit = 5
+    offset = -10x-35
+
+
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
     shrink = no
@@ -106,7 +112,7 @@
     sticky_history = no
     
     # Maximum amount of notifications kept in history
-    history_length = 20
+    history_length = 100
     
     # Display indicators for URLs (U) and actions (A).
     show_indicators = yes
@@ -119,14 +125,14 @@
     # Draw a line of "separator_height" pixel height between two
     # notifications.
     # Set to 0 to disable.
-    separator_height = 2
+    separator_height = 0
     
     # Padding between text and separator.
     # padding = 8
-    padding = 8
+    padding = 30
     
     # Horizontal padding.
-    horizontal_padding = 10
+    horizontal_padding = 30
     
     # Define a color for the separator.
     # possible values are:
@@ -142,7 +148,7 @@
     startup_notification = true
     
     # dmenu path.
-    dmenu = /usr/bin/dmenu -p dunst:
+    dmenu = rofi -dmenu -p "dunst: " -theme "/home/obey/.local/share/rofi/themes/run.rasi"
     
     # Browser for opening urls in context menu.
     browser = qutebrowser
@@ -154,44 +160,22 @@
     icon_path = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/
 
     # Limit icons size.
-    max_icon_size=128
-
-[shortcuts]
-
-    # Shortcuts are specified as [modifier+][modifier+]...key
-    # Available modifiers are "ctrl", "mod1" (the alt-key), "mod2",
-    # "mod3" and "mod4" (windows-key).
-    # Xev might be helpful to find names for keys.
-    
-    # Close notification.
-    close = mod4+space
-    
-    # Close all notifications.
-    # close_all = ctrl+shift+space
-    close_all = ctrl+mod4+space
-
-    # Redisplay last message(s).
-    # On the US keyboard layout "grave" is normally above TAB and left
-    # of "1".
-    history = ctrl+mod4+h 
-    
-    # Context menu.
-    context = ctrl+mod4+c
+    max_icon_size=64
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#404040"
-    foreground = "#FFFFFF"
-    timeout = 10
+    background = "#1E1E28"
+    foreground = "#707070"
+    timeout = 5
 
 [urgency_normal]
-    background = "#404040"
+    background = "#303040"
     foreground = "#FFFFFF"
     timeout = 10
 
 [urgency_critical]
-    background = "#D62929"
+    background = "#F25C5C"
     foreground = "#F9FAF9"
     timeout = 0
 

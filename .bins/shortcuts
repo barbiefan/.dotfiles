@@ -1,0 +1,18 @@
+#!/bin/python
+
+PATH = "/home/obey/.i3/config"
+
+with open(PATH, 'r') as file:
+    config = file.readlines()
+
+shortcuts = {}
+
+for i, line in enumerate(config):
+    if line.startswith('bindsym'):
+        words = line.split()
+        command = ' '.join(words[2:])
+        comment = config[i+1][2:-1]
+        shortcuts[words[1].replace('$mod', 'Super')] = [command, comment.capitalize()]
+
+for key in shortcuts.keys():
+    print(f'{key}: {shortcuts[key][1]}')
