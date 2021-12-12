@@ -1,3 +1,4 @@
 #!/bin/bash
-
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
 find /home/obey/ -maxdepth 3 -not -path "*/.*" > /home/obey/.bins/file.DB
+notify-send 'Updated file.DB!'
