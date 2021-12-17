@@ -21,10 +21,9 @@ export ETH=$(ip -o link show | awk -F': ' '{print $2}' | grep wl)
 setxkbmap -layout us,ru
 setxkbmap -option 'grp:alt_shift_toggle'
 
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; 
-then exec startx; 
+if [ -z "${DISPLAY}" ] && [ "$(tty)" = "/dev/tty1" ]; then
+    exec startx
 fi
-
 
 
 

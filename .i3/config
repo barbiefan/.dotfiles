@@ -61,6 +61,9 @@ bindsym $mod+F4 exec sct 6600
 bindsym $mod+F3 exec sct 4600
 # set screen temperature to 4600
 
+bindsym $mod+F5 exec create-android-display.sh -p -s -l
+# Starts remote second monitor
+
 # @SHORTCUTS APPS
 # Start Applications
 bindsym $mod+F1 exec qalculate-gtk
@@ -273,23 +276,21 @@ assign [title="(?i)vlc(?i)"] $ws7
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border normal
-for_window [title="(?i)#float(?i)"] floating enable, border pixel 2
+for_window [title="(?i)#float(?i)"] floating enable, border pixel 0
 for_window [title="(?i)#widget(?i)"] floating enable, border pixel 0, resize set 780 0, move position 1130 35
 for_window [title="(?i)#mini(?i)"] floating enable, border pixel 0, resize set 0 260
-for_window [title="(?i)#minifloat(?i)"] floating enable, border pixel 2, resize set 580 400, move position center
-for_window [title="(?i)terminal #widget date(?i)"] floating enable, border pixel 1, resize set 740 835, move position 590 35
-for_window [title="(?i)Telegram(?i)"] floating enable, sticky enable, border pixel 1, resize set 475 600, move position 10 35
+for_window [title="(?i)#minifloat(?i)"] floating enable, border pixel 0, resize set 580 400, move position center
+for_window [title="(?i)terminal #widget date(?i)"] floating enable, border pixel 0, resize set 740 835, move position 590 35
+for_window [title="(?i)Telegram(?i)"] floating enable, sticky enable, border pixel 0, resize set 475 600, move position 10 35
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
-for_window [class="(?i)clipit(?i)"] floating enable border pixel 2
+for_window [class="(?i)clipit(?i)"] floating enable border pixel 0
 for_window [class="(?i)Qalcula(?i)"] floating enable, border pixel 0, resize set 780 260, move position 1130 35
 for_window [title="cvlc(?i)"] floating enable, sticky enable
 for_window [title="mpv(?i)"] floating enable, sticky enable, border pixel 0, move position 320 180, resize set 1280 720
-for_window [title="(?i)qute_edit(?i)"] floating enable border normal
-for_window [title="(?i)qute_lf(?i)"] floating enable border normal
-for_window [title="(?i)Network Connections(?i)"] floating enable border pixel 2
-for_window [title="(?i)New pallete - Gpick(?i)"] floating enable border pixel 2
+for_window [title="(?i)Network Connections(?i)"] floating enable border pixel 0
+for_window [title="(?i)New pallete - Gpick(?i)"] floating enable border pixel 0
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -403,7 +404,7 @@ client.background       $whiteL
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 0
-default_floating_border normal
+default_floating_border pixel 0
 
 # Hide borders
 hide_edge_borders none

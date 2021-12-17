@@ -1,7 +1,0 @@
-export XDG_RUNTIME_DIR=/run/user/$(id -u)
-export DISPLAY=:0
-
-ip=`echo $SSH_CONNECTION | cut -d " " -f 1`
-
-logger -t ssh-wrapper $USER login from $ip
-notify-send "User $USER just logged in from $ip" --urgency=critical

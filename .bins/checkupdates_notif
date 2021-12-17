@@ -1,9 +1,0 @@
-#!/bin/bash
-
-updates=$(checkupdates)
-
-if [ $($updates | wc -l) != '0' ]; then
-    notify-send --urgency=critical 'There are updates for:' $updates
-fi
-
-echo $($updates | wc -l)

@@ -9,13 +9,13 @@ unmountusb() {
 	chosen="$(echo "$drives" | rofi -dmenu -i -theme $HOME/.local/share/rofi/themes/run.rasi  -p "Unmount which drive?")" || exit 1
 	chosen="$(echo "$chosen" | awk '{print $1}')"
 	[ -z "$chosen" ] && exit
-	doas umount "$chosen" && rmdir "$chosen" && notify-send "💻 USB unmounting" "$chosen unmounted."
+	doas umount "$chosen" && rmdir "$chosen" && notification "💻 USB unmounting" "$chosen unmounted."
 	}
 
 unmountandroid() { \
 	chosen="$(awk '/simple-mtpfs/ {print $2}' /etc/mtab | rofi -dmenu -i -theme $HOME/.local/share/rofi/themes/run.rasi  -p "Unmount which device?")" || exit 1
 	[ -z "$chosen" ] && exit
-	doas umount -l "$chosen" && rmdir "$chosen" && notify-send "🤖 Android unmounting" "$chosen unmounted."
+	doas umount -l "$chosen" && rmdir "$chosen" && notification "🤖 Android unmounting" "$chosen unmounted."
 	}
 
 asktype() { \

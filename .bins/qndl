@@ -3,11 +3,11 @@
 # $1 is a url; $2 is a command
 [ -z "$1" ] && exit
 base="$(basename "$1")"
-notify-send "⏳ Queuing $base..."
+notification "Queue and download" "⏳ Queuing $base..."
 cmd="$2"
 [ -z "$cmd" ] && cmd="youtube-dl --add-metadata -o ~/Videos/ytdl/%(title)s.%(ext)s"
 idnum="$(tsp $cmd "$1")"
 tempfile="$(tsp -o $idnum)"
 realname="$(echo "$base" | sed "s/?\(source\|dest\).*//;s/%20/ /g")"
 tsp -D "$idnum" mv "$tempfile" "$HOME/Downloads/$realname"
-tsp -D "$idnum" notify-send "👍 $realname done."
+tsp -D "$idnum" notification "Queue and download" "👍 $realname done."

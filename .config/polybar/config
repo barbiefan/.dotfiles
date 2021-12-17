@@ -282,10 +282,10 @@ screenchange-reload = true
 [module/updates]
 type = custom/script
 
-exec = "checkupdates_notif"
-interval = 3600
+exec = "checkupdates_wrap"
+interval = 600
 format = <label>
-label = %{A1:terminal -t 'checkupdates #mini #widget' -e zsh -is eval 'yay -Suy && sleep 3 && exit':}UPD: %output:0:10:...%%{A}
+label = %{A1:terminal -t 'checkupdates #mini #widget' -e zsh -is eval 'notification "Updates" "Updating system..." && yay -Suy && notification "Updates" "System updated" && sleep 3 && exit':}UPD: %output:0:10:...%%{A}
 format-padding = ${padding.inside-widget-padding}
 format-background = ${colors.background-alt}
 format-underline = ${colors.secondary}

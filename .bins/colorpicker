@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-gpick -so
+color=$(gpick -so)
+notification "Colorpicker" "$color"

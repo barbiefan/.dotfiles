@@ -1,3 +1,0 @@
-#!/bin/bash
-
-echo $(ls -la  .. | grep $(pwd | awk -F/ '{print $NF}') | awk '{print $1, $3}')

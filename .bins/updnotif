@@ -1,0 +1,14 @@
+#!/bin/bash
+
+updates="$(cat /home/obey/.bins/pending_updates)"
+number=$(echo -n "$updates" | wc -l)
+
+if [ $number != 0 ]; then
+    if [ $number > 10 ]; then
+        more=$(expr $number - 10)
+        updates=$(echo "$updates" | head)
+        notification "There are updates for:" "$updates\nand $more more..." "critical"
+    else
+        notification "There are updates for:" "$updates" "critical"
+    fi
+fi
