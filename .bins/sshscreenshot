@@ -1,3 +1,4 @@
 #!/bin/bash
 export DISPLAY=:0
-exec scrot ~/Pictures/%Y-%m-%d_$wx$h_scrot.png
+scrot ~/Pictures/Screenshots/%Y-%m-%d-%I_%M_%S_%p.png
+/home/obey/.bins/notification "SSH" "Screenshot saved"

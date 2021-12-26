@@ -113,14 +113,14 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
 
-ws-icon-0 = term;
-ws-icon-1 = qute;
-ws-icon-2 = edit;
-ws-icon-3 = social;
-ws-icon-4 = game;
-ws-icon-5 = gimp;
-ws-icon-6 = media;
-ws-icon-7 = misc;
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
 fuzzy-match = true
 strip-wsnumbers = true
 
@@ -140,13 +140,13 @@ label-unfocused = %icon%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %%icon%
+label-visible = %icon%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %icon%
+label-urgent = %icon% %name%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -219,7 +219,7 @@ label-font = 2
 format-padding = 3
 ;${padding.inside-widget-padding}
 ;format-background = ${colors.background-alt}
-click-left = terminal -t "terminal #widget date" -e zsh -c "cal -ywm --color; read"
+click-left = terminal -t "terminal #widget date" -e zsh -c "calcurse"
 
 [module/pulseaudio]
 type = internal/pulseaudio

@@ -29,9 +29,9 @@ bindsym $mod+Ctrl+l exec --no-startup-id betterlockscreen -l blur
 # lock screen
 
 bindsym $mod+Escape exec rofi -lines 8 -padding 18 -location 0 -show drun -sidebar-mode -columns 6 -font 'Comfortaa 12' -theme ./.local/share/rofi/themes/sidetab-adapta.rasi
-# rofi fullscreen app launcher
+# open rofi fullscreen app launcher
 bindsym $mod+d exec --no-startup-id rofi -modi "combi#files:/home/obey/.bins/dmenufiles#drun#run#window#ssh" -show combi -combi-modi "drun#run#window#ssh" -theme ./.local/share/rofi/themes/run.rasi -run-shell-command 'terminal -t "terminal #widget" -e zsh -ic "echo {cmd} && {cmd} && read"'
-# rofi center app launcher
+# open rofi center app launcher
 # Screen @brightness controls
 bindsym XF86MonBrightnessUp     exec xbacklight -inc 10
 # brightness +10
@@ -44,7 +44,7 @@ bindsym XF86_AudioMute          exec "pulseaudio-ctl mute; pulseaudio-ctl mute-i
 bindsym XF86_AudioRaiseVolume   exec "pulseaudio-ctl up"
 # volume up
 bindsym $mod+F7                 exec "terminal -t 'pulsemixer #mini #widget' -e 'pulsemixer'"
-# pulsemixer widget
+# open pulsemixer widget
 bindsym XF86_AudioPlay          exec "playerctl play-pause"
 # player play/pause
 bindsym XF86_AudioPrev          exec "playerctl prev"
@@ -52,7 +52,7 @@ bindsym XF86_AudioPrev          exec "playerctl prev"
 bindsym XF86_AudioNext          exec "playerctl next"
 # player next
 bindsym $mod+F11                exec "terminal -t 'mocp #widget' -e 'mocp'"
-# mocp player
+# open mocp player
 
 # @TEMPERATURE
 # Screen color temperature control
@@ -62,7 +62,9 @@ bindsym $mod+F3 exec sct 4600
 # set screen temperature to 4600
 
 bindsym $mod+F5 exec create-android-display.sh -p -s -l
-# Starts remote second monitor
+# start remote second monitor
+bindsym $mod+F6 exec terminal -t "terminal #widget date" -e zsh -c "calcurse"
+# open calendar widget
 
 # @SHORTCUTS APPS
 # Start Applications
@@ -101,7 +103,7 @@ bindsym $mod+Print --release exec --no-startup-id "i3-scrot -wc"
 # screenshot active window to clipboard
 bindsym $mod+Shift+Print --release exec --no-startup-id "i3-scrot -sc"
 # screenshot selection to clipboard
-bindsym $mod+Ctrl+Print --release exec --no-startup-id xclip -selection clipboard -t image/png -o >> "$(date +'/home/obey/Pictures/Screenshots/%Y-%m-%d-%I_%M_%S_%p').png" & notify-send "screenshot saved"
+bindsym $mod+Ctrl+Print --release exec --no-startup-id xclip -selection clipboard -t image/png -o >> "$(date +'/home/obey/Pictures/Screenshots/%Y-%m-%d-%I_%M_%S_%p').png" & notification "Scrot" "Screenshot saved"
 # save last screenshot to $HOME/Pictures/Screenshots/...
 
 focus_follows_mouse yes
@@ -193,15 +195,15 @@ bindsym Mod1+Shift+Tab workspace prev
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 1:term
-set $ws2 "2:qute"
-set $ws3 "3:edit"
-set $ws4 4:social
-set $ws5 "5:game"
-set $ws6 "6:gimp"
-set $ws7 "7:media"
-set $ws8 "8:misc"
-set $ws9 "9:opt"
+set $ws1 "1:1"
+set $ws2 "2:2"
+set $ws3 "3:3"
+set $ws4 "4:4"
+set $ws5 "5:5"
+set $ws6 "6:6"
+set $ws7 "7:7"
+set $ws8 "8:8"
+set $ws9 "9:9"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -280,7 +282,7 @@ for_window [title="(?i)#float(?i)"] floating enable, border pixel 0
 for_window [title="(?i)#widget(?i)"] floating enable, border pixel 0, resize set 780 0, move position 1130 35
 for_window [title="(?i)#mini(?i)"] floating enable, border pixel 0, resize set 0 260
 for_window [title="(?i)#minifloat(?i)"] floating enable, border pixel 0, resize set 580 400, move position center
-for_window [title="(?i)terminal #widget date(?i)"] floating enable, border pixel 0, resize set 740 835, move position 590 35
+for_window [title="(?i)terminal #widget date(?i)"] floating enable, border pixel 0, resize set 740 635, move position 590 35
 for_window [title="(?i)Telegram(?i)"] floating enable, sticky enable, border pixel 0, resize set 475 600, move position 10 35
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pamac-manager"] floating enable
@@ -305,7 +307,7 @@ bindsym $mod+Shift+r restart
 
 # @SYSTEMMODE
 bindsym $mod+Shift+q exec /home/obey/.bins/powerdmenu
-# rofi powermenu
+# open rofi powermenu
 
 # @Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
