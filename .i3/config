@@ -16,10 +16,10 @@ font xft:Comfortaa
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
-bindsym $mod+F12 exec "shortcuts | rofi -dmenu -p 'Search a shortcut: ' -theme .local/share/rofi/themes/run.rasi -theme-str 'window {width: 50%;}' -i"
+bindsym $mod+F12 exec --no-startup-id "shortcuts | rofi -dmenu -p 'Search a shortcut: ' -theme .local/share/rofi/themes/run.rasi -theme-str 'window {width: 50%;}' -i"
 # show this shortcuts finder
 
-bindsym $mod+Return exec terminal
+bindsym $mod+Return exec --no-startup-id terminal
 # open terminal
 
 bindsym $mod+c kill
@@ -28,69 +28,69 @@ bindsym $mod+c kill
 bindsym $mod+Ctrl+l exec --no-startup-id betterlockscreen -l blur
 # lock screen
 
-bindsym $mod+Escape exec rofi -lines 8 -padding 18 -location 0 -show drun -sidebar-mode -columns 6 -font 'Comfortaa 12' -theme ./.local/share/rofi/themes/sidetab-adapta.rasi
+bindsym $mod+Escape exec --no-startup-id rofi -lines 8 -padding 18 -location 0 -show drun -sidebar-mode -columns 6 -font 'Comfortaa 12' -theme ./.local/share/rofi/themes/sidetab-adapta.rasi
 # open rofi fullscreen app launcher
 bindsym $mod+d exec --no-startup-id rofi -modi "combi#files:/home/obey/.bins/dmenufiles#drun#run#window#ssh" -show combi -combi-modi "drun#run#window#ssh" -theme ./.local/share/rofi/themes/run.rasi -run-shell-command 'terminal -t "terminal #widget" -e zsh -ic "echo {cmd} && {cmd} && read"'
 # open rofi center app launcher
 # Screen @brightness controls
-bindsym XF86MonBrightnessUp     exec xbacklight -inc 10
+bindsym XF86MonBrightnessUp     exec --no-startup-id xbacklight -inc 10
 # brightness +10
-bindsym XF86MonBrightnessDown   exec xbacklight -dec 10
+bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -dec 10
 # brightness -10
-bindsym XF86_AudioLowerVolume   exec "pulseaudio-ctl down"
+bindsym XF86_AudioLowerVolume   exec --no-startup-id "pulseaudio-ctl down"
 # volume down
-bindsym XF86_AudioMute          exec "pulseaudio-ctl mute; pulseaudio-ctl mute-input"
+bindsym XF86_AudioMute          exec --no-startup-id "pulseaudio-ctl mute; pulseaudio-ctl mute-input"
 # volume mute
-bindsym XF86_AudioRaiseVolume   exec "pulseaudio-ctl up"
+bindsym XF86_AudioRaiseVolume   exec --no-startup-id "pulseaudio-ctl up"
 # volume up
-bindsym $mod+F7                 exec "terminal -t 'pulsemixer #mini #widget' -e 'pulsemixer'"
+bindsym $mod+F7                 exec --no-startup-id "terminal -t 'pulsemixer #mini #widget' -e 'pulsemixer'"
 # open pulsemixer widget
-bindsym XF86_AudioPlay          exec "playerctl play-pause"
+bindsym XF86_AudioPlay          exec --no-startup-id "playerctl play-pause"
 # player play/pause
-bindsym XF86_AudioPrev          exec "playerctl prev"
+bindsym XF86_AudioPrev          exec --no-startup-id "playerctl prev"
 # player prev
-bindsym XF86_AudioNext          exec "playerctl next"
+bindsym XF86_AudioNext          exec --no-startup-id "playerctl next"
 # player next
-bindsym $mod+F11                exec "terminal -t 'mocp #widget' -e 'mocp'"
+bindsym $mod+F11                exec --no-startup-id "terminal -t 'mocp #widget' -e 'mocp'"
 # open mocp player
 
 # @TEMPERATURE
 # Screen color temperature control
-bindsym $mod+F4 exec sct 6600
+bindsym $mod+F4 exec --no-startup-id sct 6600
 # set screen temperature to 6600
-bindsym $mod+F3 exec sct 4600
+bindsym $mod+F3 exec --no-startup-id sct 4600
 # set screen temperature to 4600
 
-bindsym $mod+F5 exec create-android-display.sh -p -s -l
+bindsym $mod+F5 exec --no-startup-id create-android-display.sh -p -s -l
 # start remote second monitor
-bindsym $mod+F6 exec terminal -t "terminal #widget date" -e zsh -c "calcurse"
+bindsym $mod+F6 exec --no-startup-id terminal -t "terminal #widget date" -e zsh -c "calcurse"
 # open calendar widget
 
 # @SHORTCUTS APPS
 # Start Applications
-bindsym $mod+F1 exec qalculate-gtk
+bindsym $mod+F1 exec --no-startup-id qalculate-gtk
 # open calculator
-bindsym $mod+F2 exec networkmanager-dmenu
+bindsym $mod+F2 exec --no-startup-id networkmanager-dmenu
 # open rofi network manager
-bindsym $mod+w exec $BROWSER
+bindsym $mod+w exec --no-startup-id $BROWSER
 # open browser
-bindsym $mod+e exec terminal -e ranger
+bindsym $mod+e exec --no-startup-id terminal -e ranger
 # open CLI file browser
-bindsym $mod+Shift+e exec pcmanfm
+bindsym $mod+Shift+e exec --no-startup-id pcmanfm
 # open GUI file browser
-bindsym $mod+o exec dmenuhandler
+bindsym $mod+o exec --no-startup-id dmenuhandler
 # open rofi link handler
-bindsym $mod+grave exec dmenuunicode
+bindsym $mod+grave exec --no-startup-id dmenuunicode
 # open rofi emoji selector
-bindsym $mod+t exec "terminal -t 'terminal #minifloat' -e zsh -is eval rxfetch"
+bindsym $mod+t exec --no-startup-id "terminal -t 'terminal #minifloat' -e zsh -is eval rxfetch"
 # open small floating terminal
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 # select and kill
-bindsym $mod+Prior exec "terminal -t 'terminal config' -e zsh -c 'dotfiles -c edit'"
+bindsym $mod+Prior exec --no-startup-id "terminal -t 'terminal config' -e zsh -c 'dotfiles -c edit'"
 # open config
-bindsym $mod+Next exec "doas terminal -t 'bmenu #widget' -e bmenu"
+bindsym $mod+Next exec --no-startup-id "doas terminal -t 'bmenu #widget' -e bmenu"
 # launch ToolBox
-bindsym Ctrl+Escape exec "terminal -t 'terminal top #widget' -e bpytop -b 'cpu proc'"
+bindsym Ctrl+Escape exec --no-startup-id "terminal -t 'terminal top #widget' -e bpytop -b 'cpu proc'"
 # open system monitor
 bindsym $mod+Home floating enable, sticky enable, border pixel 0, move position 1398 35, resize set 512 288
 # make window sticky widget upper right
@@ -150,9 +150,9 @@ bindsym $mod+b workspace back_and_forth
 # switch to previous workspace
 
 # split orientation
-bindsym $mod+Ctrl+h split h;exec notify-send 'tile horizontally'
+bindsym $mod+Ctrl+h split h;exec --no-startup-id notify-send 'tile horizontally'
 # set tiling to horizontal
-bindsym $mod+Ctrl+v split v;exec notify-send 'tile vertically'
+bindsym $mod+Ctrl+v split v;exec --no-startup-id notify-send 'tile vertically'
 # set tiling to vertical
 bindsym $mod+Tab split toggle
 # toggle tiling mode
@@ -277,20 +277,20 @@ assign [title="(?i)image manipulation(?i)"] $ws6
 assign [title="(?i)vlc(?i)"] $ws7
 
 # Open specific applications in floating mode
-for_window [title="alsamixer"] floating enable border normal
+for_window [title="alsamixer"] floating enable
 for_window [title="(?i)#float(?i)"] floating enable, border pixel 0
 for_window [title="(?i)#widget(?i)"] floating enable, border pixel 0, resize set 780 0, move position 1130 35
 for_window [title="(?i)#mini(?i)"] floating enable, border pixel 0, resize set 0 260
 for_window [title="(?i)#minifloat(?i)"] floating enable, border pixel 0, resize set 580 400, move position center
 for_window [title="(?i)terminal #widget date(?i)"] floating enable, border pixel 0, resize set 740 635, move position 590 35
 for_window [title="(?i)Telegram(?i)"] floating enable, sticky enable, border pixel 0, resize set 475 600, move position 10 35
-for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="Nitrogen"] floating enable sticky enable
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="(?i)clipit(?i)"] floating enable border pixel 0
 for_window [class="(?i)Qalcula(?i)"] floating enable, border pixel 0, resize set 780 260, move position 1130 35
 for_window [title="cvlc(?i)"] floating enable, sticky enable
-for_window [title="mpv(?i)"] floating enable, sticky enable, border pixel 0, move position 320 180, resize set 1280 720
+for_window [title="mpv(?i)"] floating enable, border pixel 0, move position 320 180, resize set 1280 720
 for_window [title="(?i)Network Connections(?i)"] floating enable border pixel 0
 for_window [title="(?i)New pallete - Gpick(?i)"] floating enable border pixel 0
 
@@ -306,7 +306,7 @@ bindsym $mod+Shift+r restart
 # restart i3
 
 # @SYSTEMMODE
-bindsym $mod+Shift+q exec /home/obey/.bins/powerdmenu
+bindsym $mod+Shift+q exec --no-startup-id /home/obey/.bins/powerdmenu
 # open rofi powermenu
 
 # @Resize window (you can also use the mouse for that)
@@ -343,13 +343,13 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id killall picom; picom -b --experimental-backends --config '/home/obey/.config/picom.conf'
-exec_always "killall dunst; notify-send --urgency=critical 'Restarted Dunst'"
+exec_always --no-startup-id "killall dunst"
 
-bindsym $mod+backslash exec dunstctl close
+bindsym $mod+backslash exec --no-startup-id dunstctl close
 # close top-most notification
-bindsym $mod+Shift+backslash exec dunstctl history-pop
+bindsym $mod+Shift+backslash exec --no-startup-id dunstctl history-pop
 # show last notification from history
-bindsym $mod+Ctrl+backslash exec dunstctl context
+bindsym $mod+Ctrl+backslash exec --no-startup-id dunstctl context
 # rofi context menu for displayed notifications
 
 
@@ -440,12 +440,11 @@ mode "$mode_borders" {
 
 # Set inner/outer gaps
 # @GAPS
-gaps inner 0
+gaps inner 15
 gaps outer 0
 
 # Smart gaps (gaps used if only more than one container on the workspace)
 smart_gaps inverse_outer
-smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
@@ -461,7 +460,7 @@ bindsym $mod+Shift+g mode "$mode_gaps"
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
         bindsym i      mode "$mode_gaps_inner"
-        bindsym e      gaps inner all set 50; gaps outer all set 0
+        bindsym e      gaps inner all set 30; gaps outer all set 0
         bindsym f      gaps inner all set 0;  gaps outer all set 0
         bindsym Return mode "default"
         bindsym Escape mode "default"
