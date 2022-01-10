@@ -1,9 +1,13 @@
 #!/bin/bash
 
 updates="$(cat /home/obey/.bins/pending_updates)"
-number=$(echo -n "$updates" | wc -l)
+if [ "$updates" == "" ]; then
+    number="0"
+else
+    number="$(echo "$updates" | wc -l)"
+fi
 
-if [ $number != 0 ]; then
+if [ $number != "0" ]; then
     if [ "$number" -gt "10" ]; then
         more=$(expr $number - 10)
         updates=$(echo "$updates" | head)

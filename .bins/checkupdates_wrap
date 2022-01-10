@@ -1,13 +1,10 @@
 #!/bin/bash
+
 updates="$(checkupdates)"
+echo -n $updates > /home/obey/.bins/pending_updates
 
-if [ $(echo -n "$updates" | wc -l) != '0' ]; then
-    if [[ -z $(echo -e $updates) ]]; then
-        :> /home/obey/.bins/pending_updates
-        updates=
-    else
-        echo "$updates" > /home/obey/.bins/pending_updates
-    fi
+if [ "$updates" == "" ]; then
+    echo "0"
+else
+    echo $(echo "$updates" | wc -l)
 fi
-
-echo $(echo -n "$updates" | wc -l)

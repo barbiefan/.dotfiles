@@ -1,0 +1,5 @@
+#!/bin/bash
+
+/home/obey/.bins/notification "Maintenance" "Upgrading $(checkupdates | wc -l) packages"
+yay -Syyuu --noconfirm
+/home/obey/.bins/notification "Maintenance" "Upgraded $(checkupdates | wc -l) packages"
