@@ -4,6 +4,9 @@ then
 set --
 fi
 
+setxkbmap -layout us,ru
+setxkbmap -option 'grp:alt_shift_toggle'
+
 setopt correct
 setopt extendedglob
 setopt nocaseglob

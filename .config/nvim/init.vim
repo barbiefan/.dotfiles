@@ -35,6 +35,9 @@ Plug 'ap/vim-css-color'
 
 call plug#end()
 
+autocmd BufWritePost *note-*.md silent !/home/obey/.bins/buildNote %:p
+
+nmap <C-_> :nohl<CR>
 nmap <F12> :TagbarToggle<CR>
 nmap <TAB> :NERDTreeToggle<CR>
 nmap <A-Up> :m -2<CR>

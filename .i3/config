@@ -2,10 +2,6 @@
 exec --no-startup-id xmodmap -e "keycode 135 = Super_L"
 set $mod Mod4
 
-# set keyboard layouts and set alt+shift to be layout toggle
-exec --no-startup-id "setxkbmap -layout us,ru"
-exec --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
-
 # set keyboard repeat delay and repeat interval
 exec --no-startup-id "xset r rate 200 40"
 
@@ -80,10 +76,16 @@ bindsym $mod+Shift+e exec --no-startup-id pcmanfm
 # open GUI file browser
 bindsym $mod+o exec --no-startup-id dmenuhandler
 # open rofi link handler
+bindsym $mod+p exec --no-startup-id rofi-pass
+# open rofi password manager
 bindsym $mod+grave exec --no-startup-id dmenuunicode
 # open rofi emoji selector
 bindsym $mod+t exec --no-startup-id "terminal -t 'terminal #minifloat' -e zsh -is eval rxfetch"
 # open small floating terminal
+bindsym $mod+n exec --no-startup-id "terminal -t 'notetaker_window' -e /home/obey/.bins/notetaker"
+# open notetaker
+bindsym $mod+Shift+n exec --no-startup-id "/home/obey/.bins/mostRecentNote"
+# open most recent note in zathura
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 # select and kill
 bindsym $mod+Prior exec --no-startup-id "terminal -t 'terminal config' -e zsh -c 'dotfiles -c edit'"
@@ -277,22 +279,21 @@ assign [title="(?i)image manipulation(?i)"] $ws6
 assign [title="(?i)vlc(?i)"] $ws7
 
 # Open specific applications in floating mode
-for_window [title="alsamixer"] floating enable
 for_window [title="(?i)#float(?i)"] floating enable, border pixel 0
 for_window [title="(?i)#widget(?i)"] floating enable, border pixel 0, resize set 780 0, move position 1130 35
 for_window [title="(?i)#mini(?i)"] floating enable, border pixel 0, resize set 0 260
 for_window [title="(?i)#minifloat(?i)"] floating enable, border pixel 0, resize set 580 400, move position center
 for_window [title="(?i)terminal #widget date(?i)"] floating enable, border pixel 0, resize set 740 635, move position 590 35
-for_window [title="(?i)Telegram(?i)"] floating enable, sticky enable, border pixel 0, resize set 475 600, move position 10 35
+for_window [title="(?i)terminal #widget youtube(?i)"] floating enable, border pixel 0, resize set 1120 720, move position 400 35
+for_window [title="Telegram"] floating enable, sticky enable, border pixel 0, resize set 475 600, move position 10 35
 for_window [class="Nitrogen"] floating enable sticky enable
-for_window [class="Pamac-manager"] floating enable
-for_window [class="Pavucontrol"] floating enable
 for_window [class="(?i)clipit(?i)"] floating enable border pixel 0
 for_window [class="(?i)Qalcula(?i)"] floating enable, border pixel 0, resize set 780 260, move position 1130 35
-for_window [title="cvlc(?i)"] floating enable, sticky enable
 for_window [title="mpv(?i)"] floating enable, border pixel 0, move position 320 180, resize set 1280 720
 for_window [title="(?i)Network Connections(?i)"] floating enable border pixel 0
 for_window [title="(?i)New pallete - Gpick(?i)"] floating enable border pixel 0
+for_window [title="notetaker_window"] floating enable, sticky enable, border pixel 0, move position 1298 35, resize set 612 288
+
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -338,12 +339,11 @@ mode "resize" {
 # @Autostart applications
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id clipit
-exec --no-startup-id kdeconnect-indicator
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id killall picom; picom -b --experimental-backends --config '/home/obey/.config/picom.conf'
-exec_always --no-startup-id "killall dunst"
+exec_always --no-startup-id killall dunst
 
 bindsym $mod+backslash exec --no-startup-id dunstctl close
 # close top-most notification
@@ -488,4 +488,4 @@ mode "$mode_gaps_outer" {
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
-}
+
