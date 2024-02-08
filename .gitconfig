@@ -1,0 +1,12 @@
+[user]
+  signingkey = E5EC6CB851107D2B89BC979B4938019251B34D82
+  name = barbiefan
+  email = georgecarlin770@gmail.com
+[includeIf "gitdir:~/Documents/work/abinsk/"]
+  path = ~/Documents/work/abinsk/.gitconfig
+[includeIf "gitdir:~/Documents/work/mts2/nlmk/"]
+  path = ~/Documents/work/mts2/nlmk/.gitconfig
+[includeIf "gitdir:~/Documents/work/mts2/cloud/"]
+  path = ~/Documents/work/mts2/cloud/.gitconfig
+[commit]
+	gpgsign = true

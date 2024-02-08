@@ -1,0 +1,11 @@
+#!/bin/bash
+
+tun="$(ip a | grep tun0:)"
+
+if [ -z "$tun" ]
+then
+  echo "{\"class\": \"unused\" }"
+else
+  echo "{\"class\": \"used\" }"
+fi
+

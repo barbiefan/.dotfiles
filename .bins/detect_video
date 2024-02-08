@@ -1,0 +1,15 @@
+#!/bin/sh
+
+status="$(wpctl status | grep -e "^.*input_[0-9]\+.*<.*$")"
+status2="$(pgrep -f gpu-screen-recorder)"
+
+if [ -z "$status" ]
+then
+  if [ -z "$status2" ]
+  then
+    echo "{\"class\": \"unused\"}"
+    exit 0
+  fi
+fi
+
+echo "{\"class\": \"used\"}"

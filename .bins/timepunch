@@ -1,0 +1,36 @@
+#!/bin/python
+
+file="/home/obey/timepunching"
+timetable = {}
+
+with open(file, "r") as timefile:
+    for line in timefile.readlines():
+        split = line.replace("\n", "").split(" ")
+        if len(split) > 2:
+            time = split[0]
+            desc = " ".join(split[1:])
+            ts, te = time.split("-")
+            ts_minutes = int(ts.split(":")[0])*60 + int(ts.split(":")[1])
+            te_minutes = int(te.split(":")[0])*60 + int(te.split(":")[1])
+            t_elapsed_minutes = te_minutes - ts_minutes
+            if desc in timetable.keys():
+                timetable[desc] += t_elapsed_minutes
+            else:
+                timetable[desc] = t_elapsed_minutes
+
+calls=[]
+tasks=[]
+
+for desc in timetable.keys():
+    if "созвон" in desc:
+        calls.append((desc, timetable[desc]))
+    else:
+        tasks.append((desc, timetable[desc]))
+
+print(f"Созвоны: {sum([c[1] for c in calls])/60}".replace(".", ","))
+for call in calls:
+    print(f"{call[1]} - {call[0]}")
+
+print(f"Задачи: {sum([t[1] for t in tasks])/60}".replace(".", ","))
+for task in tasks:
+    print(f"{task[1]} - {task[0]}")

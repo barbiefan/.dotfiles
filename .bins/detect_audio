@@ -1,0 +1,10 @@
+#!/bin/sh
+
+status="$(wpctl status | grep -e "^.*input_[a-zA-Z]\+.*<.*$")"
+
+if [ -z "$status" ]
+then
+  echo "{\"class\": \"unused\" }"
+else
+  echo "{\"class\": \"used\" }"
+fi
