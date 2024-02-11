@@ -1,0 +1,1 @@
+convert -size 500x500 xc:"#{color0.strip}" xc:"#{color1.strip}" xc:"#{color2.strip}" xc:"#{color3.strip}" xc:"#{color4.strip}" xc:"#{color5.strip}" xc:"#{color6.strip}" xc:"#{color7.strip}" xc:"#{color8.strip}" xc:"#{color9.strip}" xc:"#{color10.strip}" xc:"#{color11.strip}" xc:"#{color12.strip}" xc:"#{color13.strip}" xc:"#{color14.strip}" xc:"#{color15.strip}" +append

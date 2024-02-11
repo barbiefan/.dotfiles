@@ -6,7 +6,7 @@
 
 ##### wallpaper #####
 change_wallpaper() {
-    swww img "$filename" --transition-type grow --transition-pos 365,1395 --transition-step 255 --transition-fps 255 --transition-duration 1
+    swww img "$filename" --transition-type grow --transition-pos 0,0 --transition-step 255 --transition-fps 255 --transition-duration 1
 }
 
 firefox_theme() {
@@ -97,25 +97,50 @@ side_apps() {
 
 # if no argument is provided, launch ranger to pick a wallpaper and rofi to pick a backend
 if [ -z $1 ]; then
-    $HOME/Documents/git/alacritty-sixel/target/release/alacritty -e ranger --choosefile /tmp/temp-ranger-file-picker $HOME/Pictures/wallpaper
-    filename="$(cat /tmp/temp-ranger-file-picker)"
+    notify-send "Wallpaper" "Press 'P' to choose.\n <- and -> to select" --urgency LOW
+    filename="$(imv $HOME/Pictures/wallpaper)"
     printf "filename: $filename\n"
-    echo "" > /tmp/temp-ranger-file-picker
     if [ -z "$filename" ]; then
-        exit 0
-        printf "no filename provided\n"
+        printf "no file provided\n"
+        notify-send "Wallpaper" "No file provided" --urgency LOW
+        exit 1
+    else
+        notify-send "Wallpaper" "File : $filename" --urgency LOW
     fi
+
+    mkdir /tmp/wallpaper 2>/dev/null
+
+    for back in wal haishoku schemer2 colorz colorthief; do
+        wal -n -s -t -e -i "$filename" --backend "$back"
+        bash -c "$(cat .cache/wal/imagemagick) /tmp/wallpaper/$back.png"
+    done
+
+    wal -n -s -t -e -i "$(cat $HOME/.bins/wallpaperpath)"
+
+    back="$(basename $(imv /tmp/wallpaper))"
+    printf "backend: $back\n"
+    if [ -z "$back" ]; then
+        printf "no backend provided\n"
+        notify-send "Wallpaper" "No backend provided\n 'wal' will be used by default" --urgency LOW
+        backend="wal"
+    else 
+        backend="${back%.*}"
+        notify-send "Wallpaper" "Backend: $backend" --urgency LOW
+    fi
+
 elif [[ $1 == "--random" ]]; then
     filename="$(find $HOME/Pictures/wallpaper -regex '.*\.png\|.*\.jpg\|.*\.jpeg' | shuf -n 1)"
+    backend="wal"
 else    
     filename="$1"
+    backend="wal"
 fi
 
 # change early so you don't feel a lag
 change_wallpaper &
 
 ##### pywal #####
-wal -i "$filename"
+wal -n -i "$filename" --backend $backend
 printf "wal done\n"
 
 # run other customizations after wal has generated a theme

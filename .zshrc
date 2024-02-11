@@ -68,7 +68,6 @@ alias cdd='cd $(find $HOME/ -type d | fzf --scheme=path --reverse --preview="exa
 alias uname='uname -snrmo'
 alias dmount='dmenumount'
 alias dumount='dmenuumount'
-alias config='dotfiles -c edit'
 alias gfzf='git log --pretty=oneline | awk "{\$1=\"\";print}" | fzf -m --reverse --no-sort'
 alias ntop='doas tcptrack -i $ETH'
 alias nscan='doas nmap -A'
