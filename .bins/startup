@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-/usr/bin/discord &
 /usr/bin/telegram-desktop &
 /usr/bin/easyeffects &
-/usr/bin/ymp &
-/usr/bin/steam-runtime &
 /usr/bin/alacritty --class "BpyTOP" -e "bpytop"
+sleep 2
+/usr/bin/alacritty msg create-window --class "pulsemixer" -e "pulsemixer"
+/usr/bin/alacritty msg create-window --class "nvtop" -e "nvtop"
 

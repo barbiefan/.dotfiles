@@ -5,7 +5,6 @@ if [ $XDG_SESSION_TYPE = "x11" ]; then
   echo $color | xclip -selection clipboard
   notification "Colorpicker" "$color"
 elif [ $XDG_SESSION_TYPE = "wayland" ]; then
-  sleep 1
   color=$(hyprpicker -nf hex)
   wl-copy $color
   notification "Colorpicker" "$color"

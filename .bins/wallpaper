@@ -31,7 +31,6 @@ steam_theme() {
 
 ##### waybar #####
 waybar_theme() {
-    $HOME/.bins/waybarColors
     killall -SIGUSR2 waybar
     printf "waybar done\n"
 }
