@@ -3,7 +3,7 @@
 ans=$(echo -e "turn display off (enter to turn back on)\nlock\nlogout\nsuspend\nhibernate\nreboot\nshutdown" | rofi -dmenu -p "PWR: ")
 
 confirm_exit() {
-    echo -e "no\nyes" | rofi -dmenu -theme "Are you sure? " 
+    echo -e "no\nyes" | rofi -dmenu "Are you sure? " 
 }
 
 msg() {
