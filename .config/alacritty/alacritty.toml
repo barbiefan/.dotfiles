@@ -1,44 +1,19 @@
+[window]
+decorations = "none"
+dynamic_padding = false
+opacity = 0.6
+title = "Alacritty"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.padding]
+x = 0
+y = 0
+
 [colors]
 draw_bold_text_with_bright_colors = true
-
-[[colors.indexed_colors]]
-color = "0xECBFBD"
-index = 16
-
-[[colors.indexed_colors]]
-color = "0x3E4058"
-index = 17
-
-[colors.bright]
-black = "#9a9b9c"
-blue = "#9BA0A3"
-cyan = "#BCC0C3"
-green = "#7D8286"
-magenta = "#ABB0B3"
-red = "#787E82"
-white = "#dcdedf"
-yellow = "#8B9094"
-
-[colors.cursor]
-cursor = "#dcdedf"
-text = "#0d0f11"
-
-[colors.normal]
-black = "#0d0f11"
-blue = "#9BA0A3"
-cyan = "#BCC0C3"
-green = "#7D8286"
-magenta = "#ABB0B3"
-red = "#787E82"
-white = "#dcdedf"
-yellow = "#8B9094"
-
-[colors.primary]
-background = "#0d0f11"
-foreground = "#dcdedf"
-
-[colors.selection]
-text = "0xFDFF82"
 
 [env]
 TERM = "xterm-256color"
@@ -46,27 +21,27 @@ TERM = "xterm-256color"
 [font]
 size = 12.0
 
-[font.bold]
+[font.normal]
 family = "Source Code Pro"
 style = "Bold"
 
-[font.bold_italic]
+[font.bold]
 family = "Source Code Pro"
-style = "Bold Italic"
-
-[font.glyph_offset]
-x = 0
-y = 0
+style = "Bold"
 
 [font.italic]
 family = "Source Code Pro"
 style = "Italic"
 
-[font.normal]
+[font.bold_italic]
 family = "Source Code Pro"
-style = "Regular"
+style = "Bold Italic"
 
 [font.offset]
+x = 0
+y = 0
+
+[font.glyph_offset]
 x = 0
 y = 0
 
@@ -189,16 +164,3 @@ mods = "Alt"
 history = 5000
 
 
-[window]
-decorations = "none"
-dynamic_padding = false
-opacity = 0.4
-title = "Alacritty"
-
-[window.class]
-general = "Alacritty"
-instance = "Alacritty"
-
-[window.padding]
-x = 0
-y = 0

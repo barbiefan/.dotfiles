@@ -1,0 +1,62 @@
+@import "~/.cache/wal/colors-rofi.rasi"
+
+* {
+    background-color: #00000000;
+    foreground-color: @foreground;
+    text-color: @foreground;
+}
+
+configuration {
+    font: "Comfortaa 14";
+}
+
+
+window {
+    border: 0;
+    anchor:   center;
+    location: center;
+    width:    30%;
+    height:   30%;
+    padding: 30px;
+    children:   [ inputbar, listview ];
+    border-radius: 20px;
+    background-color: @background;
+}
+
+inputbar {
+    children: [entry];
+    padding: 5px;
+    orientation: horizontal;
+}
+
+listview {
+    layout: vertical;
+    fixed-height: 0;
+    spacing: 2px;
+    padding: 2px 0px 0px;
+}
+
+prompt {
+    spacing: 0;
+    expand: false;
+}
+
+entry {
+    font: "Comfortaa 16";
+    expand: true;
+}
+
+element {
+    padding: 4.5px;
+    border-radius: 20px;
+}
+
+element.selected.normal {
+    background-color: @color2;
+}
+
+element.normal.normal, 
+element.alternate.normal {
+}
+
+/* vim: ft=css

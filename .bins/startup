@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
-/usr/bin/telegram-desktop &
-/usr/bin/easyeffects &
-/usr/bin/alacritty --class "BpyTOP" -e "bpytop"
+/usr/bin/alacritty --class "btm" -e "btm" &
 sleep 2
-/usr/bin/alacritty msg create-window --class "pulsemixer" -e "pulsemixer"
 /usr/bin/alacritty msg create-window --class "nvtop" -e "nvtop"
-
+/usr/bin/alacritty msg create-window --class "pulsemixer" -e "pulsemixer"
+/usr/bin/easyeffects &
+/usr/bin/telegram-desktop &

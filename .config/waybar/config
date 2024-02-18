@@ -164,21 +164,21 @@
   },
 
   "custom/vpn_indicator": {
-    "format": "🔒",
+    "format": "V",
     "interval": 1,
     "exec": "$HOME/.bins/detect_vpn",
     "return-type": "json",
   },
 
   "custom/audio_indicator": {
-    "format": "🎙️",
+    "format": "A",
     "interval": 1,
     "exec": "$HOME/.bins/detect_audio",
     "return-type": "json",
   },
   
   "custom/video_indicator": {
-    "format": "🎥",
+    "format": "C",
     "interval": 1,
     "exec": "$HOME/.bins/detect_video",
     "return-type": "json",

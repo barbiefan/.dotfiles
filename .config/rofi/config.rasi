@@ -1,0 +1,6 @@
+@theme "run.rasi"
+
+configuration {
+	show-icons: true;
+	sidebar-mode: true;
+}

@@ -16,7 +16,7 @@ firefox_theme() {
 
 ##### discord #####
 discord_theme() {
-    cp $HOME/.cache/wal/discord-wal.theme.css $HOME/.config/VencordDesktop/VencordDesktop/themes/wal.theme.css
+    cp $HOME/.cache/wal/discord-wal.theme.css $HOME/.config/vesktop/themes/wal.theme.css
     printf "discord done\n"
 }
 

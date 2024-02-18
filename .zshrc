@@ -102,6 +102,6 @@ bindkey -M vicmd e edit-command-line
 # Theming section  
 autoload -U compinit colors zcalc
 compinit -d
-colors
+# colors
 cat ~/.cache/wal/sequences
 source ~/.cache/wal/colors-tty.sh
