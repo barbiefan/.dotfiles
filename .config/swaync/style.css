@@ -3,7 +3,7 @@
  */
 @import "/home/obey/.cache/wal/colors-waybar.css";
 
-@define-color cc-bg alpha(@background, 0.7);
+@define-color cc-bg alpha(@background, 0.5);
 
 @define-color noti-border-color alpha(@color3, 0);
 @define-color noti-bg alpha(@color0, 0.8);
@@ -21,18 +21,21 @@
 * {
   font-family: "Comfortaa", "Unifont";
   font-size: 18px;
+  box-shadow: none;
+  border-radius: 20px;
+  background: transparent;
 }
 
 * > button {
   background: transparent;
-  border: 0px dashed transparent;
+  border: 0px transparent;
   border-radius: 20px;
   outline: none;
 }
 
 * > button:hover {
   background-color: @noti-bg-focus;
-  border: 0px dashed transparent;
+  border: 0px transparent;
   border-radius: 20px;
   outline: none;
 }
@@ -228,10 +231,12 @@
 /* Mpris widget */
 .widget-mpris {
   /* The parent to all players */
+  border-radius: 20px;
+  margin: 20px;
 }
 .widget-mpris-player {
   padding: 8px;
-  margin: 8px;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 0px 8px 0px;
 }
 
 .widget-mpris-player > box > image {

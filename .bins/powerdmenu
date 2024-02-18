@@ -1,14 +1,13 @@
 #!/bin/bash
 
-theme=$HOME/.local/share/rofi/themes/run.rasi
-ans=$(echo -e "turn display off (enter to turn back on)\nlock\nlogout\nsuspend\nhibernate\nreboot\nshutdown" | rofi -dmenu -theme $theme -p "PWR: ")
+ans=$(echo -e "turn display off (enter to turn back on)\nlock\nlogout\nsuspend\nhibernate\nreboot\nshutdown" | rofi -dmenu -p "PWR: ")
 
 confirm_exit() {
-    echo -e "no\nyes" | rofi -dmenu -theme $theme -p "Are you sure? " 
+    echo -e "no\nyes" | rofi -dmenu -theme "Are you sure? " 
 }
 
 msg() {
-    rofi -theme $theme -e "available options - yes/no/YES/NO/y/N"
+    rofi -e "available options - yes/no/YES/NO/y/N"
 }
 case $ans in
     "shutdown")
