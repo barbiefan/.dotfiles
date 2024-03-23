@@ -76,7 +76,7 @@ alias cp="cp -i"
 alias df='df -h'
 alias free='free -m'
 alias gitu='git add . && git commit && git push'
-alias work='VIMWORKDIR=$(find $HOME/Documents/work -type d -name .git | fzf | sed "s/\.git//g") ; cd $VIMWORKDIR ; vim $VIMWORKDIR'
+alias work='VIMWORKDIR=$(find $HOME/Documents/work -type d -name .git | fzf | sed "s/\.git//g") ; cd $VIMWORKDIR ; vim ./'
 alias gcm='git commit -S -m '
 
 alias dotfiles='$HOME/.bins/dotfiles'

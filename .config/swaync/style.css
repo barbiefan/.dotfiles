@@ -3,13 +3,13 @@
  */
 @import "/home/obey/.cache/wal/colors-waybar.css";
 
-@define-color cc-bg alpha(@background, 0.5);
+@define-color cc-bg alpha(@color0, 0.2);
 
 @define-color noti-border-color alpha(@color3, 0);
-@define-color noti-bg alpha(@color0, 0.8);
-@define-color noti-bg-darker alpha(@color0, 0.8);
-@define-color noti-bg-hover @color1;
-@define-color noti-bg-focus @color5;
+@define-color noti-bg alpha(@color0, 0.2);
+@define-color noti-bg-darker alpha(@color0, 0.2);
+@define-color noti-bg-hover alpha(@color3, 0.8);
+@define-color noti-bg-focus alpha(@color3, 0.8);
 @define-color noti-close-bg @color0;
 @define-color noti-close-bg-hover @color1;
 
@@ -24,18 +24,18 @@
   box-shadow: none;
   border-radius: 20px;
   background: transparent;
+  border: none;
+  outline: none;
 }
 
 * > button {
   background: transparent;
-  border: 0px transparent;
   border-radius: 20px;
   outline: none;
 }
 
 * > button:hover {
   background-color: @noti-bg-focus;
-  border: 0px transparent;
   border-radius: 20px;
   outline: none;
 }
@@ -72,6 +72,15 @@
 .notification-default-action:not(:only-child) {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
+}
+.notification-default-action:not(:only-child):hover {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  background: @noti-bg-focus;
+}
+
+.notification-group:hover {
+  background: @noti-bg-focus;
 }
 
 .notification-action {
@@ -172,7 +181,7 @@
 }
 
 .control-center {
-  background: alpha(@background, 0.7);
+  background: @cc-bg;
   border-radius: 20px;
 }
 

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+for file in /home/obey/Pictures/wallpaper/*;
+do
+  imv $file &
+  sleep 0.2
+done
+
+read
+
+killall imv-wayland
