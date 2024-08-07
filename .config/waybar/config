@@ -39,6 +39,7 @@
     "format-muted": "[M]",
     "scroll-step": 5,
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pkill pavucontrol || pavucontrol -t 1",
     "ignored-sinks": ["Easy Effects Sink"],
   },
 
@@ -49,6 +50,7 @@
     "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
     "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%",
     "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "on-click-right": "pkill pavucontrol || pavucontrol -t 4",
     "ignored-sinks": ["Easy Effects Source"],
   },
 

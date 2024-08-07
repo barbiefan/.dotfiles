@@ -1,7 +1,7 @@
 [window]
 decorations = "none"
 dynamic_padding = false
-opacity = 0
+opacity = 1
 title = "Alacritty"
 
 [window.class]

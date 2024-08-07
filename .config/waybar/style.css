@@ -5,7 +5,6 @@
   font-size: 16px;
   min-height: 0px;
   border-radius: 20px;
-  background-clip: padding-box;
   text-shadow: 0px 0px 3px #000000;
   color: @color7;
   background-color: transparent;
@@ -16,10 +15,10 @@ label {
 }
 
 tooltip * {
-  background-color: transparent;
+  background-color: #000000;
 }
 tooltip label {
-  background-color: transparent;
+  background-color: @background;
   font-family: "Noto Sans Mono";
   /* min-width: 750px; */
 }
@@ -39,19 +38,18 @@ tooltip label {
 }
 
 #workspaces button {
-  background-color: alpha(@color4, 0.1);
+  background-color: @color1;
   /* border: 2px solid @color5; */
   margin-bottom: 4px;
 }
 #workspaces button.active {
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: alpha(@color2, 0.8);
+  background-color: @color6;
   /* border: 2px solid @color2; */
 }
 #workspaces button.urgent {
-  background-color: @color6;
-  background-color: alpha(@color6, 0.8);
+  background-color: @color3;
 }
 
 #language {
@@ -66,40 +64,40 @@ tooltip label {
 #custom-gpu,
 #tray,
 #clock {
-  background-color: alpha(@color4, 0.1);
+  background-color: @color1;
   /* border: 2px solid @color2; */
   margin-top: 4px;
 }
 
 #cpu.mid {
-  background-color: alpha(#ffff55, 0.7);
+  background-color: #ffff55;
 }
 #cpu.heavy {
-  background-color: alpha(#ff5555, 0.7);
+  background-color: #ff5555;
 }
 
 #custom-mem.mid {
-  background-color: alpha(#ffff55, 0.7);
+  background-color: #ffff55;
 }
 #custom-mem.heavy {
-  background-color: alpha(#ff5555, 0.7);
+  background-color: #ff5555;
 }
 
 #custom-gpu.mid {
-  background-color: alpha(#ffff55, 0.7);
+  background-color: #ffff55;
 }
 #custom-gpu.heavy {
-  background-color: alpha(#ff5555, 0.7);
+  background-color: #ff5555;
 }
 
 #custom-vpn_indicator.used {
-  background-color: alpha(#ff5555, 0.7);
+  background-color: #ff5555;
 }
 #custom-audio_indicator.used {
-  background-color: alpha(#ff5555, 0.7);
+  background-color: #ff5555;
 }
 #custom-video_indicator.used {
-  background-color: alpha(#ff5555, 0.7);
+  background-color: #ff5555;
 }
 
 #pulseaudio {
@@ -107,10 +105,10 @@ tooltip label {
   text-shadow: none;
 }
 #pulseaudio.sink.muted {
-  background-color: alpha(#ff5555, 0.7);
+  background-color: #ff5555;
 }
 #pulseaudio.source.source-muted {
-  background-color: alpha(#ff5555, 0.7);
+  background-color: #ff5555;
 }
 
 #custom-notification {
@@ -124,7 +122,7 @@ tooltip label {
 
 @keyframes blink {
   to {
-    background-color: transparent;
+    background-color: @background;
     color: black;
   }
 }

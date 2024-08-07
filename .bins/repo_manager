@@ -1,0 +1,64 @@
+#!/bin/bash
+
+BASE_DIR="$HOME/Documents/GIT"
+EDITOR_COMMAND='nvim -c "Telescope find_files" ./'
+GITCONFIG_AUTO_INCLUDE_TEMPLATE='[includeIf "gitdir:~REMOTE_DIR"]\n  path = ~REMOTE_DIR.gitconfig'
+
+# automatically include custom remote .gitconfig or prompt for copy
+sed -e "/^#AUTO_INCLUDE_BEG/,/^#AUTO_INCLUDE_END/d" -i $HOME/.gitconfig
+echo "#AUTO_INCLUDE_BEG" >> $HOME/.gitconfig
+WARN=0
+for upstream in $BASE_DIR/*/; do
+  if [ ! -f $upstream.gitconfig ]; then
+    WARN=1
+    echo "Warning: upstream ${upstream#"$BASE_DIR/"} doesn't have .gitconfig"
+  else
+    echo -e $GITCONFIG_AUTO_INCLUDE_TEMPLATE | sed "s#REMOTE_DIR#$upstream#g" >> $HOME/.gitconfig
+  fi
+done
+if [ $WARN == 1 ]; then
+  sleep 3
+fi
+echo "#AUTO_INCLUDE_END" >> $HOME/.gitconfig
+
+REF="$(find $BASE_DIR -type d -name .git | sed -e 's/\.git$//g' -e "s#$BASE_DIR/##g" | fzf --bind=enter:replace-query+print-query)"
+
+if [ -z $REF ]; then
+  exit 1
+fi
+
+if [ -d $BASE_DIR/$REF ]; then
+  cd $BASE_DIR/$REF
+  eval $EDITOR_COMMAND
+else
+  REPO_URL=$REF
+  case $REPO_URL in
+    git*)
+      REPO_PATH=$(echo $REPO_URL | sed -e 's/git@//g' -e 's/:/\//g' -e 's/\.git$//g')
+      ;;
+    http*)
+      REPO_PATH=$(echo $REPO_URL | sed 's/http\(s\)*:\/\///g' | sed 's/\.git$//g')
+      ;;
+    *)
+      echo "Unknown repo protocol"
+      exit 1
+      ;;
+  esac
+
+  PARENT_DIR="$BASE_DIR/$(dirname $REPO_PATH)"
+  CHILD_DIR="$(basename $REPO_PATH)"
+
+  if [ -d "$PARENT_DIR/$CHILD_DIR" ]; then
+    echo "$REPO_URL is already cloned in $PARENT_DIR/$CHILD_DIR"
+  else
+    mkdir -p "$PARENT_DIR"
+    cd "$PARENT_DIR"
+    git clone $REPO_URL
+  fi
+
+  cd "$PARENT_DIR/$CHILD_DIR"
+  eval $EDITOR_COMMAND
+fi
+
+
+

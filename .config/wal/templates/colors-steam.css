@@ -1,46 +1,81 @@
 :root {{
-	--bg: #{color0.strip}ff;
-	--fg: #{color3.strip}ff;
-	--border: #{color3.strip}26;
-	--window_bg: #{color0.strip}ff;
-	--window_bg_transparent: #00000000;
-	--window_fg: #{color3.strip}ff;
-	--headerbar_backdrop: #{color0.strip}ff;
-	--headerbar_bg: #{color0.strip}ff;
-	--headerbar_fg: #{color3.strip}ff;
-	--headerbar_shade: #00000061;
-	--popover_bg: #{color0.strip}ff;
-	--popover_fg: #{color3.strip}ff;
-	--toast_bg: #{color0.strip}80;
-	--toast_fg: #{color3.strip}ff;
-	--view_bg: #{color0.strip}88;
-	--view_fg: #{color3.strip}ff;
-	--accent: #{color15.strip}ff;
-	--accent_bg: #{color0.strip}ff;
-	--accent_fg: #{color3.strip}ff;
-	--accent_disabled: #{color15.strip}80;
-	--accent_hover_bg: #{color15.strip}12;
-	--accent_active_bg: #{color15.strip}29;
-	--destructive: #ff7b63ff;
-	--destructive_bg: #c01c28ff;
-	--destructive_fg: #{color3.strip}ff;
-	--destructive_disabled: #ff7b6380;
-	--destructive_hover_bg: #ff7b6312;
-	--destructive_active_bg: #ff7b6329;
-	--error: #ff7b63ff;
-	--error_bg: #c01c28ff;
-	--error_fg: #{color3.strip}ff;
-	--success: #8ff0a4ff;
-	--success_bg: #26a269ff;
-	--success_fg: #{color3.strip}ff;
-	--warning: #f8e45cff;
-	--warning_bg: #cd9309ff;
-	--warning_fg: #{color3.strip}ff;
-	--button_fg: #{color3.strip}ff;
-	--dim_label_fg: #{color3.strip}8c;
-	--card_solid_bg: #{color0.strip}ff;
-	--focusring: #{color1.strip}80;
-	--scrollbar: #{color3.strip}33;
-	--scrollbar_hover: #{color3.strip}66;
-	--scrollbar_active: #{color3.strip}99;
+  /* The main accent color and the matching text value */
+  --adw-accent-bg-rgb: {background.rgb};
+  --adw-accent-fg-rgb: 255, 255, 255;
+  --adw-accent-rgb: {background.rgb};
+
+  /* destructive-action buttons */
+  --adw-destructive-bg-rgb: 192, 28, 40;
+  --adw-destructive-fg-rgb: 255, 255, 255;
+  --adw-destructive-rgb: 255, 123, 99;
+
+  /* Levelbars, entries, labels and infobars. These don't need text colors */
+  --adw-success-bg-rgb: 38, 162, 105;
+  --adw-success-fg-rgb: 255, 255, 255;
+  --adw-success-rgb: 143, 240, 164;
+
+  --adw-warning-bg-rgb: 205, 147, 9;
+  --adw-warning-fg-rgb: 0, 0, 0;
+  --adw-warning-fg-a: 0.8;
+  --adw-warning-rgb: 248, 228, 92;
+
+  --adw-error-bg-rgb: 192, 28, 40;
+  --adw-error-fg-rgb: 255, 255, 255;
+  --adw-error-rgb: 255, 123, 99;
+
+  /* Window */
+  --adw-window-bg-rgb: {background.rgb};
+  --adw-window-fg-rgb: 255, 255, 255;
+
+  /* Views - e.g. text view or tree view */
+  --adw-view-bg-rgb: {background.rgb};
+  --adw-view-fg-rgb: 255, 255, 255;
+
+  /* Header bar, search bar, tab bar */
+  --adw-headerbar-bg-rgb: {background.rgb};
+  --adw-headerbar-fg-rgb: 255, 255, 255;
+  --adw-headerbar-border-rgb: {background.rgb};
+  --adw-headerbar-backdrop-rgb: var(--adw-window-bg-rgb);
+  --adw-headerbar-shade-rgb: 0, 0, 0;
+  --adw-headerbar-shade-a: 0.36;
+  --adw-headerbar-darker-shade-rgb: 0, 0, 0;
+  --adw-headerbar-darker-shade-a: 0.9;
+
+  /* Split pane views */
+  --adw-sidebar-bg-rgb: {background.rgb};
+  --adw-sidebar-fg-rgb: 255, 255, 255;
+  --adw-sidebar-backdrop-rgb: 42, 42, 42;
+  --adw-sidebar-shade-rgb: 0, 0, 0;
+  --adw-sidebar-shade-a: 0.36;
+
+  --adw-secondary-sidebar-bg-rgb: {background.rgb};
+  --adw-secondary-sidebar-fg-rgb: 255, 255, 255;
+  --adw-secondary-sidebar-backdrop-rgb: 39, 39, 39;
+  --adw-secondary-sidebar-shade-rgb: 0, 0, 0;
+  --adw-secondary-sidebar-shade-a: 0.36;
+
+  /* Cards, boxed lists */
+  --adw-card-bg-rgb: {background.rgb};
+  --adw-card-bg-a: 0.08;
+  --adw-card-fg-rgb: 255, 255, 255;
+  --adw-card-shade-rgb: 0, 0, 0;
+  --adw-card-shade-a: 0.36;
+
+  /* Dialogs */
+  --adw-dialog-bg-rgb: {background.rgb};
+  --adw-dialog-fg-rgb: 255, 255, 255;
+
+  /* Popovers */
+  --adw-popover-bg-rgb: {background.rgb};
+  --adw-popover-fg-rgb: 255, 255, 255;
+  --adw-popover-shade-rgb: 0, 0, 0;
+  --adw-popover-shade-a: 0.36;
+
+  /* Thumbnails */
+  --adw-thumbnail-bg-rgb: {background.rgb};
+  --adw-thumbnail-fg-rgb: 255, 255, 255;
+
+  /* Miscellaneous */
+  --adw-shade-rgb: 0, 0, 0;
+  --adw-shade-a: 0.36;
 }}

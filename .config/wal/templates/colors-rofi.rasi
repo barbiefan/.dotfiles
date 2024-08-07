@@ -2,7 +2,7 @@
     wallpaper: url("/home/obey/dotfiles/Pictures/wallpaper/decay_wave.png");
 
     foreground: #{foreground.strip};
-    background: #{background.strip}77;
+    background: #{background.strip};
     cursor: #{color7.strip};
 
     color0: #{color0.strip};

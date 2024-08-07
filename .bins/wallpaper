@@ -22,10 +22,10 @@ discord_theme() {
 
 ##### steam #####
 steam_theme() {
-    cp $HOME/.cache/wal/colors-steam.css $HOME/.bins/steam_theme/custom/custom.css
+    cp $HOME/.cache/wal/colors-steam.css $HOME/.bins/Adwaita-for-Steam/custom/custom.css
     # generally requires restart in order to change theme.
-    cd $HOME/.bins/steam_theme/
-    $HOME/.bins/steam_theme/install.py --custom-css
+    cd $HOME/.bins/Adwaita-for-Steam/
+    ./install.py --custom-css
     printf "steam done\n"
 }
 
@@ -50,17 +50,15 @@ hyprland_theme() {
 
 ##### gtk2, gtk3, qt5, qt6 #####
 gtk_qt_theme() {
+    python /opt/oomox/plugins/base16/cli.py /opt/oomox/plugins/base16/templates/gtk4-oodwaita/templates/gtk.mustache $HOME/.cache/wal/colors-oomox > ~/.config/gtk-4.0/gtk.css
     /opt/oomox/plugins/theme_oomox/change_color.sh $HOME/.cache/wal/colors-oomox
-    gradience-cli monet -n pywal -p $filename --theme dark
-    gradience-cli apply -n pywal --gtk both
-    gsettings set org.gnome.desktop.interface gtk-theme light
     gsettings set org.gnome.desktop.interface gtk-theme oomox-colors-oomox
     printf "oomox and gradience (gtk+qt) done\n"
 }
 
 ##### telegram #####
 telegram_theme() {
-    wal-telegram --wal --tiled
+    wal-telegram --wal -t
     printf "telegram done\n"
 }
 
@@ -79,7 +77,6 @@ StartPage_theme() {
 
 side_apps() {
     discord_theme &
-    firefox_theme &
     steam_theme &
     waybar_theme &
     swaync_theme &
@@ -111,7 +108,7 @@ if [ -z $1 ]; then
 
     for back in wal haishoku schemer2 colorz colorthief; do
         wal -n -s -t -e -i "$filename" --backend "$back"
-        bash -c "$(cat .cache/wal/imagemagick) /tmp/wallpaper/$back.png"
+        bash -c "$(cat $HOME/.cache/wal/imagemagick) /tmp/wallpaper/$back.png"
     done
 
     wal -n -s -t -e -i "$(cat $HOME/.bins/wallpaperpath)"

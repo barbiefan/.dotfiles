@@ -1,7 +1,6 @@
 @import "~/.cache/wal/colors-rofi.rasi"
 
 * {
-    background-color: #00000000;
     foreground-color: @foreground;
     text-color: @foreground;
 }
@@ -12,43 +11,52 @@ configuration {
 
 
 window {
-    border: 0;
+    background-color: @background;
+    border: 3px;
+    border-color: @color2;
     anchor:   center;
     location: center;
-    width:    30%;
+    width:    20%;
     height:   30%;
-    padding: 30px;
+    padding: 0px 2% 0px 2%;
     children:   [ inputbar, listview ];
     border-radius: 20px;
-    background-color: @background;
 }
 
 inputbar {
+    background-color: transparent;
     children: [entry];
-    padding: 5px;
+    padding: 20px 50px 20px 50px;
     orientation: horizontal;
 }
 
 listview {
+    background-color: transparent;
     layout: vertical;
-    fixed-height: 0;
-    spacing: 2px;
-    padding: 2px 0px 0px;
-}
-
-prompt {
-    spacing: 0;
-    expand: false;
+    spacing: 8px;
 }
 
 entry {
+    background-color: @background;
+    /* background-color: transparent; */
+    border-radius: 20px;
     font: "Comfortaa 16";
-    expand: true;
+    padding: 5px 10px 5px 10px;
 }
 
 element {
-    padding: 4.5px;
+    background-color: @background;
+    /* background-color: transparent; */
     border-radius: 20px;
+    padding: 5px;
+}
+
+element-icon {
+    background-color: transparent;
+}
+
+element-text {
+    background-color: transparent;
 }
 
 element.selected.normal {

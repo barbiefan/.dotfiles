@@ -13,3 +13,6 @@
 [submodule ".bins/steam_theme"]
 	path = .bins/steam_theme
 	url = git@github.com:barbiefan/steam_theme.git
+[submodule ".bins/Adwaita-for-Steam"]
+	path = .bins/Adwaita-for-Steam
+	url = git@github.com:tkashkin/Adwaita-for-Steam.git

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+function handle {
+  if [[ ${1:0:14} == "activewindow>>" ]]; then
+    event="${1:14}"
+    IFS=',' read -r class title <<< "$event"
+    echo "$(date -u +%s%N)!@#@!$class!@#@!$title" >> $HOME/screen_time
+  fi
+}
+
+socat - "UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock" | while read -r line; do handle "$line"; done
