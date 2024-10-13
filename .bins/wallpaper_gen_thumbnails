@@ -1,0 +1,61 @@
+#! /bin/bash
+
+TMP_DIR="$HOME/.cache/wal/thumbnails"
+
+mkdir -p "$TMP_DIR"
+
+OUTPUT=""
+ROLLBACK_WAL=0
+FILES="$(find ${1:-.} -type f -name "*.jpeg" -o -name "*.png" -o -name "*.jpg")"
+NUM_FILES=$(echo "$FILES" | wc -l)
+
+ITER_COUNT=1
+ 
+for WALLPAPER_PATH in $FILES; do
+    echo $((ITER_COUNT * 100 / NUM_FILES))
+    echo "# Thumbnail generation for $WALLPAPER_PATH"
+    WALLPAPER_NAME=$(basename "$WALLPAPER_PATH")
+    WALLPAPER_THUMBNAIL_DIR="$TMP_DIR/$WALLPAPER_NAME"
+    mkdir -p "$WALLPAPER_THUMBNAIL_DIR"
+    PREVIEW_IMAGE="$WALLPAPER_THUMBNAIL_DIR/ORIG.png"
+
+    if [ -f "$PREVIEW_IMAGE" ]; then
+        echo "# Skipping preview thumbnail generation for $WALLPAPER_PATH"
+    else
+        echo "# Generating preview thumbnail for $WALLPAPER_PATH"
+        magick "$WALLPAPER_PATH" -resize 512x512 "$PREVIEW_IMAGE"
+    fi
+
+    LINE="$WALLPAPER_NAME $WALLPAPER_PATH $PREVIEW_IMAGE"
+
+    CHILD_COUNT=0
+    for BACKEND in wal haishoku schemer2 colorz colorthief; do
+        PALLETE_PREVIEW="$WALLPAPER_THUMBNAIL_DIR/$BACKEND.png"
+        if [ -f "$PALLETE_PREVIEW" ]; then
+            echo "# Skipping $BACKEND pallete thumbnail generation for $WALLPAPER_PATH"
+        else
+            ROLLBACK_WAL=1
+            echo "# Generating $BACKEND pallete thumbnail for $WALLPAPER_PATH"
+            wal -n -s -t -e -i "$WALLPAPER_PATH" --backend "$BACKEND"
+            bash -c "$(cat $HOME/.cache/wal/imagemagick) $PALLETE_PREVIEW"
+        fi
+        CHILD_COUNT=$((CHILD_COUNT + 1))
+        LINE="$LINE $CHILD_COUNT:$WALLPAPER_NAME $WALLPAPER_PATH@$BACKEND $PALLETE_PREVIEW"
+    done
+
+    OUTPUT="$LINE $OUTPUT"
+    ITER_COUNT=$((ITER_COUNT + 1))
+    # last iteration hack to keep 'for do done | yad' working without loosing variables
+    if [ "$ITER_COUNT" == "$NUM_FILES" ]; then
+        echo "$ROLLBACK_WAL"
+
+        if [ $ROLLBACK_WAL == 1 ]; then
+            prev_wal="$(cat $HOME/.cache/wal/current_wallpaper)"
+            IMG="${prev_wal%@*}"
+            BACKEND="${prev_wal#*@}"
+            wal -n -s -t -e --backend $BACKEND -i $IMG 
+        fi
+
+        echo -e "yad --title 'Select wallpaper and colorscheme' --list --tree --column=Filename --column=Picture:img --hide-column=1 --print-column=1 $OUTPUT | sed 's/|$//g'" > $HOME/.cache/wal/yad_list
+    fi
+done | yad --progress --enable-log="Details" --text="Thumbnail cache generation" --width=500 --log-expanded --auto-close

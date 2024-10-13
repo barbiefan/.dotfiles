@@ -2,7 +2,7 @@
 
 BASE_DIR="$HOME/Documents/GIT"
 EDITOR_COMMAND='nvim -c "Telescope find_files" ./'
-GITCONFIG_AUTO_INCLUDE_TEMPLATE='[includeIf "gitdir:~REMOTE_DIR"]\n  path = ~REMOTE_DIR.gitconfig'
+GITCONFIG_AUTO_INCLUDE_TEMPLATE='[includeIf "gitdir:REMOTE_DIR"]\n    path = REMOTE_DIR.gitconfig'
 
 # automatically include custom remote .gitconfig or prompt for copy
 sed -e "/^#AUTO_INCLUDE_BEG/,/^#AUTO_INCLUDE_END/d" -i $HOME/.gitconfig
@@ -13,7 +13,7 @@ for upstream in $BASE_DIR/*/; do
     WARN=1
     echo "Warning: upstream ${upstream#"$BASE_DIR/"} doesn't have .gitconfig"
   else
-    echo -e $GITCONFIG_AUTO_INCLUDE_TEMPLATE | sed "s#REMOTE_DIR#$upstream#g" >> $HOME/.gitconfig
+    echo -e "$GITCONFIG_AUTO_INCLUDE_TEMPLATE" | sed "s#REMOTE_DIR#$upstream#g" >> $HOME/.gitconfig
   fi
 done
 if [ $WARN == 1 ]; then

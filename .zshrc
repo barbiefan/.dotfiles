@@ -80,8 +80,7 @@ alias work='$HOME/.bins/repo_manager'
 alias gcm='git commit -S -m '
 
 alias dotfiles='$HOME/.bins/dotfiles'
-
-alias grafana='$HOME/Documents/work/docker/run_grafana'
+alias remote="git remote -v | sed -e 's/origin\s*\(.*\)\s*(fetch)/\1/g' -e 's/git@//g' -e 's!:!/!g' -e 's/\.git\s$//g' -e 's#^#https://#g' | head -n 1 | xargs xdg-open"
 
 ## Keybindings section
 bindkey '^[[2~' overwrite-mode

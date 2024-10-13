@@ -1,3 +1,8 @@
+ipc_socket = true
+import = [
+"~/.cache/wal/colors-alacritty.toml",
+]
+
 [window]
 decorations = "none"
 dynamic_padding = false
@@ -162,5 +167,3 @@ mods = "Alt"
 
 [scrolling]
 history = 5000
-
-

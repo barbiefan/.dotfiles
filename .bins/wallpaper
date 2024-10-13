@@ -6,7 +6,7 @@
 
 ##### wallpaper #####
 change_wallpaper() {
-    swww img "$filename" --transition-type grow --transition-pos 0,0 --transition-step 255 --transition-fps 255 --transition-duration 1
+    swww img "$IMG" --transition-type grow --transition-pos 0,0 --transition-step 255 --transition-fps 255 --transition-duration 1
 }
 
 firefox_theme() {
@@ -42,18 +42,13 @@ swaync_theme() {
     printf "swaync done\n"
 }
 
-##### hyprland #####
-hyprland_theme() {
-    $HOME/.bins/hyprColors
-    printf "hyprland done\n"
-}
-
 ##### gtk2, gtk3, qt5, qt6 #####
 gtk_qt_theme() {
     python /opt/oomox/plugins/base16/cli.py /opt/oomox/plugins/base16/templates/gtk4-oodwaita/templates/gtk.mustache $HOME/.cache/wal/colors-oomox > ~/.config/gtk-4.0/gtk.css
     /opt/oomox/plugins/theme_oomox/change_color.sh $HOME/.cache/wal/colors-oomox
+    gsettings set org.gnome.desktop.interface gtk-theme light
     gsettings set org.gnome.desktop.interface gtk-theme oomox-colors-oomox
-    printf "oomox and gradience (gtk+qt) done\n"
+    printf "oomox (gtk+qt) done\n"
 }
 
 ##### telegram #####
@@ -80,7 +75,6 @@ side_apps() {
     steam_theme &
     waybar_theme &
     swaync_theme &
-    hyprland_theme &
     gtk_qt_theme &
     telegram_theme &
     alacritty_theme &
@@ -93,57 +87,52 @@ side_apps() {
 
 # if no argument is provided, launch ranger to pick a wallpaper and rofi to pick a backend
 if [ -z $1 ]; then
-    notify-send "Wallpaper" "Press 'P' to choose.\n <- and -> to select" --urgency LOW
-    filename="$(imv $HOME/Pictures/wallpaper)"
-    printf "filename: $filename\n"
-    if [ -z "$filename" ]; then
+    $HOME/.bins/wallpaper_gen_thumbnails $HOME/Pictures/wallpaper/
+    selection="$(bash -c "$(cat $HOME/.cache/wal/yad_list)")"
+    printf "selection: $selection\n"
+    if [ -z "$selection" ]; then
         printf "no file provided\n"
-        notify-send "Wallpaper" "No file provided" --urgency LOW
+        notify-send "Wallpaper" "Nothing selected" --urgency LOW
         exit 1
-    else
-        notify-send "Wallpaper" "File : $filename" --urgency LOW
     fi
 
-    mkdir /tmp/wallpaper 2>/dev/null
+    IMG="${selection%@*}"
+    BACKEND="${selection#*@}"
 
-    for back in wal haishoku schemer2 colorz colorthief; do
-        wal -n -s -t -e -i "$filename" --backend "$back"
-        bash -c "$(cat $HOME/.cache/wal/imagemagick) /tmp/wallpaper/$back.png"
-    done
+    printf "img: $IMG\n"
+    printf "backend: $BACKEND\n"
 
-    wal -n -s -t -e -i "$(cat $HOME/.bins/wallpaperpath)"
-
-    back="$(basename $(imv /tmp/wallpaper))"
-    printf "backend: $back\n"
-    if [ -z "$back" ]; then
+    if [ "$BACKEND" == "$IMG" ]; then
         printf "no backend provided\n"
-        notify-send "Wallpaper" "No backend provided\n 'wal' will be used by default" --urgency LOW
-        backend="wal"
-    else 
-        backend="${back%.*}"
-        notify-send "Wallpaper" "Backend: $backend" --urgency LOW
+        notify-send "Wallpaper" "No backend selected\n 'wal' will be used by default" --urgency LOW
+        BACKEND="wal"
     fi
 
 elif [[ $1 == "--random" ]]; then
-    filename="$(find $HOME/Pictures/wallpaper -regex '.*\.png\|.*\.jpg\|.*\.jpeg' | shuf -n 1)"
-    backend="wal"
+    IMG="$(find $HOME/Pictures/wallpaper -regex '.*\.png\|.*\.jpg\|.*\.jpeg' | shuf -n 1)"
+    BACKEND="wal"
+elif [[ $1 == "--restore" ]]; then
+    selection="$(cat $HOME/.cache/wal/current_wallpaper)"
+    IMG="${selection%@*}"
+    BACKEND="${selection#*@}"
+    wal -n -i "$IMG" --backend $BACKEND
 else    
-    filename="$1"
-    backend="wal"
+    IMG="$1"
+    BACKEND="wal"
 fi
 
 # change early so you don't feel a lag
 change_wallpaper &
 
 ##### pywal #####
-wal -n -i "$filename" --backend $backend
+wal -n -i "$IMG" --backend $BACKEND
 printf "wal done\n"
 
 # run other customizations after wal has generated a theme
 side_apps
 
 # remember wallpaper for reload
-echo "$filename" > $HOME/.bins/wallpaperpath
-printf "wallpaper remembered in $HOME/.bins/wallpaperpath\n"
+echo "$IMG@$BACKEND" > $HOME/.cache/wal/current_wallpaper
+printf "wallpaper remembered in $HOME/.cache/wal/current_wallpaper\n"
 
-notify-send "Wallpaper" "Set colors and themes to match wallpaper: $filename" --urgency LOW -i $filename
+notify-send "Wallpaper" "Set colors and themes to match wallpaper: $IMG" --urgency LOW -i $IMG
