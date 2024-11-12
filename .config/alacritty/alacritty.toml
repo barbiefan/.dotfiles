@@ -1,12 +1,8 @@
-ipc_socket = true
-import = [
-"~/.cache/wal/colors-alacritty.toml",
-]
 
 [window]
 decorations = "none"
 dynamic_padding = false
-opacity = 1
+opacity = 0.0
 title = "Alacritty"
 
 [window.class]
@@ -167,3 +163,9 @@ mods = "Alt"
 
 [scrolling]
 history = 5000
+
+[general]
+ipc_socket = true
+import = [
+"~/.cache/wal/colors-alacritty.toml",
+]

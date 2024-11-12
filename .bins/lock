@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ -z $1 ]; then
+  alacritty --class HYPRLOCK -e screenlock abc
+else
+  hyprlock 1>/dev/null 2>/dev/null
+fi
+
+

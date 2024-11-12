@@ -11,7 +11,7 @@ configuration {
 
 
 window {
-    background-color: @background;
+    background-color: #00000001;
     border: 3px;
     border-color: @color2;
     anchor:   center;
@@ -25,9 +25,14 @@ window {
 
 inputbar {
     background-color: transparent;
-    children: [entry];
+    children: [prompt, entry];
     padding: 20px 50px 20px 50px;
     orientation: horizontal;
+}
+
+prompt {
+    padding: 10px 0px 0px 0px;
+    background-color: transparent;
 }
 
 listview {
@@ -37,16 +42,16 @@ listview {
 }
 
 entry {
-    background-color: @background;
-    /* background-color: transparent; */
+    /* background-color: @background; */
+    background-color: transparent;
     border-radius: 20px;
     font: "Comfortaa 16";
     padding: 5px 10px 5px 10px;
 }
 
 element {
-    background-color: @background;
-    /* background-color: transparent; */
+    /* background-color: @background; */
+    background-color: transparent;
     border-radius: 20px;
     padding: 5px;
 }

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+MODES="current | -1\nnone | 0\nmaximize | 1\nfullscreen | 2\nmaximzie + fullscreen | 3"
+
+INTERNAL="$(echo -e $MODES | rofi -dmenu -p "INTERNAL: " | sed 's/.*| //g')"
+CLIENT="$(echo -e $MODES | rofi -dmenu -p "CLIENT: " | sed 's/.*| //g')"
+
+hyprctl dispatch fullscreenstate $INTERNAL $CLIENT

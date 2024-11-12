@@ -3,10 +3,10 @@
  */
 @import "/home/obey/.cache/wal/colors-waybar.css";
 
-@define-color cc-bg @color0;
+@define-color cc-bg rgba(0,0,0,0.1);
 
 @define-color noti-border-color @color3;
-@define-color noti-bg @color0;
+@define-color noti-bg rgba(0,0,0,0.1);
 @define-color noti-bg-darker @color0;
 @define-color noti-bg-hover @color3;
 @define-color noti-bg-focus @color3;

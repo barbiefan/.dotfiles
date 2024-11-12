@@ -60,7 +60,7 @@ alias packages='pacman -Qei | awk "/^Name/ { name=\$3 } /^Groups/ { if ( \$3 != 
 alias c='clear; neofetch'
 alias ls='exa -lh --icons --group-directories-first --git'
 alias la='exa -alh --icons --group-directories-first --git'
-alias lx='exa -FHSUaghilmu@ --group-directories-first --icons --git'
+alias lx='exa -HSUaghilmu@ --group-directories-first --icons --git'
 alias tree='exa -alhT --group-directories-first --git'
 alias search='doas fzf'
 alias repo='cd ~/Documents/GIT'
