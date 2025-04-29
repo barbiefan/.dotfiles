@@ -6,7 +6,7 @@
 	url = git@github.com:barbiefan/wallpapers.git
 [submodule ".config/nvim"]
 	path = .config/nvim
-	url = git@github.com:barbiefan/nvim_config.git
+	url = git@github.com:barbiefan/nvim.git
 [submodule ".password-store"]
 	path = .password-store
 	url = git@github.com:barbiefan/pass.git
