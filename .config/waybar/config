@@ -1,6 +1,7 @@
 [
 {
   "layer": "top",
+  "output": "DP-1",
   "position": "left",
   "margin-left": 0,
   "margin-right": 0,

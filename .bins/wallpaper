@@ -6,79 +6,79 @@
 
 ##### wallpaper #####
 change_wallpaper() {
-    swww img "$IMG" --transition-type grow --transition-pos 0,0 --transition-step 255 --transition-fps 255 --transition-duration 1
+  swww img "$IMG" --transition-type grow --transition-pos 0,0 --transition-step 255 --transition-fps 255 --transition-duration 1
 }
 
 firefox_theme() {
-    pywalfox update
-    printf "firefox done\n"
+  pywalfox update
+  printf "firefox done\n"
 }
 
 ##### discord #####
 discord_theme() {
-    cp $HOME/.cache/wal/discord-wal.theme.css $HOME/.config/vesktop/themes/wal.theme.css
-    printf "discord done\n"
+  cp $HOME/.cache/wal/discord-wal.theme.css $HOME/.config/vesktop/themes/wal.theme.css
+  printf "discord done\n"
 }
 
 ##### steam #####
 steam_theme() {
-    cp $HOME/.cache/wal/colors-steam.css $HOME/.bins/Adwaita-for-Steam/custom/custom.css
-    # generally requires restart in order to change theme.
-    cd $HOME/.bins/Adwaita-for-Steam/
-    ./install.py --custom-css
-    printf "steam done\n"
+  cp $HOME/.cache/wal/colors-steam.css $HOME/.bins/Adwaita-for-Steam/custom/custom.css
+  # generally requires restart in order to change theme.
+  cd $HOME/.bins/Adwaita-for-Steam/
+  ./install.py --custom-css
+  printf "steam done\n"
 }
 
 ##### waybar #####
 waybar_theme() {
-    killall -SIGUSR2 waybar
-    printf "waybar done\n"
+  killall -SIGUSR2 waybar
+  printf "waybar done\n"
 }
 
 ##### swaync #####
 swaync_theme() {
-    swaync-client -rs
-    swaync-client -R
-    printf "swaync done\n"
+  swaync-client -rs
+  swaync-client -R
+  printf "swaync done\n"
 }
 
 ##### gtk2, gtk3, qt5, qt6 #####
 gtk_qt_theme() {
-    python /opt/oomox/plugins/base16/cli.py /opt/oomox/plugins/base16/templates/gtk4-oodwaita/templates/gtk.mustache $HOME/.cache/wal/colors-oomox > ~/.config/gtk-4.0/gtk.css
-    /opt/oomox/plugins/theme_oomox/change_color.sh $HOME/.cache/wal/colors-oomox
-    gsettings set org.gnome.desktop.interface gtk-theme light
-    gsettings set org.gnome.desktop.interface gtk-theme oomox-colors-oomox
-    printf "oomox (gtk+qt) done\n"
+  python /opt/oomox/plugins/base16/cli.py /opt/oomox/plugins/base16/templates/gtk4-oodwaita/templates/gtk4-libadwaita1.6.0.mustache $HOME/.cache/wal/colors-oomox >~/.config/gtk-4.0/gtk.css
+  /opt/oomox/plugins/theme_oomox/change_color.sh $HOME/.cache/wal/colors-oomox
+  gsettings set org.gnome.desktop.interface gtk-theme light
+  gsettings set org.gnome.desktop.interface gtk-theme oomox-colors-oomox
+  printf "oomox (gtk+qt) done\n"
 }
 
 ##### telegram #####
 telegram_theme() {
-    wal-telegram --wal -t
-    printf "telegram done\n"
+  wal-telegram --wal -t
+  printf "telegram done\n"
 }
 
 ##### alacritty #####
 alacritty_theme() {
-    $HOME/.bins/alacrittyColors $HOME/.config/alacritty/alacritty.yml
-    printf "alacritty done\n"
+  $HOME/.bins/alacrittyColors $HOME/.config/alacritty/alacritty.yml
+  printf "alacritty done\n"
 }
 
 ##### StartPage #####
 StartPage_theme() {
-    sed -i "s@#.*/\*walcolorA\*/@$(cat $HOME/.cache/wal/colors-kitty.conf | grep -e '^color0' | awk '{print $2}'); /\*walcolorA\*/@g" $HOME/Documents/git/StartPage/style.css
-    sed -i "s@#.*/\*walcolorB\*/@$(cat $HOME/.cache/wal/colors-kitty.conf | grep -e '^color2' | awk '{print $2}'); /\*walcolorB\*/@g" $HOME/Documents/git/StartPage/style.css
-    printf "StartPage done\n"
+  sed -i "s@#.*/\*walcolorA\*/@$(cat $HOME/.cache/wal/colors-kitty.conf | grep -e '^color0' | awk '{print $2}'); /\*walcolorA\*/@g" $HOME/Documents/GIT/github.com/barbiefan/StartPag/style.css
+  sed -i "s@#.*/\*walcolorB\*/@$(cat $HOME/.cache/wal/colors-kitty.conf | grep -e '^color2' | awk '{print $2}'); /\*walcolorB\*/@g" $HOME/Documents/GIT/github.com/barbiefan/StartPag/style.css
+  printf "StartPage done\n"
 }
 
 side_apps() {
-    discord_theme &
-    steam_theme &
-    waybar_theme &
-    swaync_theme &
-    gtk_qt_theme &
-    telegram_theme &
-    alacritty_theme &
-    StartPage_theme &
+  discord_theme &
+  steam_theme &
+  waybar_theme &
+  swaync_theme &
+  gtk_qt_theme &
+  telegram_theme &
+  alacritty_theme &
+  StartPage_theme &
 }
 
 #######################
@@ -87,38 +87,38 @@ side_apps() {
 
 # if no argument is provided, launch ranger to pick a wallpaper and rofi to pick a backend
 if [ -z $1 ]; then
-    $HOME/.bins/wallpaper_gen_thumbnails $HOME/Pictures/wallpaper/
-    selection="$(bash -c "$(cat $HOME/.cache/wal/yad_list)")"
-    printf "selection: $selection\n"
-    if [ -z "$selection" ]; then
-        printf "no file provided\n"
-        notify-send "Wallpaper" "Nothing selected" --urgency LOW
-        exit 1
-    fi
+  $HOME/.bins/wallpaper_gen_thumbnails $HOME/Pictures/wallpaper/
+  selection="$(bash -c "$(cat $HOME/.cache/wal/yad_list)")"
+  printf "selection: $selection\n"
+  if [ -z "$selection" ]; then
+    printf "no file provided\n"
+    notify-send "Wallpaper" "Nothing selected" --urgency LOW
+    exit 1
+  fi
 
-    IMG="${selection%@*}"
-    BACKEND="${selection#*@}"
+  IMG="${selection%@*}"
+  BACKEND="${selection#*@}"
 
-    printf "img: $IMG\n"
-    printf "backend: $BACKEND\n"
+  printf "img: $IMG\n"
+  printf "backend: $BACKEND\n"
 
-    if [ "$BACKEND" == "$IMG" ]; then
-        printf "no backend provided\n"
-        notify-send "Wallpaper" "No backend selected\n 'wal' will be used by default" --urgency LOW
-        BACKEND="wal"
-    fi
+  if [ "$BACKEND" == "$IMG" ]; then
+    printf "no backend provided\n"
+    notify-send "Wallpaper" "No backend selected\n 'wal' will be used by default" --urgency LOW
+    BACKEND="wal"
+  fi
 
 elif [[ $1 == "--random" ]]; then
-    IMG="$(find $HOME/Pictures/wallpaper -regex '.*\.png\|.*\.jpg\|.*\.jpeg' | shuf -n 1)"
-    BACKEND="wal"
+  IMG="$(find $HOME/Pictures/wallpaper -regex '.*\.png\|.*\.jpg\|.*\.jpeg' | shuf -n 1)"
+  BACKEND="wal"
 elif [[ $1 == "--restore" ]]; then
-    selection="$(cat $HOME/.cache/wal/current_wallpaper)"
-    IMG="${selection%@*}"
-    BACKEND="${selection#*@}"
-    wal -n -i "$IMG" --backend $BACKEND
-else    
-    IMG="$1"
-    BACKEND="wal"
+  selection="$(cat $HOME/.cache/wal/current_wallpaper)"
+  IMG="${selection%@*}"
+  BACKEND="${selection#*@}"
+  wal -n -i "$IMG" --backend $BACKEND
+else
+  IMG="$1"
+  BACKEND="wal"
 fi
 
 # change early so you don't feel a lag
@@ -132,7 +132,7 @@ printf "wal done\n"
 side_apps
 
 # remember wallpaper for reload
-echo "$IMG@$BACKEND" > $HOME/.cache/wal/current_wallpaper
+echo "$IMG@$BACKEND" >$HOME/.cache/wal/current_wallpaper
 printf "wallpaper remembered in $HOME/.cache/wal/current_wallpaper\n"
 
 notify-send "Wallpaper" "Set colors and themes to match wallpaper: $IMG" --urgency LOW -i $IMG

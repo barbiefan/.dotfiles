@@ -1,7 +1,0 @@
-#!/bin/sh
-
-if [ "$(hyprctl monitors | grep dpmsStatus | awk '{print $2}')" == "1" ]; then
-    hyprctl dispatch dpms off
-else
-    hyprctl dispatch dpms on
-fi 

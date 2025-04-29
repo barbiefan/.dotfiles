@@ -16,3 +16,4 @@
 [submodule ".bins/Adwaita-for-Steam"]
 	path = .bins/Adwaita-for-Steam
 	url = git@github.com:tkashkin/Adwaita-for-Steam.git
+	branch = master

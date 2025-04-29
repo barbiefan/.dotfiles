@@ -24,5 +24,9 @@ if [ -z "${DISPLAY}" ] && [ "$(tty)" = "/dev/tty1" ]; then
     dbus-run-session Hyprland
 fi
 
+if [ -z "${DISPLAY}" ] && [ "$(tty)" = "/dev/tty2" ]; then
+    SteamOSSession
+fi
+
 
 

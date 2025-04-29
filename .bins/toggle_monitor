@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+MONITOR_NAME=$1
+CURRENT_STATUS="$(hyprexec monitors -j | jq ".[] | select(.name==\"$MONITOR_NAME\") | .dpmsStatus")"
+
+if [ -z $CURRENT_STATUS ]; then
+  echo "No such display"
+  exit 1
+fi
+
+if [[ $CURRENT_STATUS == "true" ]]; then
+  echo "turning off"
+  hyprexec dispatch dpms off $MONITOR_NAME
+else
+  echo "turning on"
+  hyprexec dispatch dpms on $MONITOR_NAME
+fi

@@ -1,8 +1,7 @@
-
 [window]
 decorations = "none"
 dynamic_padding = false
-opacity = 0.0
+opacity = 0.7
 title = "Alacritty"
 
 [window.class]
@@ -15,6 +14,16 @@ y = 0
 
 [colors]
 draw_bold_text_with_bright_colors = true
+# From the famous Cobalt2 sublime theme
+# Source  https//github.com/wesbos/cobalt2/tree/master/Cobalt2
+
+[colors.search.matches]
+background = '#ffffff'
+foreground = '#122637'
+
+[colors.search.focused_match]
+background = '#881111'
+foreground = '#ffffff'
 
 [env]
 TERM = "xterm-256color"
@@ -166,6 +175,4 @@ history = 5000
 
 [general]
 ipc_socket = true
-import = [
-"~/.cache/wal/colors-alacritty.toml",
-]
+import = ["~/.cache/wal/colors-alacritty.toml"]

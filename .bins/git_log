@@ -1,0 +1,100 @@
+#!/usr/bin/env bash
+
+function gitlog {
+
+  # Check for the existence of certain git log arguments
+  local using_graph=false
+  local arg_i
+  for arg_i in "$@"; do
+    if [ "$arg_i" = "--graph" ]; then
+      using_graph=true
+    fi
+    if [ "$arg_i" = "--oneline" ]; then
+      printf -- "--oneline not allowed for this shell function.\n  use regular git log for oneline.\n"
+      return 1
+    fi
+  done
+
+  # Set the OS dependant options
+  # my_system_type can be set by sourcing my .bashrc
+  local sed_regex_sym="r"
+  if [ ! -z "$my_system_type" ]; then
+    if [ "$my_system_type" = Mac ]; then
+      sed_regex_sym="E"
+    fi
+  fi
+
+  # Set the pre-determined column sizes here
+  local N_AUTH_DATE_CHARS=11
+  local N_AUTH_NAME_CHARS=15
+
+  # Determine where to place columns for the various content
+  local scrn_sz_arr=($(stty size)) #stty not tput in case of missing TERMINFO
+  local N_SCRN_COLS=${scrn_sz_arr[1]}
+  local N_HASH_CHARS=$(git log --pretty=format:%h -1 | tr -d '\n' | wc -c | tr -d '[:space:]')
+  if [ "$using_graph" = true ]; then
+    local N_GRPH_MAX_CHARS=$(expr $N_SCRN_COLS / 5) #Use no more then 20% of screen
+    local N_GRPH_ACT_CHARS=$(git log --graph --pretty=format:"%<(1,trunc)%ad" | tr -d '..' |
+      awk '{print length}' | sort -nr | head -1 | tr -d '[:space:]')
+    if [ "$N_GRPH_ACT_CHARS" -lt "$N_GRPH_MAX_CHARS" ]; then
+      local N_GRPH_RSRV_CHARS=$N_GRPH_ACT_CHARS
+    else
+      local N_GRPH_RSRV_CHARS=$N_GRPH_MAX_CHARS
+    fi
+    #Extend space of N_HASH_CHARS to keep alignment when --graph option used.
+    N_HASH_CHARS=$(expr $N_HASH_CHARS + $N_GRPH_RSRV_CHARS)
+  fi
+  local N_MSG_INDENT_CHARS=$(expr $N_HASH_CHARS + 1 + $N_AUTH_DATE_CHARS + $N_AUTH_NAME_CHARS + 1)
+  local N_STAT_INDENT_CHARS=$(expr $N_MSG_INDENT_CHARS + 2)
+
+  # Check that there is sufficient room to place all the content
+  local N_MIN_COLS=$(expr $N_STAT_INDENT_CHARS + 12)
+  if [ "$N_MIN_COLS" -gt "$N_SCRN_COLS" ]; then
+    printf -- "Terminal window too narrow.\nNeed at least $N_MIN_COLS cols for this mode.\n"
+    return 1
+  fi
+
+  # Git log logic below is as follows
+  #   - use date=short to minimize space used by that column.  Linked with
+  #        N_AUTH_DATE_CHARS
+  #   - use --pretty-format to specify columns as
+  #        hash--author date--author name--commit message.
+  #   - first 4 sed statement removes color (if present) from graph lines
+  #        containing wrapped pretty-print text. Done for aligment of wrapped
+  #        text. Was one sed using back references, but that was not compatible
+  #        with BSD (OSX) sed with -E.
+  #   - fifth sed blanks out graph lines from newlines that were introduced
+  #        between commits by tformat.
+  #   - sixth sed aligns wrapped text from pretty-print into message column.
+  #   - last three sed statements insert a tab as a delimiter (recall tabs
+  #        removed by expand) between any other text and the --name-status text.
+  #        This is in anticipation of the awk statement at the next pipe
+  #   - awk used to right pad the first column up to N_STAT_INDENT_CHARS and
+  #        place any --name-status fields present to its right in order to
+  #        align it with the message text.
+  #   - use tr to delete the inserted tabs that were used for column alignment
+  #   - sed to remove any trailing white space.
+  #   - awk removes extraneous blank lines
+  #   - finally pipe to less -R to force the color option
+  git log \
+    --date=short \
+    --pretty=tformat:"%C(auto)%w($N_SCRN_COLS,0,$N_MSG_INDENT_CHARS)%>|($N_HASH_CHARS)%h%x09%<($N_AUTH_DATE_CHARS,trunc)%ad%<($N_AUTH_NAME_CHARS,trunc)%an%x09%C(bold blue)%s%C(auto)%+d" \
+    $* |
+    expand -t 1 |
+    sed -$sed_regex_sym $'/.*[*]/!{/.*[|]{1}/s/\x1b\\[([0-9](;[0-9])*)*[mGK]([_])\x1b\\[([0-9](;[0-9])*)*[mGK]/_/g;}' |
+    sed -$sed_regex_sym $'/.*[*]/!{/.*[|]{1}/s/\x1b\\[([0-9](;[0-9])*)*[mGK]([|])\x1b\\[([0-9](;[0-9])*)*[mGK]/|/g;}' |
+    sed -$sed_regex_sym $'/.*[*]/!{/.*[|]{1}/s/\x1b\\[([0-9](;[0-9])*)*[mGK]([\\])\x1b\\[([0-9](;[0-9])*)*[mGK]/\\\/g;}' |
+    sed -$sed_regex_sym $'/.*[*]/!{/.*[|]{1}/s/\x1b\\[([0-9](;[0-9])*)*[mGK]([\/])\x1b\\[([0-9](;[0-9])*)*[mGK]/\//g;}' |
+    sed -$sed_regex_sym "/^[|[:space:]]+[^[:alnum:]\\\/]+$/s/[|]//g" |
+    sed -$sed_regex_sym "/^[|]/s/^(.{$N_MSG_INDENT_CHARS})[[:space:]]*/\1/" |
+    sed -$sed_regex_sym "s/^([[:space:]_|\\\/]{0,$N_HASH_CHARS})([A-Z][[:space:]])/\1$(printf -- '\t')\2/" |
+    sed -$sed_regex_sym "s/^([[:space:]_|\\\/]{0,$N_HASH_CHARS})([R][0-9][0-9][0-9][[:space:]])/\1$(printf -- '\t')\2/" |
+    sed -$sed_regex_sym "s/^([[:space:]_|\\\/]{0,$N_HASH_CHARS})([C][0-9][0-9][[:space:]])/\1$(printf -- '\t')\2/" |
+    awk 'BEGIN{ FS="\t" }{ printf "%-'$N_STAT_INDENT_CHARS's%s\n", $1, $2 }' |
+    tr -d '\t' |
+    sed -$sed_regex_sym 's/[[:space:]]*$//' |
+    awk NF |
+    less -R --chop-long-lines
+}
+
+gitlog $@

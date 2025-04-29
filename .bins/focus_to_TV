@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+hyprexec dispatch workspace name:TV

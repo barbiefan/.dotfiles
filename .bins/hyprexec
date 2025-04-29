@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+HYPRLAND_INSTANCE_SIGNATURE="$(hyprctl instances -j | jq '.[0].instance' | tr -d '"')"
+export HYPRLAND_INSTANCE_SIGNATURE
+hyprctl $@

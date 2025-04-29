@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+hyprexec dispatch togglespecialworkspace $1

@@ -14,7 +14,6 @@ setopt nocaseglob
 setopt rcexpandparam
 setopt nocheckjobs
 setopt numericglobsort
-setopt nobeep
 setopt appendhistory
 setopt histignorealldups
 setopt autocd
@@ -35,7 +34,6 @@ WORDCHARS=${WORDCHARS//\/[&.;]}
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 autoload edit-command-line

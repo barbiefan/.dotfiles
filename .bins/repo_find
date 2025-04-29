@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+find "$1" -type d -name .git | sed -e 's/\.git$//g'
