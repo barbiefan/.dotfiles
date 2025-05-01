@@ -8,6 +8,7 @@
   text-shadow: 0px 0px 3px #000000;
   color: @color7;
   background-color: transparent;
+  outline: none;
 }
 
 label {
@@ -15,7 +16,7 @@ label {
 }
 
 tooltip * {
-  background-color: #000000;
+  background-color: @background;
 }
 tooltip label {
   background-color: @background;
